@@ -1,0 +1,90 @@
+﻿@model OnlineDictionary.ViewModels.EditUserInfoViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FirstName, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">@Lexicon.BirthDate</label>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-2 birth-date-field">
+                        @Html.DropDownListFor(model => model.BirthDay, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day", new { id = "day", @class = "form-control", onchange = "" })
+                        @Html.ValidationMessageFor(m => m.BirthDay, string.Empty, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2 birth-date-field">
+                        @Html.DropDownListFor(model => model.BirthMonth, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i) }), "Month", new { id = "month", @class = "form-control", onchange = "" })
+                        @Html.ValidationMessageFor(m => m.BirthMonth, string.Empty, new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.BirthYear, Enumerable.Range(1930, 87).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }).Reverse(), "Year", new { id = "year", @class = "form-control", onchange = "" })
+                        @Html.ValidationMessageFor(m => m.BirthYear, string.Empty, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Country, OnlineDictionary.ViewModels.RegisterViewModel.Countries, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Country, string.Empty, new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Language, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Language, Model.LanguageItems, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Language, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" ng-click="" class="btn btn-default">@Lexicon.Save</button>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    <p>
+        @Lexicon.Password:
+        @if (Model.HasPassword)
+        {
+            @Html.ActionLink(Lexicon.ChangeYourPassword, "ChangePassword")
+        }
+        else
+        {
+            @Html.ActionLink(Lexicon.Create, "SetPassword")
+        }
+    </p>
+</div>
