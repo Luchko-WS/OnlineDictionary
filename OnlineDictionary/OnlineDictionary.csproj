@@ -203,6 +203,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\Languages.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,7 +214,15 @@
     <Compile Include="Migrations\201807040831508_InitialMigration.Designer.cs">
       <DependentUpon>201807040831508_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807050805055_InitModels.cs" />
+    <Compile Include="Migrations\201807050805055_InitModels.Designer.cs">
+      <DependentUpon>201807050805055_InitModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\PhrasesPair.cs" />
+    <Compile Include="Models\UserDictionary.cs" />
+    <Compile Include="Models\Phrase.cs" />
     <Compile Include="Resources\Lexicon.en-US.Designer.cs">
       <DependentUpon>Lexicon.en-US.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -260,25 +269,72 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angularjs\angular-animate.js" />
+    <Content Include="Scripts\angularjs\angular-animate.min.js" />
+    <Content Include="Scripts\angularjs\angular-aria.js" />
+    <Content Include="Scripts\angularjs\angular-aria.min.js" />
+    <Content Include="Scripts\angularjs\angular-cookies.js" />
+    <Content Include="Scripts\angularjs\angular-cookies.min.js" />
+    <Content Include="Scripts\angularjs\angular-csp.css" />
+    <Content Include="Scripts\angularjs\angular-loader.js" />
+    <Content Include="Scripts\angularjs\angular-loader.min.js" />
+    <Content Include="Scripts\angularjs\angular-message-format.js" />
+    <Content Include="Scripts\angularjs\angular-message-format.min.js" />
+    <Content Include="Scripts\angularjs\angular-messages.js" />
+    <Content Include="Scripts\angularjs\angular-messages.min.js" />
+    <Content Include="Scripts\angularjs\angular-mocks.js" />
+    <Content Include="Scripts\angularjs\angular-resource.js" />
+    <Content Include="Scripts\angularjs\angular-resource.min.js" />
+    <Content Include="Scripts\angularjs\angular-route.js" />
+    <Content Include="Scripts\angularjs\angular-route.min.js" />
+    <Content Include="Scripts\angularjs\angular-sanitize.js" />
+    <Content Include="Scripts\angularjs\angular-sanitize.min.js" />
+    <Content Include="Scripts\angularjs\angular-scenario.js" />
+    <Content Include="Scripts\angularjs\angular-touch.js" />
+    <Content Include="Scripts\angularjs\angular-touch.min.js" />
+    <Content Include="Scripts\angularjs\angular.js" />
+    <Content Include="Scripts\angularjs\angular.min.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angularjs\angular.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-touch.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-route.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-resource.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-messages.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-message-format.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-loader.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-aria.min.js.map" />
+    <Content Include="Scripts\angularjs\angular-animate.min.js.map" />
+    <None Include="Scripts\jquery\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\angularjs\i18n\angular-locale_en-us.js" />
+    <Content Include="Scripts\angularjs\i18n\angular-locale_ru.js" />
+    <Content Include="Scripts\angularjs\i18n\angular-locale_uk.js" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -313,6 +369,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Scripts\version.json" />
+    <Content Include="Views\Dictionaries\MyDictionaries.cshtml" />
+    <Content Include="Views\Dictionaries\AllDictionaries.cshtml" />
+    <Content Include="Views\Dictionaries\CreateDictionary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,12 +387,15 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807040831508_InitialMigration.resx">
       <DependentUpon>201807040831508_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807050805055_InitModels.resx">
+      <DependentUpon>201807050805055_InitModels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lexicon.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

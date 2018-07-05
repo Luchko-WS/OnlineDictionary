@@ -177,4 +177,10 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="ChangeYourPersonalAccountSettings" xml:space="preserve">
+    <value>Change your personal account settings</value>
+  </data>
+  <data name="AccountManagement" xml:space="preserve">
+    <value>Account management</value>
+  </data>
 </root>

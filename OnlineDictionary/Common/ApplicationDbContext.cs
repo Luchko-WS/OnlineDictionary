@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using OnlineDictionary.Models;
+using System.Data.Entity;
 
 namespace OnlineDictionary
 {
@@ -14,5 +15,26 @@ namespace OnlineDictionary
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PhrasesPair>()
+                .HasRequired(c => c.First)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PhrasesPair>()
+                .HasRequired(c => c.Second)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Phrase> Phrases { get; set; }
+
+        public DbSet<PhrasesPair> PhrasesPairs { get; set; }
+
+        public DbSet<UserDictionary> UserDictionaries { get; set; }
     }
 }

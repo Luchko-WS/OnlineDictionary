@@ -1,13 +1,13 @@
 ﻿@model OnlineDictionary.ViewModels.EditUserInfoViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = Lexicon.AccountManagement;
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>@Lexicon.ChangeYourPersonalAccountSettings</h4>
     <hr />
     @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {

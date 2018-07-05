@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body ng-app="OnlineDictionary">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,9 +39,30 @@
             <p>&copy; @DateTime.Now.Year - Online Dictionary</p>
         </footer>
     </div>
+    <button id="toTop" style="border-radius: 25px; position: fixed; bottom: 20px; right: 20px; display: none; height: 50px; width: 50px" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularjs")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/Dictionaries")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                }
+                else {
+                    $('#toTop').fadeOut();
+                }
+            });
+
+            $('#toTop').click(function () {
+                $('body, html').animate({ scrollTop: 0 });
+            });
+        });
+    </script>
 </body>
 </html>

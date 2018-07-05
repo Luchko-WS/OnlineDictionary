@@ -5,12 +5,21 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right">
+    @if (User.Identity.IsAuthenticated)
+    {
         <li>
-            @Html.ActionLink(String.Format(Lexicon.Hello, User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("My Dictionaries", "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">@Lexicon.LogOff</a></li>
-    </ul>
+    }
+    <li>
+        @Html.ActionLink("All Dictionaries", "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
+    </li>
+    <li>
+        @Html.ActionLink(String.Format(Lexicon.Hello, User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">@Lexicon.LogOff</a></li>
+</ul>
     }
 }
 else

@@ -180,4 +180,10 @@
   <data name="Create" xml:space="preserve">
     <value>Створити</value>
   </data>
+  <data name="ChangeYourPersonalAccountSettings" xml:space="preserve">
+    <value>Змінити персональні налаштування Вашого облікового запису</value>
+  </data>
+  <data name="AccountManagement" xml:space="preserve">
+    <value>Керування обліковим записом</value>
+  </data>
 </root>

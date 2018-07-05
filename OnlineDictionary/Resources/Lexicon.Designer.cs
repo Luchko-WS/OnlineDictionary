@@ -61,6 +61,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account management.
+        /// </summary>
+        public static string AccountManagement {
+            get {
+                return ResourceManager.GetString("AccountManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birth date.
         /// </summary>
         public static string BirthDate {
@@ -75,6 +84,15 @@ namespace OnlineDictionaryResources {
         public static string ChangeYourPassword {
             get {
                 return ResourceManager.GetString("ChangeYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change your personal account settings.
+        /// </summary>
+        public static string ChangeYourPersonalAccountSettings {
+            get {
+                return ResourceManager.GetString("ChangeYourPersonalAccountSettings", resourceCulture);
             }
         }
         
