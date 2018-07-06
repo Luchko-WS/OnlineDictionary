@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using OnlineDictionary.Models;
 using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OnlineDictionary
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -36,5 +38,23 @@ namespace OnlineDictionary
         public DbSet<PhrasesPair> PhrasesPairs { get; set; }
 
         public DbSet<Dictionary> Dictionaries { get; set; }
+
+        #region interface implementation
+        IQueryable<Phrase> IApplicationDbContext.Phrases => this.Phrases;
+
+        IQueryable<PhrasesPair> IApplicationDbContext.PhrasesPairs => this.PhrasesPairs;
+
+        IQueryable<Dictionary> IApplicationDbContext.Dictionaries => this.Dictionaries;
+
+        public void CreateDictionary(Dictionary newDictionary)
+        {
+            this.Dictionaries.Add(newDictionary);
+        }
+
+        public async Task SaveDbChangesAsync()
+        {
+            await this.SaveChangesAsync();
+        }
+        #endregion
     }
 }

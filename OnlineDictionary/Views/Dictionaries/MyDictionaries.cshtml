@@ -6,75 +6,20 @@
 <h2>MyDictionaries</h2>
 
 <div ng-controller="MyDictionariesCtrl as vm">
-
+    <button class="btn btn-primary" style="margin-bottom: 20px" ng-click="vm.createDictionary()">Create new dictionary</button>
     <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
-            <button class="btn btn-danger">Delete</button>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
-            <button class="btn btn-danger">Delete</button>
-        </div>
-
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
-            <button class="btn btn-danger">Delete</button>
-        </div>
-
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
-            <button class="btn btn-danger">Delete</button>
-        </div>
-
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
+        <div ng-repeat="dictionary in vm.myDictionaries" class="col-md-4">
+            <h2>{{dictionary.name}}</h2>
+            <p>Description: {{dictionary.description}}</p>
+            <p>Languages. From {{dictionary.fronLanguage}} to {{dictionary.toLanguage}}</p>
+            <p>Is public: {{dictionary.isPublic}}</p>
+            <p>Created: {{dictionary.creationDate}}</p>
+            <p>Last change: {{dictionary.lastChangeDate}}</p>
             <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
             <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
             <button class="btn btn-danger">Delete</button>
         </div>
     </div>
-
-    <button class="btn btn-primary" ng-click="vm.createDictionary()">Create</button>
 </div>
 
 

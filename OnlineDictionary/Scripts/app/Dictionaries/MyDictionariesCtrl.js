@@ -15,7 +15,13 @@
         init();
 
         function init() {
-            console.log('my dictionaries ctrl init');
+            DictionariesService.getMyDictionaries()
+                .success(function (data) {
+                    vm.myDictionaries = data;
+                })
+                .error(function (error) {
+                    console.log(error);
+                });
         }
 
         function createDictionary() {
@@ -25,8 +31,8 @@
                 controllerAs: 'vm'
             });
 
-            modalInstance.result.then(function (updatedQueen) {
-                alert('closed');
+            modalInstance.result.then(function (newDictionary) {
+                vm.myDictionaries.push(newDictionary);
             });
         }
     }
