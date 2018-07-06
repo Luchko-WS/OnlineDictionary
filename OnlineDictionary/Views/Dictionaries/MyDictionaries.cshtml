@@ -16,7 +16,7 @@
             <p>Created: {{dictionary.creationDate}}</p>
             <p>Last change: {{dictionary.lastChangeDate}}</p>
             <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Edit &raquo;</a>
+            <button class="btn btn-default" ng-click="vm.editDictionary(dictionary)">Edit &raquo;</button>
             <button class="btn btn-danger">Delete</button>
         </div>
     </div>

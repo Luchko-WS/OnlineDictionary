@@ -11,7 +11,8 @@
         var service = {
             getAllPublicDictionaries: getAllPublicDictionaries,
             getMyDictionaries: getMyDictionaries,
-            createDictionary: createDictionary 
+            createDictionary: createDictionary,
+            editDictionary: editDictionary
         };
 
         return service;
@@ -35,6 +36,14 @@
                 method: 'POST',
                 url: '/api/Dictionaries/Create',
                 data: dictionary
+            });
+        }
+
+        function editDictionary(dictionaryId, dictionaryData) {
+            return $http({
+                method: 'POST',
+                url: '/api/Dictionaries/Edit/' + dictionaryId,
+                data: dictionaryData
             });
         }
     }

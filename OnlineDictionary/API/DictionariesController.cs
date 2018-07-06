@@ -59,5 +59,25 @@ namespace OnlineDictionary.API
             await _dbContext.SaveDbChangesAsync();
             return Request.CreateResponse(HttpStatusCode.OK, newDictionary);
         }
+
+        [Route("Edit/{dictionaryId}")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> EditDictionary([FromUri]Guid dictionaryId, DictionaryViewModel vm)
+        {
+            var dictionary = await _dbContext.Dictionaries
+                                        .Where(d => d.Id == dictionaryId)
+                                        .FirstOrDefaultAsync();
+            if (dictionary != null)
+            {
+                dictionary.Name = vm.Name;
+                dictionary.Description = vm.Description;
+                dictionary.IsPublic = vm.IsPublic;
+                dictionary.LastChangeDate = DateTime.Now;
+
+                await _dbContext.SaveDbChangesAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, dictionary);
+            }
+            return Request.CreateResponse(HttpStatusCode.NotFound);
+        }
     }
 }

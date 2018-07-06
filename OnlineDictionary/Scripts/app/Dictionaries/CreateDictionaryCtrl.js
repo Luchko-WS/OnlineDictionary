@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('CreateDictionaryCtrl', CreateDictionaryCtrl);
 
-    CreateDictionaryCtrl.$inject = ['$uibModal', '$uibModalInstance', 'DictionariesService'];
+    CreateDictionaryCtrl.$inject = ['$uibModalInstance', 'DictionariesService'];
 
-    function CreateDictionaryCtrl($uibModal, $uibModalInstance, DictionariesService) {
+    function CreateDictionaryCtrl($uibModalInstance, DictionariesService) {
         var vm = this;
 
         vm.dictionary = {};

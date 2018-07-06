@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.createDictionary = createDictionary;
+        vm.editDictionary = editDictionary; 
 
         init();
 
@@ -33,6 +34,37 @@
 
             modalInstance.result.then(function (newDictionary) {
                 vm.myDictionaries.push(newDictionary);
+            });
+        }
+
+        function editDictionary(dictionary) {
+            var modalInstance = $uibModal.open({
+                templateUrl: '/Dictionaries/EditDictionary',
+                controller: 'EditDictionaryCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    dicitonaryPar: {
+                        id: dictionary.id,
+                        name: dictionary.name,
+                        description: dictionary.description,
+                        fromLanguage: dictionary.fromLanguage,
+                        toLanguage: dictionary.toLanguage,
+                        isPublic: dictionary.isPublic
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (editedDictionary) {
+                for (var i = 0; i < vm.dictionary; i++) {
+                    //DOES NOT WORK!!!
+                    if (vm.myDictionaries[i].Id == editedDictionary.Id) {
+                        vm.myDictionaries[i].name = editedDictionary.name;
+                        vm.myDictionaries[i].description = editedDictionary.description;
+                        vm.myDictionaries[i].isPublic = editedDictionary.isPublic;
+                        vm.myDictionaries[i].lastChangeDate = editedDictionary.lastChangeDate;
+                        return;
+                    }
+                }
             });
         }
     }

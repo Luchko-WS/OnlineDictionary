@@ -314,6 +314,7 @@
     <Content Include="Scripts\angularjs\angular.js" />
     <Content Include="Scripts\angularjs\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Dictionaries\EditDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\CreateDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\DictionariesSerrvice.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
@@ -385,6 +386,7 @@
     <Content Include="Views\Dictionaries\MyDictionaries.cshtml" />
     <Content Include="Views\Dictionaries\AllDictionaries.cshtml" />
     <Content Include="Views\Dictionaries\CreateDictionary.cshtml" />
+    <Content Include="Views\Dictionaries\EditDictionary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
