@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using System.Web;
+using System.Web.Http;
 
 namespace OnlineDictionary.API
 {
-    public class BaseApiController
+    [Authorize]
+    public class BaseApiController : ApiController
     {
         protected ApplicationUserManager UserManager
         {

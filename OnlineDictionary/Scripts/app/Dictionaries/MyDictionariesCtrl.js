@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('MyDictionariesCtrl', MyDictionariesCtrl);
 
-    MyDictionariesCtrl.$inject = ['$uibModal'];
+    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService'];
 
-    function MyDictionariesCtrl($uibModal) {
+    function MyDictionariesCtrl($uibModal, DictionariesService) {
         var vm = this;
 
         vm.createDictionary = createDictionary;
@@ -15,20 +15,14 @@
         init();
 
         function init() {
-            console.log('my dictionaries init');
+            console.log('my dictionaries ctrl init');
         }
 
         function createDictionary() {
             var modalInstance = $uibModal.open({
                 templateUrl: '/Dictionaries/CreateDictionary',
-                //controller: 'ChangeQueenLineCtrl',
-                //controllerAs: 'vm',
-                /*resolve: {
-                    queenParams: {
-                        currentLine: vm.queen.line,
-                        currentAbbreviation: vm.queen.abbreviation
-                    }
-                }*/
+                controller: 'CreateDictionaryCtrl',
+                controllerAs: 'vm'
             });
 
             modalInstance.result.then(function (updatedQueen) {

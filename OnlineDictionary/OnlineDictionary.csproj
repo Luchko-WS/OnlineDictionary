@@ -61,6 +61,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -196,11 +202,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\BaseApiController.cs" />
+    <Compile Include="API\DictionariesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\Languages.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
@@ -214,14 +222,14 @@
     <Compile Include="Migrations\201807040831508_InitialMigration.Designer.cs">
       <DependentUpon>201807040831508_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807050805055_InitModels.cs" />
-    <Compile Include="Migrations\201807050805055_InitModels.Designer.cs">
-      <DependentUpon>201807050805055_InitModels.cs</DependentUpon>
+    <Compile Include="Migrations\201807060905006_InitModels.cs" />
+    <Compile Include="Migrations\201807060905006_InitModels.Designer.cs">
+      <DependentUpon>201807060905006_InitModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\PhrasesPair.cs" />
-    <Compile Include="Models\UserDictionary.cs" />
+    <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Models\Phrase.cs" />
     <Compile Include="Resources\Lexicon.en-US.Designer.cs">
       <DependentUpon>Lexicon.en-US.resx</DependentUpon>
@@ -253,6 +261,7 @@
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\DictionaryViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\FactorViewModel.cs" />
@@ -304,6 +313,8 @@
     <Content Include="Scripts\angularjs\angular.js" />
     <Content Include="Scripts\angularjs\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Dictionaries\CreateDictionaryCtrl.js" />
+    <Content Include="Scripts\app\Dictionaries\DictionariesSerrvice.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -394,8 +405,8 @@
     <EmbeddedResource Include="Migrations\201807040831508_InitialMigration.resx">
       <DependentUpon>201807040831508_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807050805055_InitModels.resx">
-      <DependentUpon>201807050805055_InitModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807060905006_InitModels.resx">
+      <DependentUpon>201807060905006_InitModels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lexicon.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

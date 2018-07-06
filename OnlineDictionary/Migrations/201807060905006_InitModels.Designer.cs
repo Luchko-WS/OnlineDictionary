@@ -13,7 +13,7 @@ namespace OnlineDictionary.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201807050805055_InitModels"; }
+            get { return "201807060905006_InitModels"; }
         }
         
         string IMigrationMetadata.Source

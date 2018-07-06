@@ -4,17 +4,19 @@ namespace OnlineDictionary.Models
 {
     public class PhrasesPair : BaseEntity
     {
-        public Guid FirstId { get; set; }
+        public Guid FirstPhraseId { get; set; }
 
-        public Phrase First { get; set; }
+        public Phrase FirstPhrase { get; set; }
 
-        public Guid SecondId { get; set; }
+        public Guid SecondPhraseId { get; set; }
 
-        public Phrase Second { get; set; }
+        public Phrase SecondPhrase { get; set; }
 
         public Guid DictionaryId { get; set; }
 
-        public UserDictionary Dictionary { get; set; }
+        public Dictionary Dictionary { get; set; }
+
+        public DateTime CreationDate { get; set; }
 
         public bool IsConfirmed { get; set; }
     }

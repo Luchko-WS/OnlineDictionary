@@ -10,13 +10,21 @@ namespace OnlineDictionary.Models
     public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
         public DateTime DateOfBirth { get; set; }
+
         public string Country { get; set; }
+
         public string Language { get; set; }
+
         public bool IsLocked { get; set; }
+
         public DateTime RegisteredDate { get; set; }
+
         public DateTime? LastLoginTime { get; set; }
+
         public DateTime? LastMobileSyncTime { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

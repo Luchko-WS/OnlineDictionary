@@ -19,12 +19,12 @@ namespace OnlineDictionary
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PhrasesPair>()
-                .HasRequired(c => c.First)
+                .HasRequired(c => c.FirstPhrase)
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PhrasesPair>()
-                .HasRequired(c => c.Second)
+                .HasRequired(c => c.SecondPhrase)
                 .WithMany()
                 .WillCascadeOnDelete(false);
 
@@ -35,6 +35,6 @@ namespace OnlineDictionary
 
         public DbSet<PhrasesPair> PhrasesPairs { get; set; }
 
-        public DbSet<UserDictionary> UserDictionaries { get; set; }
+        public DbSet<Dictionary> Dictionaries { get; set; }
     }
 }
