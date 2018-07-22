@@ -23,6 +23,7 @@ namespace OnlineDictionary
 
             bundles.Add(new ScriptBundle("~/bundles/Dictionaries")
                 .Include("~/Scripts/app/Dictionaries/DictionariesSerrvice.js")
+                .Include("~/Scripts/app/Dictionaries/AllDictionariesCtrl.js")
                 .Include("~/Scripts/app/Dictionaries/MyDictionariesCtrl.js")
                 .Include("~/Scripts/app/Dictionaries/CreateDictionaryCtrl.js")
                 .Include("~/Scripts/app/Dictionaries/EditDictionaryCtrl.js"));

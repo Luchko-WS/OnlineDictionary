@@ -1,7 +1,22 @@
 ﻿
 @{
-    ViewBag.Title = "AllDictionaries";
+    ViewBag.Title = "All Dictionaries";
 }
 
 <h2>AllDictionaries</h2>
+
+<div ng-controller="AllDictionariesCtrl as vm">
+    <div class="row">
+        <div ng-repeat="dictionary in vm.publicDictionaries" class="col-md-4">
+            <h2>{{dictionary.name}}</h2>
+            <p>Description: {{dictionary.description}}</p>
+            <p>Languages. From {{dictionary.fromLanguage}} to {{dictionary.toLanguage}}</p>
+            <p>Owner: {{dictionary.ownerId}}</p>
+            <p>Created: {{dictionary.creationDate | date : 'dd.MM.yyyy HH:mm'}}</p>
+            <p>Last change: {{dictionary.lastChangeDate | date : 'dd.MM.yyyy HH:mm'}}</p>
+            <a class="btn btn-default" href="/Dictionaries/Dictionary/{{dictionary.id}}">Review &raquo;</a>
+        </div>
+    </div>
+</div>
+
 

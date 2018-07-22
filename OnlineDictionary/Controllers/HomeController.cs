@@ -3,7 +3,8 @@ using System.Web.Mvc;
 
 namespace OnlineDictionary.Controllers
 {
-    public class HomeController : Controller
+    [AllowAnonymous]
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -17,7 +18,6 @@ namespace OnlineDictionary.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult SetLanguage(string lang, string returnUrl)
         {
             Languages.SetLanguage(lang);

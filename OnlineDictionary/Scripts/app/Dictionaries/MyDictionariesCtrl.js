@@ -55,9 +55,8 @@
             });
 
             modalInstance.result.then(function (editedDictionary) {
-                for (var i = 0; i < vm.dictionary; i++) {
-                    //DOES NOT WORK!!!
-                    if (vm.myDictionaries[i].Id == editedDictionary.Id) {
+                for (var i = 0; i < vm.myDictionaries.length; i++) {
+                    if (vm.myDictionaries[i].id == editedDictionary.id) {
                         vm.myDictionaries[i].name = editedDictionary.name;
                         vm.myDictionaries[i].description = editedDictionary.description;
                         vm.myDictionaries[i].isPublic = editedDictionary.isPublic;

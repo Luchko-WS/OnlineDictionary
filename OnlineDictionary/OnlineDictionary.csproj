@@ -210,8 +210,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\IApplicationDbContext.cs" />
+    <Compile Include="Common\ILogger.cs" />
     <Compile Include="Common\Languages.cs" />
+    <Compile Include="Common\Mapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseDbContextController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -317,6 +321,7 @@
     <Content Include="Scripts\app\Dictionaries\EditDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\CreateDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\DictionariesSerrvice.js" />
+    <Content Include="Scripts\app\Dictionaries\AllDictionariesCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -387,6 +392,7 @@
     <Content Include="Views\Dictionaries\AllDictionaries.cshtml" />
     <Content Include="Views\Dictionaries\CreateDictionary.cshtml" />
     <Content Include="Views\Dictionaries\EditDictionary.cshtml" />
+    <Content Include="Views\Dictionaries\Dictionary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

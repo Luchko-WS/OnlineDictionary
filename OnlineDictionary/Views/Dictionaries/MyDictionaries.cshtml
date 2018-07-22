@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "MyDictionaries";
+    ViewBag.Title = "My Dictionaries";
 }
 
 <h2>MyDictionaries</h2>
@@ -11,11 +11,11 @@
         <div ng-repeat="dictionary in vm.myDictionaries" class="col-md-4">
             <h2>{{dictionary.name}}</h2>
             <p>Description: {{dictionary.description}}</p>
-            <p>Languages. From {{dictionary.fronLanguage}} to {{dictionary.toLanguage}}</p>
+            <p>Languages. From {{dictionary.fromLanguage}} to {{dictionary.toLanguage}}</p>
             <p>Is public: {{dictionary.isPublic}}</p>
-            <p>Created: {{dictionary.creationDate}}</p>
-            <p>Last change: {{dictionary.lastChangeDate}}</p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Review &raquo;</a>
+            <p>Created: {{dictionary.creationDate | date : 'dd.MM.yyyy HH:mm'}}</p>
+            <p>Last change: {{dictionary.lastChangeDate | date : 'dd.MM.yyyy HH:mm'}}</p>
+            <a class="btn btn-default" href="/Dictionaries/Dictionary/{{dictionary.id}}">Review &raquo;</a>
             <button class="btn btn-default" ng-click="vm.editDictionary(dictionary)">Edit &raquo;</button>
             <button class="btn btn-danger">Delete</button>
         </div>
