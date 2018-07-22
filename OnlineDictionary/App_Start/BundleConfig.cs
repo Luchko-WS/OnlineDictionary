@@ -16,7 +16,8 @@ namespace OnlineDictionary
             bundles.Add(new ScriptBundle("~/bundles/angularjs")
                 .Include("~/Scripts/angularjs/angular.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap.js")
-                .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
+                .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
+                .Include("~/Scripts/angular-block-ui/angular-block-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .Include("~/Scripts/app/app.js"));
@@ -37,7 +38,9 @@ namespace OnlineDictionary
                 .Include("~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/bootstrap.css", "~/Content/site.css"));
+                .Include("~/Content/css/bootstrap/bootstrap.css",
+                         "~/Content/css/andular-block-ui/andular-block-ui.min.css",
+                         "~/Content/css/site.css"));
         }
     }
 }
