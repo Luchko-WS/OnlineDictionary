@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('MyDictionariesCtrl', MyDictionariesCtrl);
 
-    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService', 'blockUI'];
+    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService'];
 
-    function MyDictionariesCtrl($uibModal, DictionariesService, blockUI) {
+    function MyDictionariesCtrl($uibModal, DictionariesService) {
         var vm = this;
 
         vm.createDictionary = createDictionary;
@@ -16,14 +16,14 @@
         init();
 
         function init() {
-            blockUI.start();
+            vm.loaded = false;
             DictionariesService.getMyDictionaries()
                 .success(function (data) {
                     vm.myDictionaries = data;
-                    blockUI.stop();
+                    vm.loaded = true;
                 })
                 .error(function (error) {
-                    console.log(error);
+                    vm.loaded = true;
                 });
         }
 

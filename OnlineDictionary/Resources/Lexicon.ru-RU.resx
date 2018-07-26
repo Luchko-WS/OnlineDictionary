@@ -183,4 +183,34 @@
   <data name="AccountManagement" xml:space="preserve">
     <value>Управление учетной записью</value>
   </data>
+  <data name="MyDictionaries" xml:space="preserve">
+    <value>Мои словари</value>
+  </data>
+  <data name="AllDictionaries" xml:space="preserve">
+    <value>Все словари</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="IsPublic" xml:space="preserve">
+    <value>Есть публичным</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="LastChangedDate" xml:space="preserve">
+    <value>Дата последнего изменения</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Просмотреть</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="CreateNewDictionary" xml:space="preserve">
+    <value>Создать новый словарь</value>
+  </data>
 </root>

@@ -2,11 +2,6 @@
     'use strict';
     window.app = angular.module('OnlineDictionary',
         [
-            'ui.bootstrap',
-            'blockUI'
+            'ui.bootstrap'
         ]);
-
-    app.config(['blockUIConfig'], function (blockUIConfig) {
-        blockUIConfig.templateUrl = '~/Templates/Shared/BlockUiTemplate.html';
-    });
 })();

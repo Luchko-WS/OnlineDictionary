@@ -1,6 +1,6 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="modalTitle">Create dictionaty</h4>
+    <h4 class="modal-title" id="modalTitle">@Lexicon.CreateNewDictionary</h4>
 </div>
 
 <div class="modal-body" style="padding-left: 50px; padding-right: 50px">
@@ -9,7 +9,7 @@
             <label>Name</label>
             <input class="form-control" ng-model="vm.dictionary.name" required />
 
-            <label>Decription</label>
+            <label>@Lexicon.Description</label>
             <input class="form-control" ng-model="vm.dictionary.description" />
 
             <label>From lamguage</label>
@@ -18,7 +18,7 @@
             <label>To language</label>
             <input class="form-control" ng-model="vm.dictionary.toLanguage" required />
 
-            <label>Is public</label>
+            <label>@Lexicon.IsPublic</label>
             <input type="checkbox" ng-model="vm.dictionary.isPublic"/>
         </div>
     </div>

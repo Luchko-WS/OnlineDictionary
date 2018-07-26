@@ -186,4 +186,34 @@
   <data name="AccountManagement" xml:space="preserve">
     <value>Керування обліковим записом</value>
   </data>
+  <data name="MyDictionaries" xml:space="preserve">
+    <value>Мої словники</value>
+  </data>
+  <data name="AllDictionaries" xml:space="preserve">
+    <value>Всі словники</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="IsPublic" xml:space="preserve">
+    <value>Є публічним</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Дата створення</value>
+  </data>
+  <data name="LastChanged_Date" xml:space="preserve">
+    <value>Дата останньої зміни</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Переглянути</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="CreateNewDictionary" xml:space="preserve">
+    <value>Створити новий словник</value>
+  </data>
 </root>

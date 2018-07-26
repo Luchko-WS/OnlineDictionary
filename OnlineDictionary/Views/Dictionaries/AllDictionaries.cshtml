@@ -1,22 +1,24 @@
 ﻿
 @{
-    ViewBag.Title = "All Dictionaries";
+    ViewBag.Title = Lexicon.AllDictionaries;
 }
 
-<h2>AllDictionaries</h2>
+<h2>@Lexicon.AllDictionaries</h2>
 
 <div ng-controller="AllDictionariesCtrl as vm">
-    <div class="row">
-        <div ng-repeat="dictionary in vm.publicDictionaries" class="col-md-4">
-            <h2>{{dictionary.name}}</h2>
-            <p>Description: {{dictionary.description}}</p>
-            <p>Languages. From {{dictionary.fromLanguage}} to {{dictionary.toLanguage}}</p>
-            <p>Owner: {{dictionary.ownerId}}</p>
-            <p>Created: {{dictionary.creationDate | date : 'dd.MM.yyyy HH:mm'}}</p>
-            <p>Last change: {{dictionary.lastChangeDate | date : 'dd.MM.yyyy HH:mm'}}</p>
-            <a class="btn btn-default" href="/Dictionaries/Dictionary/{{dictionary.id}}">Review &raquo;</a>
+    <async-page-with-loader is-loaded="vm.loaded">
+        <div class="row">
+            <div ng-repeat="dictionary in vm.publicDictionaries" class="col-md-4">
+                <h2 ng-bind="dictionary.name"></h2>
+                <p ng-bind="'@Lexicon.Description: ' + dictionary.description"></p>
+                <p ng-bind = "'Languages. From ' + dictionary.fromLanguage + ' to ' + dictionary.toLanguage"></p>
+                <p ng-bind="'Owner: ' + dictionary.ownerId"></p>
+                <p>@Lexicon.CreationDate: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
+                <p>@Lexicon.LastChangedDate: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
+                <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">@Lexicon.Review</a>
+            </div>
         </div>
-    </div>
+    </async-page-with-loader>
 </div>
 
 

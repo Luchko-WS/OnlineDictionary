@@ -13,12 +13,15 @@
         init();
 
         function init() {
+            vm.loaded = false;
             DictionariesService.getAllPublicDictionaries()
                 .success(function (data) {
                     vm.publicDictionaries = data;
+                    vm.loaded = true;
                 })
                 .error(function (error) {
                     console.log(error);
+                    vm.loaded = true;
                 });
         }
     }

@@ -1,25 +1,27 @@
 ﻿
 @{
-    ViewBag.Title = "My Dictionaries";
+    ViewBag.Title = Lexicon.MyDictionaries;
 }
 
-<h2>MyDictionaries</h2>
+<h2>@Lexicon.MyDictionaries</h2>
 
 <div ng-controller="MyDictionariesCtrl as vm">
-    <button class="btn btn-primary" style="margin-bottom: 20px" ng-click="vm.createDictionary()">Create new dictionary</button>
-    <div class="row">
-        <div ng-repeat="dictionary in vm.myDictionaries" class="col-md-4">
-            <h2>{{dictionary.name}}</h2>
-            <p>Description: {{dictionary.description}}</p>
-            <p>Languages. From {{dictionary.fromLanguage}} to {{dictionary.toLanguage}}</p>
-            <p>Is public: {{dictionary.isPublic}}</p>
-            <p>Created: {{dictionary.creationDate | date : 'dd.MM.yyyy HH:mm'}}</p>
-            <p>Last change: {{dictionary.lastChangeDate | date : 'dd.MM.yyyy HH:mm'}}</p>
-            <a class="btn btn-default" href="/Dictionaries/Dictionary/{{dictionary.id}}">Review &raquo;</a>
-            <button class="btn btn-default" ng-click="vm.editDictionary(dictionary)">Edit &raquo;</button>
-            <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-primary" style="margin-bottom: 20px" ng-click="vm.createDictionary()">@Lexicon.CreateNewDictionary</button>
+    <async-page-with-loader is-loaded="vm.loaded">
+        <div class="row">
+            <div ng-repeat="dictionary in vm.myDictionaries" class="col-md-4">
+                <h2 ng-bind="dictionary.name"></h2>
+                <p ng-bind="'@Lexicon.Description: ' + dictionary.description"></p>
+                <p ng-bind="'Languages. From ' + dictionary.fromLanguage + ' to ' + dictionary.toLanguage"></p>
+                <p ng-bind="'@Lexicon.IsPublic: ' + dictionary.isPublic"></p>
+                <p>@Lexicon.CreationDate: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
+                <p>@Lexicon.LastChangedDate: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
+                <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">@Lexicon.Review</a>
+                <button class="btn btn-default" ng-click="vm.editDictionary(dictionary)">@Lexicon.Edit</button>
+                <button class="btn btn-danger">@Lexicon.Remove</button>
+            </div>
         </div>
-    </div>
+    </async-page-with-loader>
 </div>
 
 
