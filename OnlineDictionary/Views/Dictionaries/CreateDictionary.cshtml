@@ -13,13 +13,23 @@
             <input class="form-control" ng-model="vm.dictionary.description" />
 
             <label>From lamguage</label>
-            <input class="form-control" ng-model="vm.dictionary.fromLanguage" required />
+            <select class="form-control" ng-model="vm.dictionary.fromLanguage" required>
+                @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
 
             <label>To language</label>
-            <input class="form-control" ng-model="vm.dictionary.toLanguage" required />
+            <select class="form-control" ng-model="vm.dictionary.toLanguage" required>
+                @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
 
             <label>@Lexicon.IsPublic</label>
-            <input type="checkbox" ng-model="vm.dictionary.isPublic"/>
+            <input type="checkbox" ng-model="vm.dictionary.isPublic" />
         </div>
     </div>
     <button class="btn" ng-click="vm.createDictionary()">Save</button>

@@ -34,13 +34,12 @@ namespace OnlineDictionary.Helpers
                 List<string> languages = new List<string>();
                 foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.NeutralCultures))
                 {
-                    languages.Add(ci.DisplayName);
+                    languages.Add(ci.NativeName);
                 }
                 languages = languages.Distinct().ToList();
                 languages.Sort();
 
-                //or get NativeName
-                string currentLanguage = CultureInfo.CurrentCulture.DisplayName;
+                string currentLanguage = CultureInfo.CurrentCulture.NativeName;
                 return new SelectList(languages, currentLanguage);
             }
         }
