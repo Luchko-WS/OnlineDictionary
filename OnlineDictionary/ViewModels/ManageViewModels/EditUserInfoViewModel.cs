@@ -42,10 +42,5 @@ namespace OnlineDictionary.ViewModels
 
         [Display(ResourceType = typeof(Lexicon), Name = "Language")]
         public string Language { get; set; }
-
-        public IEnumerable<System.Web.Mvc.SelectListItem> LanguageItems
-        {
-            get { return new System.Web.Mvc.SelectList(LanguagesManager.AvailableLanguages, "LangCultureName", "LangFullName"); }
-        }
     }
 }

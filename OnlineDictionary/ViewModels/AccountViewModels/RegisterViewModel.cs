@@ -1,10 +1,5 @@
-﻿using OnlineDictionary.Common;
-using OnlineDictionaryResources;
-using System.Collections.Generic;
+﻿using OnlineDictionaryResources;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
 
 namespace OnlineDictionary.ViewModels
 {
@@ -49,39 +44,5 @@ namespace OnlineDictionary.ViewModels
 
         [Display(ResourceType = typeof(Lexicon), Name = "Language")]
         public string Language { get; set; }
-
-        public static IEnumerable<System.Web.Mvc.SelectListItem> Countries
-        {
-            get
-            {
-                List<string> countries = new List<string>();
-                foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
-                {
-                    var ri = new RegionInfo(ci.Name);
-                    countries.Add(ri.DisplayName);
-                }
-                countries = countries.Distinct().ToList();
-                countries.Sort();
-
-                string currentCountry = RegionInfo.CurrentRegion.DisplayName;
-
-                return new System.Web.Mvc.SelectList(countries, currentCountry);
-            }
-        }
-
-        public static IEnumerable<System.Web.Mvc.SelectListItem> LanguageItems
-        {
-            get
-            {
-                string selectedLanguage = LanguagesManager.GetDefaultLanguage();
-                string threadLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-                if (LanguagesManager.AvailableLanguages.Exists(l => l.LangCultureName == threadLanguage))
-                {
-                    selectedLanguage = threadLanguage;
-                }
-
-                return new System.Web.Mvc.SelectList(LanguagesManager.AvailableLanguages, "LangCultureName", "LangFullName", selectedLanguage); 
-            }
-        }
     }
 }

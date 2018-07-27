@@ -61,14 +61,14 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Country, OnlineDictionary.ViewModels.RegisterViewModel.Countries, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Country, OnlineDictionary.Helpers.OnlineDictionarySelectLists.Countries, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Country, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Language, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Language, OnlineDictionary.ViewModels.RegisterViewModel.LanguageItems, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Language, OnlineDictionary.Helpers.OnlineDictionarySelectLists.AvailableLanguages, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Language, string.Empty, new { @class = "text-danger" })
         </div>
     </div>

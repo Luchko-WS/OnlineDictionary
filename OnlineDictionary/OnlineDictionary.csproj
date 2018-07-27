@@ -223,6 +223,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Common\ApplicationDbContext.cs" />
+    <Compile Include="Helpers\OnlineDictionarySelectLists.cs" />
     <Compile Include="Migrations\201807040831508_InitialMigration.cs" />
     <Compile Include="Migrations\201807040831508_InitialMigration.Designer.cs">
       <DependentUpon>201807040831508_InitialMigration.cs</DependentUpon>
