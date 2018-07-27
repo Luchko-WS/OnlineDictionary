@@ -9,6 +9,7 @@
 
     function MyDictionariesCtrl($uibModal, DictionariesService, MessageService) {
         var vm = this;
+        vm.myDictionaries = [];
 
         vm.createDictionary = createDictionary;
         vm.editDictionary = editDictionary; 
@@ -50,8 +51,8 @@
                         id: dictionary.id,
                         name: dictionary.name,
                         description: dictionary.description,
-                        fromLanguage: dictionary.fromLanguage,
-                        toLanguage: dictionary.toLanguage,
+                        sourceLanguage: dictionary.sourceLanguage,
+                        targetLanguage: dictionary.targetLanguage,
                         isPublic: dictionary.isPublic
                     }
                 }

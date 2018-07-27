@@ -2,6 +2,7 @@
 using OnlineDictionary.Models;
 using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace OnlineDictionary
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            this.Database.Log = (log) => Debug.WriteLine(log);
         }
 
         public static ApplicationDbContext Create()

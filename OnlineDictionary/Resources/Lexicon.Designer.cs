@@ -88,6 +88,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change your password.
         /// </summary>
         public static string ChangeYourPassword {
@@ -169,6 +178,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dictionary name.
+        /// </summary>
+        public static string DictionaryName {
+            get {
+                return ResourceManager.GetString("DictionaryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -219,6 +237,15 @@ namespace OnlineDictionaryResources {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Languages.
+        /// </summary>
+        public static string Languages {
+            get {
+                return ResourceManager.GetString("Languages", resourceCulture);
             }
         }
         
@@ -277,6 +304,33 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No description.
+        /// </summary>
+        public static string NoDescription {
+            get {
+                return ResourceManager.GetString("NoDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -331,6 +385,24 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source language.
+        /// </summary>
+        public static string SourceLanguage {
+            get {
+                return ResourceManager.GetString("SourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target language.
+        /// </summary>
+        public static string TargetLanguage {
+            get {
+                return ResourceManager.GetString("TargetLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name.
         /// </summary>
         public static string UserName {
@@ -345,6 +417,15 @@ namespace OnlineDictionaryResources {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

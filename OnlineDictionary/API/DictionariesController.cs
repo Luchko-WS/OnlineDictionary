@@ -47,8 +47,8 @@ namespace OnlineDictionary.API
             {
                 Name = vm.Name,
                 Description = vm.Description,
-                FromLanguage = vm.FromLanguage,
-                ToLanguage = vm.ToLanguage,
+                SourceLanguage = vm.SourceLanguage,
+                TargetLanguage = vm.TargetLanguage,
                 IsPublic = vm.IsPublic,
                 CreationDate = DateTime.Now,
                 LastChangeDate = DateTime.Now,

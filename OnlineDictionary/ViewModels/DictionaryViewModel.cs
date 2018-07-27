@@ -8,9 +8,9 @@ namespace OnlineDictionary.ViewModels
 
         public string Name { get; set; }
 
-        public string FromLanguage { get; set; }
+        public string SourceLanguage { get; set; }
 
-        public string ToLanguage { get; set; }
+        public string TargetLanguage { get; set; }
 
         public bool IsPublic { get; set; }
 

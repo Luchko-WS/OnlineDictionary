@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201807060905006_InitModels.Designer.cs">
       <DependentUpon>201807060905006_InitModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807271133509_InitModels1.cs" />
+    <Compile Include="Migrations\201807271133509_InitModels1.Designer.cs">
+      <DependentUpon>201807271133509_InitModels1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\PhrasesPair.cs" />
@@ -424,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807060905006_InitModels.resx">
       <DependentUpon>201807060905006_InitModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271133509_InitModels1.resx">
+      <DependentUpon>201807271133509_InitModels1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lexicon.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
