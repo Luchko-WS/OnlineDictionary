@@ -15,6 +15,7 @@ namespace OnlineDictionary.API
     {
         [Route("GetAllPublicDictionaries")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<dynamic> GetAllPublicDictionaries()
         {
             var dictionaries = await _dbContext.Dictionaries

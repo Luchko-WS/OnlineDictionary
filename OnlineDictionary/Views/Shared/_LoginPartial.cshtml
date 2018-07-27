@@ -6,12 +6,9 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <li>
-            @Html.ActionLink(Lexicon.MyDictionaries, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "My Dictionaries" })
-        </li>
-    }
+    <li>
+        @Html.ActionLink(Lexicon.MyDictionaries, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "My Dictionaries" })
+    </li>
     <li>
         @Html.ActionLink(Lexicon.AllDictionaries, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
     </li>
@@ -25,6 +22,9 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(Lexicon.AllDictionaries, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
+        </li>
         <li>@Html.ActionLink(Lexicon.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink(Lexicon.LogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

@@ -9,7 +9,6 @@
 
     function AllDictionariesCtrl(DictionariesService) {
         var vm = this;
-
         init();
 
         function init() {
