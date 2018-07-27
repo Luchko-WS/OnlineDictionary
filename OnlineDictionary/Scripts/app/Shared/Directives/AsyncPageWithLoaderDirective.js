@@ -17,6 +17,6 @@
             isLoaded: '=',
         },
         restrict: 'E',
-        templateUrl: '/Templates/LoadingSpinnerTemplate.html'
+        templateUrl: '/Templates/DirectivesTemplates/LoadingSpinnerTemplate.html'
     };
 });

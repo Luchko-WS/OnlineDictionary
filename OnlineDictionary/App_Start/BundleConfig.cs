@@ -19,8 +19,9 @@ namespace OnlineDictionary
                 .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .Include("~/Scripts/app/app.js")
-                .Include("~/Scripts/app/Shared/AsyncPageWithLoaderDirective.js"));
+                .Include("~/Scripts/app/app.js")             
+                .Include("~/Scripts/app/Shared/Services/MessageService.js")
+                .Include("~/Scripts/app/Shared/Directives/AsyncPageWithLoaderDirective.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Dictionaries")
                 .Include("~/Scripts/app/Dictionaries/DictionariesSerrvice.js")

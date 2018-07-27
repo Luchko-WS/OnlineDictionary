@@ -5,13 +5,14 @@
         .module('OnlineDictionary')
         .controller('MyDictionariesCtrl', MyDictionariesCtrl);
 
-    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService'];
+    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService', 'MessageService'];
 
-    function MyDictionariesCtrl($uibModal, DictionariesService) {
+    function MyDictionariesCtrl($uibModal, DictionariesService, MessageService) {
         var vm = this;
 
         vm.createDictionary = createDictionary;
         vm.editDictionary = editDictionary; 
+        vm.removeDictionary = removeDictionary;
 
         init();
 
@@ -67,6 +68,16 @@
                     }
                 }
             });
+        }
+
+        function removeDictionary(dictionaryId) {
+            MessageService.showMessageYesNo("Do you want to remove this dictionary?", "Remove dictionary")
+                .then(function (result) {
+                    if (result === "OK") {
+                        //removing of dictionary is not implemented yet
+                        console.log('remove dictionary');
+                    }
+                });
         }
     }
 

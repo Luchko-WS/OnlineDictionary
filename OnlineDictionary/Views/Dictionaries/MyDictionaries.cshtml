@@ -18,7 +18,7 @@
                 <p>@Lexicon.LastChangedDate: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
                 <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">@Lexicon.Review</a>
                 <button class="btn btn-default" ng-click="vm.editDictionary(dictionary)">@Lexicon.Edit</button>
-                <button class="btn btn-danger">@Lexicon.Remove</button>
+                <button class="btn btn-danger" ng-click="vm.removeDictionary(dictionary.id)">@Lexicon.Remove</button>
             </div>
         </div>
     </async-page-with-loader>

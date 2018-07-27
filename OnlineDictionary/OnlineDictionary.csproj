@@ -325,7 +325,8 @@
     <Content Include="Scripts\app\Dictionaries\DictionariesSerrvice.js" />
     <Content Include="Scripts\app\Dictionaries\AllDictionariesCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
-    <Content Include="Scripts\app\Shared\AsyncPageWithLoaderDirective.js" />
+    <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
+    <Content Include="Scripts\app\Shared\Services\MessageService.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -357,7 +358,10 @@
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Templates\LoadingSpinnerTemplate.html" />
+    <Content Include="Templates\DirectivesTemplates\LoadingSpinnerTemplate.html" />
+    <Content Include="Templates\MessageServiceDialogWindows\CustomDialogWindow.html" />
+    <Content Include="Templates\MessageServiceDialogWindows\OkDialogWindow.html" />
+    <Content Include="Templates\MessageServiceDialogWindows\YesNoDialogWindow.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
