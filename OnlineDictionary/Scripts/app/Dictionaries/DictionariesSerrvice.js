@@ -12,7 +12,8 @@
             getAllPublicDictionaries: getAllPublicDictionaries,
             getMyDictionaries: getMyDictionaries,
             createDictionary: createDictionary,
-            editDictionary: editDictionary
+            editDictionary: editDictionary,
+            removeDictionary: removeDictionary
         };
 
         return service;
@@ -44,6 +45,13 @@
                 method: 'POST',
                 url: '/api/Dictionaries/Edit/' + dictionaryId,
                 data: dictionaryData
+            });
+        }
+
+        function removeDictionary(dictionaryId) {
+            return $http({
+                method: 'DELETE',
+                url: '/api/Dictionaries/Remove/' + dictionaryId
             });
         }
     }

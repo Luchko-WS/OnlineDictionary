@@ -74,8 +74,18 @@
             MessageService.showMessageYesNo("Do you want to remove this dictionary?", "Remove dictionary")
                 .then(function (result) {
                     if (result === "OK") {
-                        //removing of dictionary is not implemented yet
-                        console.log('remove dictionary');
+                        DictionariesService.removeDictionary(dictionaryId)
+                            .success(function (data) {
+                                for (var i = 0; i < vm.myDictionaries.length; i++) {
+                                    if (vm.myDictionaries[i].id === dictionaryId) {
+                                        vm.myDictionaries.splice(i, 1);
+                                        break;
+                                    }
+                                }
+                            })
+                            .error(function (error) {
+                                console.log(error);
+                            });
                     }
                 });
         }

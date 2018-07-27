@@ -1,4 +1,5 @@
 ﻿using OnlineDictionary.Models;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,13 @@ namespace OnlineDictionary
 
         IQueryable<Dictionary> Dictionaries { get; }
 
-        void CreateDictionary(Dictionary newDictionary);
+        #region Dictionaries
+
+        void CreateDictionary(Dictionary dictionary);
+
+        void RemoveDictionary(Dictionary dictionary);
+        
+        #endregion
 
         Task SaveDbChangesAsync();
     }

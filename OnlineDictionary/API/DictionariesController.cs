@@ -79,5 +79,22 @@ namespace OnlineDictionary.API
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
         }
+
+        [Route("Remove/{id}")]
+        [HttpDelete]
+        public async Task<HttpResponseMessage> RemoveDictionary(Guid id)
+        {
+            var dictionaryToRemove = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == id);
+            if (dictionaryToRemove != null)
+            {
+                _dbContext.RemoveDictionary(dictionaryToRemove);
+                await _dbContext.SaveDbChangesAsync();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+        }
     }
 }

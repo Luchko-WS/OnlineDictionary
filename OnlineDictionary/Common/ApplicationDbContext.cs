@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using OnlineDictionary.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,15 +47,26 @@ namespace OnlineDictionary
 
         IQueryable<Dictionary> IApplicationDbContext.Dictionaries => this.Dictionaries;
 
-        public void CreateDictionary(Dictionary newDictionary)
+
+        #region Dictionaries
+
+        public void CreateDictionary(Dictionary dictionary)
         {
-            this.Dictionaries.Add(newDictionary);
+            this.Dictionaries.Add(dictionary);
+        }
+
+        public void RemoveDictionary(Dictionary dictionary)
+        {
+            this.Dictionaries.Remove(dictionary);
         }
 
         public async Task SaveDbChangesAsync()
         {
             await this.SaveChangesAsync();
         }
+
+        #endregion
+
         #endregion
     }
 }
