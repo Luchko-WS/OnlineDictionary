@@ -240,4 +240,52 @@
   <data name="TargetLanguage" xml:space="preserve">
     <value>Target language</value>
   </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Your password has been changed.</value>
+  </data>
+  <data name="YourPasswordHasBeenSet" xml:space="preserve">
+    <value>Your password has been set.</value>
+  </data>
+  <data name="AnErrorHasOccurred" xml:space="preserve">
+    <value>An error has occurred.</value>
+  </data>
+  <data name="YourInformationIsSaved" xml:space="preserve">
+    <value>Your information is saved.</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="PasswordLengthErrorMessage" xml:space="preserve">
+    <value>The {0} must be at least {2} characters long.</value>
+  </data>
+  <data name="PasswordCompareErrorMessage" xml:space="preserve">
+    <value>The new password and confirmation password do not match.</value>
+  </data>
+  <data name="RememberMeQuestion" xml:space="preserve">
+    <value>Remember me?</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RequiredErrorMessage" xml:space="preserve">
+    <value>Required field {0}</value>
+  </data>
+  <data name="RegisterAsANewUser" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Invalid login attempt.</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect password.</value>
+  </data>
 </root>

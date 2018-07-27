@@ -181,7 +181,7 @@
     <value>Создать</value>
   </data>
   <data name="ChangeYourPersonalAccountSettings" xml:space="preserve">
-    <value>Изменить персональные настройки Вашей учетной записи</value>
+    <value>Изменение персональных настроек Вашей учетной записи</value>
   </data>
   <data name="AccountManagement" xml:space="preserve">
     <value>Управление учетной записью</value>
@@ -239,5 +239,53 @@
   </data>
   <data name="TargetLanguage" xml:space="preserve">
     <value>Язык перевода</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Ваш пароль был изменен.</value>
+  </data>
+  <data name="YourPasswordHasBeenSet" xml:space="preserve">
+    <value>Ваш пароль установлен.</value>
+  </data>
+  <data name="AnErrorHasOccurred" xml:space="preserve">
+    <value>Произошла ошибка.</value>
+  </data>
+  <data name="YourInformationIsSaved" xml:space="preserve">
+    <value>Ваша информация сохранена.</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Текущий пароль</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Подтверждение нового пароля</value>
+  </data>
+  <data name="PasswordLengthErrorMessage" xml:space="preserve">
+    <value>Длина {0} должна быть не менее {2} символов.</value>
+  </data>
+  <data name="PasswordCompareErrorMessage" xml:space="preserve">
+    <value>Новый пароль и пароль подтверждения не совпадают.</value>
+  </data>
+  <data name="RememberMeQuestion" xml:space="preserve">
+    <value>Запомнить меня?</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="RequiredErrorMessage" xml:space="preserve">
+    <value>Требуется поле {0}</value>
+  </data>
+  <data name="RegisterAsANewUser" xml:space="preserve">
+    <value>Зарегистрироваться как новый пользователь</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Недействительна попытка входа в систему.</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Неверный пароль.</value>
   </data>
 </root>

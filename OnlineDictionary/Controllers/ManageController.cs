@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineDictionary.Common;
 using OnlineDictionary.ViewModels;
+using OnlineDictionaryResources;
 
 namespace OnlineDictionary.Controllers
 {
@@ -55,13 +56,13 @@ namespace OnlineDictionary.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? Lexicon.YourPasswordHasBeenChanged
+                : message == ManageMessageId.SetPasswordSuccess ? Lexicon.YourPasswordHasBeenSet
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.Error ? Lexicon.AnErrorHasOccurred
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : message == ManageMessageId.InformationUpdated ? "Your information is saved"
+                : message == ManageMessageId.InformationUpdated ? Lexicon.YourInformationIsSaved
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -292,7 +293,17 @@ namespace OnlineDictionary.Controllers
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
-            AddErrors(result);
+            else
+            {
+                if(result.Errors.Contains("Incorrect password."))
+                {
+                    ModelState.AddModelError(string.Empty, Lexicon.IncorrectPassword);
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
             return View(model);
         }
 

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -11,11 +9,12 @@ using Microsoft.Owin.Security;
 using OnlineDictionary.Common;
 using OnlineDictionary.Models;
 using OnlineDictionary.ViewModels;
+using OnlineDictionaryResources;
 
 namespace OnlineDictionary.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -95,7 +94,7 @@ namespace OnlineDictionary.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", Lexicon.InvalidLoginAttempt);
                     return View(model);
             }
         }

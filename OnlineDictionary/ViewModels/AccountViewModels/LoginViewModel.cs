@@ -1,19 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OnlineDictionaryResources;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineDictionary.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
+        [Display(ResourceType = typeof(Lexicon), Name = "UserName")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Lexicon), Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(ResourceType = typeof(Lexicon), Name = "RememberMeQuestion")]
         public bool RememberMe { get; set; }
     }
 }
