@@ -45,7 +45,7 @@ namespace OnlineDictionary.ViewModels
 
         public IEnumerable<System.Web.Mvc.SelectListItem> LanguageItems
         {
-            get { return new System.Web.Mvc.SelectList(Languages.AvailableLanguages, "LangCultureName", "LangFullName"); }
+            get { return new System.Web.Mvc.SelectList(LanguagesManager.AvailableLanguages, "LangCultureName", "LangFullName"); }
         }
     }
 }

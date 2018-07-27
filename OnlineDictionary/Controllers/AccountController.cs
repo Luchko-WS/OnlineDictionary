@@ -84,7 +84,7 @@ namespace OnlineDictionary.Controllers
                     var user = await UserManager.FindByNameAsync(model.UserName);
                     if (user != null)
                     {
-                        Languages.SetLanguage(user.Language);
+                        LanguagesManager.SetLanguage(user.Language);
                         user.LastLoginTime = DateTime.Now;
                         await UserManager.UpdateAsync(user);
                     }

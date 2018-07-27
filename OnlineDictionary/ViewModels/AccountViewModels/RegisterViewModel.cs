@@ -73,14 +73,14 @@ namespace OnlineDictionary.ViewModels
         {
             get
             {
-                string selectedLanguage = Languages.GetDefaultLanguage();
+                string selectedLanguage = LanguagesManager.GetDefaultLanguage();
                 string threadLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-                if (Languages.AvailableLanguages.Exists(l => l.LangCultureName == threadLanguage))
+                if (LanguagesManager.AvailableLanguages.Exists(l => l.LangCultureName == threadLanguage))
                 {
                     selectedLanguage = threadLanguage;
                 }
 
-                return new System.Web.Mvc.SelectList(Languages.AvailableLanguages, "LangCultureName", "LangFullName", selectedLanguage); 
+                return new System.Web.Mvc.SelectList(LanguagesManager.AvailableLanguages, "LangCultureName", "LangFullName", selectedLanguage); 
             }
         }
     }

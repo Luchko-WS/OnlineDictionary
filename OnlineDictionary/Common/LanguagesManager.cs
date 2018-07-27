@@ -13,7 +13,7 @@ namespace OnlineDictionary.Common
         public string LangCultureName { get; set; }
     }
 
-    public class Languages
+    public class LanguagesManager
     {
         public static List<Language> AvailableLanguages
         {
@@ -48,8 +48,10 @@ namespace OnlineDictionary.Common
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureInfo.Name);
                 OnlineDictionaryResources.Lexicon.Culture = cultureInfo;
 
-                HttpCookie langCookie = new HttpCookie("culture", lang);
-                langCookie.Expires = DateTime.Now.AddYears(1);
+                HttpCookie langCookie = new HttpCookie("culture", lang)
+                {
+                    Expires = DateTime.Now.AddYears(1)
+                };
                 HttpContext.Current.Response.Cookies.Remove("culture");
                 HttpContext.Current.Response.Cookies.Add(langCookie);
             }

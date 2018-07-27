@@ -107,7 +107,7 @@ namespace OnlineDictionary.Controllers
                 if (user.Language != model.Language) 
                 {
                     user.Language = model.Language;
-                    Languages.SetLanguage(model.Language);
+                    LanguagesManager.SetLanguage(model.Language);
                 }
 
                 IdentityResult result = await UserManager.UpdateAsync(user);

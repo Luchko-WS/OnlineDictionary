@@ -20,7 +20,7 @@ namespace OnlineDictionary.Controllers
 
         public ActionResult SetLanguage(string lang, string returnUrl)
         {
-            Languages.SetLanguage(lang);
+            LanguagesManager.SetLanguage(lang);
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);

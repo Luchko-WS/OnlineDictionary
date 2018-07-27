@@ -23,9 +23,9 @@
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("English", "SetLanguage", "Home", new { lang = "en-US", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
-                        <li>@Html.ActionLink("Українська", "SetLanguage", "Home", new { lang = "uk-UA", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
-                        <li>@Html.ActionLink("Русский", "SetLanguage", "Home", new { lang = "ru-RU", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("EN", "SetLanguage", "Home", new { lang = "en-US", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("УКР", "SetLanguage", "Home", new { lang = "uk-UA", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("РУС", "SetLanguage", "Home", new { lang = "ru-RU", returnUrl = Request.Url.LocalPath }, new { @class = "" })</li>
                     </ul>
                 }
                 @Html.Partial("_LoginPartial")
