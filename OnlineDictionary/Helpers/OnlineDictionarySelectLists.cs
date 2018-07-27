@@ -22,8 +22,7 @@ namespace OnlineDictionary.Helpers
                 countries = countries.Distinct().ToList();
                 countries.Sort();
 
-                string currentCountry = RegionInfo.CurrentRegion.DisplayName;
-                return new SelectList(countries, currentCountry);
+                return new SelectList(countries);
             }
         }
 
@@ -39,8 +38,7 @@ namespace OnlineDictionary.Helpers
                 languages = languages.Distinct().ToList();
                 languages.Sort();
 
-                string currentLanguage = CultureInfo.CurrentCulture.NativeName;
-                return new SelectList(languages, currentLanguage);
+                return new SelectList(languages);
             }
         }
 
@@ -54,7 +52,6 @@ namespace OnlineDictionary.Helpers
                 {
                     selectedLanguage = threadLanguage;
                 }
-
                 return new SelectList(LanguagesManager.AvailableLanguages, "LangCultureName", "LangFullName", selectedLanguage);
             }
         }
