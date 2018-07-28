@@ -1,5 +1,6 @@
 ﻿using OnlineDictionary.Common;
 using System;
+using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,6 +16,9 @@ namespace OnlineDictionary.Controllers
             //_logger = ILogger();
         }
 
+
+        //get cultureInfo and then get short language name (ex. ua, ru) from it.
+        //after that set the value to ViewBag.Language in SetCurrentLanguage method
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string userLanguage;
@@ -38,8 +42,9 @@ namespace OnlineDictionary.Controllers
         {
             if (!string.IsNullOrWhiteSpace(language))
             {
+                CultureInfo cultureInfo = new CultureInfo(language);
                 LanguagesManager.SetLanguage(language);
-                ViewBag.Language = language;
+                ViewBag.Culture = cultureInfo.TwoLetterISOLanguageName;
             }
         }
     }

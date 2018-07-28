@@ -165,7 +165,7 @@ namespace OnlineDictionary.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    DateOfBirth = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay),
+                    DateOfBirth = model.BirthDate,
                     Country = model.Country,
                     Language = model.Language,
                     RegisteredDate = DateTime.Now,

@@ -18,8 +18,11 @@ namespace OnlineDictionary
                 .Include("~/Scripts/angular-ui/ui-bootstrap.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/momentjs")
+                .Include("~/Scripts/moment/moment.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .Include("~/Scripts/app/app.js")             
+                .Include("~/Scripts/app/app.js")
                 .Include("~/Scripts/app/Shared/Services/MessageService.js")
                 .Include("~/Scripts/app/Shared/Directives/AsyncPageWithLoaderDirective.js"));
 
@@ -36,10 +39,14 @@ namespace OnlineDictionary
                 .Include("~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
-                .Include("~/Scripts/bootstrap.js"));
+                .Include("~/Scripts/bootstrap.js")
+                .Include("~/Scripts/bootstrap/bootstrap-datepicker/bootstrap-datepicker.js")
+                .Include("~/Scripts/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.uk.min.js")
+                .Include("~/Scripts/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/css/bootstrap/bootstrap.css",
+                         "~/Content/css/bootstrap/bootstrap-datepicker/bootstrap-datepicker3.min.css",
                          "~/Content/css/site.css"));
         }
     }

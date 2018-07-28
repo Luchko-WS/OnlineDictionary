@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
-using OnlineDictionary.Common;
 using OnlineDictionaryResources;
 
 namespace OnlineDictionary.ViewModels
@@ -32,16 +32,10 @@ namespace OnlineDictionary.ViewModels
         public string LastName { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
-        [Display(ResourceType = typeof(Lexicon), Name = "Day")]
-        public int BirthDay { get; set; }
-
-        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
-        [Display(ResourceType = typeof(Lexicon), Name = "Month")]
-        public int BirthMonth { get; set; }
-
-        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
-        [Display(ResourceType = typeof(Lexicon), Name = "Year")]
-        public int BirthYear { get; set; }
+        [Display(ResourceType = typeof(Lexicon), Name = "BirthDate")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Lexicon))]
         [Display(ResourceType = typeof(Lexicon), Name = "Country")]

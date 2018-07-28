@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -83,9 +82,7 @@ namespace OnlineDictionary.Controllers
                 model.LastName = user.LastName;
                 model.Email = user.Email;
                 model.Country = user.Country;
-                model.BirthDay = user.DateOfBirth.Day;
-                model.BirthMonth = user.DateOfBirth.Month;
-                model.BirthYear = user.DateOfBirth.Year;
+                model.BirthDate = user.DateOfBirth;
                 model.Language = user.Language;
             }
 
@@ -102,13 +99,13 @@ namespace OnlineDictionary.Controllers
                 var user = await UserManager.FindByNameAsync(userName);
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
-                user.DateOfBirth = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay);
+                user.DateOfBirth = model.BirthDate;
                 user.Country = model.Country;
                 user.Email = model.Email;
                 if (user.Language != model.Language) 
                 {
                     user.Language = model.Language;
-                    LanguagesManager.SetLanguage(model.Language);
+                    SetCurrentLanguage(model.Language);
                 }
 
                 IdentityResult result = await UserManager.UpdateAsync(user);

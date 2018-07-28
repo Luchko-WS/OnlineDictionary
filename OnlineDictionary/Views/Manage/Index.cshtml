@@ -35,22 +35,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label">@Lexicon.BirthDate</label>
+            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-2 birth-date-field">
-                        @Html.DropDownListFor(model => model.BirthDay, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day", new { id = "day", @class = "form-control", onchange = "" })
-                        @Html.ValidationMessageFor(m => m.BirthDay, string.Empty, new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-2 birth-date-field">
-                        @Html.DropDownListFor(model => model.BirthMonth, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i) }), "Month", new { id = "month", @class = "form-control", onchange = "" })
-                        @Html.ValidationMessageFor(m => m.BirthMonth, string.Empty, new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-2">
-                        @Html.DropDownListFor(model => model.BirthYear, Enumerable.Range(1930, 87).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }).Reverse(), "Year", new { id = "year", @class = "form-control", onchange = "" })
-                        @Html.ValidationMessageFor(m => m.BirthYear, string.Empty, new { @class = "text-danger" })
-                    </div>
-                </div>
+                @Html.TextBoxFor(m => m.BirthDate, "{0:dd'/'MM'/'yyyy}", new { @class = "form-control datepicker", @data_provide = "datepicker", @data_date_format = "dd/mm/yyyy", @data_date_autoclose = "true", @data_date_language = @ViewBag.Culture })
+                @Html.ValidationMessageFor(m => m.BirthDate, string.Empty, new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -87,3 +75,5 @@
         }
     </p>
 </div>
+
+@Scripts.Render("~/bundles/momentjs")
