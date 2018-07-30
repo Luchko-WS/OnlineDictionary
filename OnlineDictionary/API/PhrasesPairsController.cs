@@ -5,9 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Linq;
-using System.Data.Entity;
-using OnlineDictionary.Common;
 
 namespace OnlineDictionary.API
 {
@@ -16,8 +13,40 @@ namespace OnlineDictionary.API
     {
         [Route("Create")]
         [HttpPost]
-        public async Task<HttpResponseMessage> CreatePhrasesPair()
+        public async Task<HttpResponseMessage> CreatePhrasesPair(PhrasesPairViewModel viewModel)
         {
+            var firstPhrase = new Phrase()
+            {
+                Text = viewModel.FirstPhrase.Text,
+                Description = viewModel.FirstPhrase.Description,
+                Language = viewModel.FirstPhrase.Language,
+                OwnerId = User.Identity.Name
+            };
+            var secondPhrase = new Phrase()
+            {
+                Text = viewModel.SecondPhrase.Text,
+                Description = viewModel.SecondPhrase.Description,
+                Language = viewModel.SecondPhrase.Language,
+                OwnerId = User.Identity.Name
+            };
+
+            var firstPhraseId = _dbContext.CreatePhrase(firstPhrase).Id;
+            var secondPhraseId = _dbContext.CreatePhrase(secondPhrase).Id;
+
+            var phrasesPair = new PhrasesPair()
+            {
+                CreationDate = DateTime.Now,
+                DictionaryId = viewModel.DictionaryId,
+                FirstPhraseId = firstPhraseId,
+                SecondPhraseId = secondPhraseId,
+                OwnerId = User.Identity.Name,
+                IsConfirmed = false
+            };
+
+            _dbContext.CreatePhrasePair(phrasesPair);
+
+            await _dbContext.SaveDbChangesAsync();
+
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

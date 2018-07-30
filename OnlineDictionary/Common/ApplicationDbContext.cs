@@ -52,22 +52,40 @@ namespace OnlineDictionary
 
         #region Dictionaries
 
-        public void CreateDictionary(Dictionary dictionary)
+        public Dictionary CreateDictionary(Dictionary dictionary)
         {
-            this.Dictionaries.Add(dictionary);
+            return this.Dictionaries.Add(dictionary);
         }
 
-        public void RemoveDictionary(Dictionary dictionary)
+        public Dictionary RemoveDictionary(Dictionary dictionary)
         {
-            this.Dictionaries.Remove(dictionary);
+            return this.Dictionaries.Remove(dictionary);
         }
+
+        #endregion
+
+        #region PhrasesPairs
+
+        public PhrasesPair CreatePhrasePair(PhrasesPair phrasesPair)
+        {
+            return this.PhrasesPairs.Add(phrasesPair);
+        }
+
+        #endregion
+
+        #region Phrases
+
+        public Phrase CreatePhrase(Phrase phrase)
+        {
+            return this.Phrases.Add(phrase);
+        }
+
+        #endregion
 
         public async Task SaveDbChangesAsync()
         {
             await this.SaveChangesAsync();
         }
-
-        #endregion
 
         #endregion
     }

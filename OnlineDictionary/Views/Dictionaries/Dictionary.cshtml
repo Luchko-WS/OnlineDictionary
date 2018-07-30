@@ -15,9 +15,9 @@
         <p>@Lexicon.LastChangedDate: {{vm.dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
 
         <div class="form-group">
-            <input class="form-control" type="text" ng-model="vm.original" />
-            <input class="form-control" type="text" ng-model="vm.translate" />
-            <button class="btn btn-primary" ng-click="vm.savePair()">Save</button>
+            <input class="form-control" type="text" ng-model="vm.phrasesPair.firstPhrase.text" />
+            <input class="form-control" type="text" ng-model="vm.phrasesPair.secondPhrase.text" />
+            <button class="btn btn-primary" ng-click="vm.createPhrasesPair()">Save</button>
         </div>
 
         <div ng-repeat="phrase in vm.dictionary.phrases">
@@ -25,3 +25,4 @@
         </div>
     </async-page-with-loader>
 </div>
+

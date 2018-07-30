@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\BaseApiController.cs" />
+    <Compile Include="API\PhrasesPairsController.cs" />
     <Compile Include="API\DictionariesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -271,6 +272,8 @@
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\PhraseViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesPairViewModel.cs" />
     <Compile Include="ViewModels\DictionaryViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\ChangePasswordViewModel.cs" />
@@ -335,9 +338,10 @@
     <Content Include="Scripts\app\Dictionaries\DictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\EditDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\CreateDictionaryCtrl.js" />
-    <Content Include="Scripts\app\Dictionaries\DictionariesSerrvice.js" />
+    <Content Include="Scripts\app\Dictionaries\DictionariesService.js" />
     <Content Include="Scripts\app\Dictionaries\AllDictionariesCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
+    <Content Include="Scripts\app\PhrasesPairs\PhrasesPairsService.js" />
     <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
     <Content Include="Scripts\app\Shared\Services\MessageService.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.js" />

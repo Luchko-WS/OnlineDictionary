@@ -26,13 +26,11 @@ namespace OnlineDictionary
                 .Include("~/Scripts/app/Shared/Services/MessageService.js")
                 .Include("~/Scripts/app/Shared/Directives/AsyncPageWithLoaderDirective.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/Dictionaries")
-                .Include("~/Scripts/app/Dictionaries/DictionariesSerrvice.js")
-                .Include("~/Scripts/app/Dictionaries/AllDictionariesCtrl.js")
-                .Include("~/Scripts/app/Dictionaries/MyDictionariesCtrl.js")
-                .Include("~/Scripts/app/Dictionaries/CreateDictionaryCtrl.js")
-                .Include("~/Scripts/app/Dictionaries/EditDictionaryCtrl.js")
-                .Include("~/Scripts/app/Dictionaries/DictionaryCtrl.js"));
+            bundles.Add(new ScriptBundle("~/bundles/app/Dictionaries")
+                .IncludeDirectory("~/Scripts/app/Dictionaries", "*.js", true));
+
+            bundles.Add(new ScriptBundle("~/bundles/app/PhrasesPairs")
+               .Include("~/Scripts/app/PhrasesPairs/PhrasesPairsService.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.

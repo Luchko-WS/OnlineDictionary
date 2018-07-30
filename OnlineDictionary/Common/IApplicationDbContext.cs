@@ -15,10 +15,22 @@ namespace OnlineDictionary
 
         #region Dictionaries
 
-        void CreateDictionary(Dictionary dictionary);
+        Dictionary CreateDictionary(Dictionary dictionary);
 
-        void RemoveDictionary(Dictionary dictionary);
-        
+        Dictionary RemoveDictionary(Dictionary dictionary);
+
+        #endregion
+
+        #region PhrasesPairs
+
+        PhrasesPair CreatePhrasePair(PhrasesPair phrasesPair);
+
+        #endregion
+
+        #region  Phrases
+
+        Phrase CreatePhrase(Phrase phrase);
+
         #endregion
 
         Task SaveDbChangesAsync();
