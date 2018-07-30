@@ -41,7 +41,7 @@
         function createPhrasesPair() {
             PhrasesPairsService.createPhrasesPair(vm.phrasesPair)
                 .success(function (data) {
-                    vm.dictionary.phrasesPairs.push(data);
+                    vm.dictionary.phrasesPairs.unshift(data);
                     vm.phrasesPair.firstPhrase.text = null;
                     vm.phrasesPair.secondPhrase.text = null;
                 })
