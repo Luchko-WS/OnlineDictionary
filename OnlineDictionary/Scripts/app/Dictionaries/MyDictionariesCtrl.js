@@ -25,6 +25,7 @@
                     vm.loaded = true;
                 })
                 .error(function (error) {
+                    console.error(error);
                     vm.loaded = true;
                 });
         }
@@ -85,7 +86,7 @@
                                 }
                             })
                             .error(function (error) {
-                                console.log(error);
+                                console.error(error);
                             });
                     }
                 });

@@ -11,6 +11,7 @@
         var service = {
             getAllPublicDictionaries: getAllPublicDictionaries,
             getMyDictionaries: getMyDictionaries,
+            getDictionary: getDictionary,
             createDictionary: createDictionary,
             editDictionary: editDictionary,
             removeDictionary: removeDictionary
@@ -29,6 +30,13 @@
             return $http({
                 method: 'GET',
                 url: '/api/Dictionaries/GetMyDictionaries',
+            });
+        }
+
+        function getDictionary(dictionaryId, skip, take) {
+            return $http({
+                method: 'GET',
+                url: '/api/Dictionaries/Dictionary/' + dictionaryId + '/' + skip + '/' + take,
             });
         }
 

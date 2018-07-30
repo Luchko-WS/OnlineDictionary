@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineDictionary.Models;
+using System;
+using System.Collections.Generic;
 
 namespace OnlineDictionary.ViewModels
 {
@@ -21,5 +23,9 @@ namespace OnlineDictionary.ViewModels
         public DateTime CreationDate { get; set; }
 
         public DateTime LastChangeDate { get; set; }
+
+        public bool? IsMyDictionary { get; set; }
+
+        public IEnumerable<PhrasesPair> Phrases { get; set; }
     }
 }

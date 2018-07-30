@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Linq;
 using System.Data.Entity;
+using OnlineDictionary.Common;
 
 namespace OnlineDictionary.API
 {
@@ -38,6 +39,18 @@ namespace OnlineDictionary.API
             return dictionaries.Any() ?
                 Request.CreateResponse(HttpStatusCode.OK, dictionaries) :
                 Request.CreateResponse(HttpStatusCode.NotFound);
+        }
+
+        [Route("Dictionary/{dictionaryId}/{skip}/{take}")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetDictionary([FromUri]Guid dictionaryId, int skip, int take)
+        {
+            var dictionary = await _dbContext.Dictionaries.Include(d => d.Phrases).FirstOrDefaultAsync(d => d.Id == dictionaryId);
+            if (dictionary == null) return Request.CreateResponse(HttpStatusCode.NotFound);
+            if (!dictionary.IsPublic && dictionary.OwnerId != User.Identity.Name) return Request.CreateResponse(HttpStatusCode.Forbidden);
+            var res = Mapper.MapProperties<DictionaryViewModel>(dictionary);
+            res.IsMyDictionary = dictionary.OwnerId == User.Identity.Name;
+            return Request.CreateResponse(HttpStatusCode.OK, res);
         }
 
         [Route("Create")]

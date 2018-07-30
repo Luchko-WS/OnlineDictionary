@@ -1,9 +1,4 @@
-﻿using OnlineDictionary.Common;
-using OnlineDictionary.ViewModels;
-using System;
-using System.Data.Entity;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System;
 using System.Web.Mvc;
 
 namespace OnlineDictionary.Controllers
@@ -32,12 +27,9 @@ namespace OnlineDictionary.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<ActionResult> Dictionary(Guid id)
+        public ActionResult Dictionary(Guid id)
         {
-            var dictionary = await _db.Dictionaries.FirstOrDefaultAsync(d => d.Id == id);
-            if (dictionary == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            if (!User.Identity.IsAuthenticated || dictionary.OwnerId != User.Identity.Name) return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-            return View(Mapper.MapProperties<DictionaryViewModel>(dictionary));
+            return View(id);
         }
     }
 }

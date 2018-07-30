@@ -1,11 +1,27 @@
-﻿@model OnlineDictionary.ViewModels.DictionaryViewModel
+﻿@model Guid
 
 @{
     ViewBag.Title = "Dictionary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Dictionary</h2>
+<div ng-controller="DictionaryCtrl as vm">
+    <async-page-with-loader is-loaded="vm.loaded" ng-init="vm.init('@Model')">
+        <h2>{{vm.dictionary.name}}</h2>
+        <p>@Lexicon.Description: {{vm.dictionary.description != null ? vm.dictionary.description : '@Lexicon.NoDescription'}}</p>
+        <p>@Lexicon.Languages: {{vm.dictionary.sourceLanguage}} — {{vm.dictionary.targetLanguage}}</p>
+        <p ng-if="!vm.dictionary.isMyDictionary">@Lexicon.Owner: {{vm.dictionary.ownerId}}</p>
+        <p>@Lexicon.CreationDate: {{vm.dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
+        <p>@Lexicon.LastChangedDate: {{vm.dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
 
-@Html.DisplayForModel()
+        <div class="form-group">
+            <input class="form-control" type="text" ng-model="vm.original" />
+            <input class="form-control" type="text" ng-model="vm.translate" />
+            <button class="btn btn-primary" ng-click="vm.savePair()">Save</button>
+        </div>
 
+        <div ng-repeat="phrase in vm.dictionary.phrases">
+            {{phrase}}
+        </div>
+    </async-page-with-loader>
+</div>

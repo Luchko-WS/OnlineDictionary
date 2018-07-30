@@ -27,7 +27,7 @@
                     $uibModalInstance.close(data);
                 })
                 .error(function (error) {
-                    console.log(error);
+                    console.error(error);
                 });
         }
     }
