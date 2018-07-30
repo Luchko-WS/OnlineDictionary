@@ -37,16 +37,17 @@
                     vm.loaded = true;
                 });
         }
+
+        function createPhrasesPair() {
+            PhrasesPairsService.createPhrasesPair(vm.phrasesPair)
+                .success(function (data) {
+                    vm.dictionary.phrasesPairs.push(data);
+                    vm.phrasesPair.firstPhrase.text = null;
+                    vm.phrasesPair.secondPhrase.text = null;
+                })
+                .error(function (error) {
+                    console.error(error);
+                });
+        }
     }
-
-    function createPhrasesPair() {
-        PhrasesPairsService.createPhrasesPair(vm.phrasesPair)
-            .success(function (data) {
-
-            })
-            .error(function (error) {
-
-            });
-    }
-
 })();

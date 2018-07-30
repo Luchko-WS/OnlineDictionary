@@ -26,6 +26,6 @@ namespace OnlineDictionary.ViewModels
 
         public bool? IsMyDictionary { get; set; }
 
-        public IEnumerable<PhrasesPair> Phrases { get; set; }
+        public IEnumerable<PhrasesPair> PhrasesPairs { get; set; }
     }
 }

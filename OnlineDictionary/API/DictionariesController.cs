@@ -45,7 +45,11 @@ namespace OnlineDictionary.API
         [HttpGet]
         public async Task<HttpResponseMessage> GetDictionary([FromUri]Guid dictionaryId, int skip, int take)
         {
-            var dictionary = await _dbContext.Dictionaries.Include(d => d.Phrases).FirstOrDefaultAsync(d => d.Id == dictionaryId);
+            var dictionary = await _dbContext.Dictionaries
+                .Include(d => d.PhrasesPairs)
+                .Include(d => d.PhrasesPairs.Select(p => p.FirstPhrase))
+                .Include(d => d.PhrasesPairs.Select(p => p.SecondPhrase))
+                .FirstOrDefaultAsync(d => d.Id == dictionaryId);
             if (dictionary == null) return Request.CreateResponse(HttpStatusCode.NotFound);
             if (!dictionary.IsPublic && dictionary.OwnerId != User.Identity.Name) return Request.CreateResponse(HttpStatusCode.Forbidden);
             var res = Mapper.MapProperties<DictionaryViewModel>(dictionary);

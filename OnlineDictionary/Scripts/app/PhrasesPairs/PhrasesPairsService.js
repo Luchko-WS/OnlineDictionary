@@ -17,7 +17,7 @@
         function createPhrasesPair(phrasesPair) {
             return $http({
                 method: 'POST',
-                url: '/api/PhrasesPair/Create',
+                url: '/api/PhrasesPairs/Create',
                 data: phrasesPair
             });
         }

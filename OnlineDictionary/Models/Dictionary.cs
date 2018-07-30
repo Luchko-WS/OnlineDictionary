@@ -19,6 +19,6 @@ namespace OnlineDictionary.Models
 
         public DateTime LastChangeDate { get; set; }
 
-        public ICollection<PhrasesPair> Phrases { get; set; }
+        public ICollection<PhrasesPair> PhrasesPairs { get; set; }
     }
 }

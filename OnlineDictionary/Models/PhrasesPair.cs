@@ -14,8 +14,6 @@ namespace OnlineDictionary.Models
 
         public Guid DictionaryId { get; set; }
 
-        public Dictionary Dictionary { get; set; }
-
         public DateTime CreationDate { get; set; }
 
         public bool IsConfirmed { get; set; }

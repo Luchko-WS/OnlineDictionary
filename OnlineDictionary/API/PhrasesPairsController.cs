@@ -1,4 +1,5 @@
-﻿using OnlineDictionary.Models;
+﻿using OnlineDictionary.Common;
+using OnlineDictionary.Models;
 using OnlineDictionary.ViewModels;
 using System;
 using System.Net;
@@ -47,7 +48,7 @@ namespace OnlineDictionary.API
 
             await _dbContext.SaveDbChangesAsync();
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
         }
     }
 }
