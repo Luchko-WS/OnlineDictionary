@@ -25,8 +25,6 @@ namespace OnlineDictionary
 
         PhrasesPair CreatePhrasesPair(PhrasesPair phrasesPair);
 
-        Task<PhrasesPair> UpdatePhrasePair(PhrasesPair phrasesPair);
-
         Task<PhrasesPair> RemovePhrasesPair(PhrasesPair phrasesPair);
 
         #endregion

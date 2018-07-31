@@ -48,6 +48,9 @@ namespace OnlineDictionary.API
 
             _dbContext.CreatePhrasesPair(phrasesPair);
 
+            var dictionary = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == vm.DictionaryId);
+            dictionary.LastChangeDate = DateTime.Now;
+
             await _dbContext.SaveDbChangesAsync();
 
             return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
@@ -61,16 +64,20 @@ namespace OnlineDictionary.API
                                         .Where(p => p.Id == phrasesPairId)
                                         .Include(p => p.FirstPhrase)
                                         .Include(p => p.SecondPhrase)
-                                        .AsNoTracking()
                                         .FirstOrDefaultAsync();
             if (phrasesPair != null)
             {
-                phrasesPair.FirstPhrase = Mapper.MapProperties<Phrase>(vm.FirstPhrase);
-                phrasesPair.SecondPhrase = Mapper.MapProperties<Phrase>(vm.SecondPhrase); ;
+                phrasesPair.FirstPhrase.Description = vm.FirstPhrase.Description;
+                phrasesPair.FirstPhrase.Text = vm.FirstPhrase.Text;
 
-                //add some code here
+                phrasesPair.SecondPhrase.Description = vm.SecondPhrase.Description;
+                phrasesPair.SecondPhrase.Text = vm.SecondPhrase.Text;
 
-                //await _dbContext.SaveDbChangesAsync();
+                var dictionary = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == vm.DictionaryId);
+                dictionary.LastChangeDate = DateTime.Now;
+
+                await _dbContext.SaveDbChangesAsync();
+               
                 return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -84,6 +91,10 @@ namespace OnlineDictionary.API
             if (pairToRemove != null)
             {
                 var res = await _dbContext.RemovePhrasesPair(pairToRemove);
+
+                var dictionary = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == res.DictionaryId);
+                dictionary.LastChangeDate = DateTime.Now;
+
                 await _dbContext.SaveDbChangesAsync();
                 return Request.CreateResponse(HttpStatusCode.OK, res);
             }

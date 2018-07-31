@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using OnlineDictionary.Models;
-using System;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
@@ -77,30 +76,13 @@ namespace OnlineDictionary
             return this.PhrasesPairs.Add(phrasesPair);
         }
 
-        public Task<PhrasesPair> UpdatePhrasePair(PhrasesPair phrasesPair)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<PhrasesPair> RemovePhrasesPair(PhrasesPair phrasesPair)
         {
             var res = this.PhrasesPairs.Remove(phrasesPair);
-            if (! await this.PhrasesPairs.AnyAsync(p => 
-                            p.Id != res.Id &&
-                            (p.FirstPhraseId == res.FirstPhraseId || 
-                            p.SecondPhraseId == res.FirstPhraseId)))
-            {
-                var firstPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.FirstPhraseId);
-                this.Phrases.Remove(firstPhrase);
-            }
-            if (! await this.PhrasesPairs.AnyAsync(p =>
-                            p.Id != res.Id &&
-                            (p.FirstPhraseId == res.SecondPhraseId || 
-                            p.SecondPhraseId == res.SecondPhraseId)))
-            {
-                var secondPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.SecondPhraseId);
-                this.Phrases.Remove(secondPhrase);
-            }
+            var firstPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.FirstPhraseId);
+            this.Phrases.Remove(firstPhrase);
+            var secondPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.SecondPhraseId);
+            this.Phrases.Remove(secondPhrase);
             return res;
         }
 
