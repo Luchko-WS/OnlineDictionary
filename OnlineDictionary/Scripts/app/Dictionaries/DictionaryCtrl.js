@@ -9,27 +9,25 @@
 
     function DictionaryCtrl(DictionariesService, PhrasesPairsService) {
         var vm = this;
-        vm.phrasesPair = {};
-        vm.phrasesPair.firstPhrase = {};
-        vm.phrasesPair.secondPhrase = {};
 
         vm.init = init;
         vm.createPhrasesPair = createPhrasesPair;
+        vm.editPhrasePair = editPhrasePair;
+        vm.deletePhrasePair = deletePhrasePair;
 
         function init(dictionaryId) {
+
             vm.loaded = false;
 
             if (!dictionaryId) {
-                console.log('miss dictionary id');
+                console.error('miss dictionary id');
                 vm.loaded = true;
+                return;
             }
 
             DictionariesService.getDictionary(dictionaryId, 0, 100)
-                .success(function (dictionary) {
-                    vm.dictionary = dictionary;
-                    vm.phrasesPair.firstPhrase.language = dictionary.sourceLanguage;
-                    vm.phrasesPair.secondPhrase.language = dictionary.targetLanguage;
-                    vm.phrasesPair.dictionaryId = dictionary.id;
+                .success(function (data) {
+                    vm.dictionary = data;
                     vm.loaded = true;
                 })
                 .error(function (error) {
@@ -38,16 +36,16 @@
                 });
         }
 
-        function createPhrasesPair() {
-            PhrasesPairsService.createPhrasesPair(vm.phrasesPair)
-                .success(function (data) {
-                    vm.dictionary.phrasesPairs.unshift(data);
-                    vm.phrasesPair.firstPhrase.text = null;
-                    vm.phrasesPair.secondPhrase.text = null;
-                })
-                .error(function (error) {
-                    console.error(error);
-                });
+        function createPhrasesPair(phrasesPair) {
+            return PhrasesPairsService.createPhrasesPair(phrasesPair);
+        }
+
+        function editPhrasePair() {
+            console.log('work');
+        }
+
+        function deletePhrasePair() {
+
         }
     }
 })();

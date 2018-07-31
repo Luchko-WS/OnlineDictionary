@@ -43,6 +43,7 @@ namespace OnlineDictionary.API
 
         [Route("Dictionary/{dictionaryId}/{skip}/{take}")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<HttpResponseMessage> GetDictionary([FromUri]Guid dictionaryId, int skip, int take)
         {
             var dictionary = await _dbContext.Dictionaries

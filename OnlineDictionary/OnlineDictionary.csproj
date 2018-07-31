@@ -343,6 +343,7 @@
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
     <Content Include="Scripts\app\PhrasesPairs\PhrasesPairsService.js" />
     <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
+    <Content Include="Scripts\app\Shared\Directives\EditableDictionaryPhrasesPairsTable.js" />
     <Content Include="Scripts\app\Shared\Services\MessageService.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.min.js" />
@@ -466,6 +467,7 @@
     <Content Include="Scripts\moment\moment-with-locales.min.js" />
     <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\moment\moment.min.js" />
+    <Content Include="Templates\DirectivesTemplates\EditableDictionaryPhrasesPairsTable.html" />
     <Content Include="Templates\DirectivesTemplates\LoadingSpinnerTemplate.html" />
     <Content Include="Templates\MessageServiceDialogWindows\CustomDialogWindow.html" />
     <Content Include="Templates\MessageServiceDialogWindows\OkDialogWindow.html" />

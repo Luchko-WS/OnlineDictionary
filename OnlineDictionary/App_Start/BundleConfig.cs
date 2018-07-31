@@ -22,9 +22,10 @@ namespace OnlineDictionary
                 .Include("~/Scripts/moment/moment.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .Include("~/Scripts/app/app.js")
-                .Include("~/Scripts/app/Shared/Services/MessageService.js")
-                .Include("~/Scripts/app/Shared/Directives/AsyncPageWithLoaderDirective.js"));
+                .Include("~/Scripts/app/app.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app/Shared")
+                .IncludeDirectory("~/Scripts/app/Shared/", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/app/Dictionaries")
                 .IncludeDirectory("~/Scripts/app/Dictionaries", "*.js", true));
