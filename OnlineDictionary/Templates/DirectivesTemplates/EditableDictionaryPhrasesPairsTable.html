@@ -5,31 +5,31 @@
             <th class="col-md-5" style="text-align: center">Sorce language</th>
             <th class="col-md-5" style="text-align: center">Target language</th>
             <th class="col-md-1" ng-if="enableEditing">
-                <button class="btn btn-primary" ng-click="toggleCreatingForm()">A</button>
-                <button class="btn btn-primary" ng-click="toggleFilter()">F</button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="add" ng-click="toggleCreatingForm()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="filter" ng-click="toggleFilter()"><span class="glyphicon glyphicon-filter"></span></button>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr ng-if="filterIsShowed">
-            <td></td>
+            <td><span class="glyphicon glyphicon-filter"></span></td>
             <td><input class="form-control" type="text" /></td>
             <td><input class="form-control" type="text" /></td>
             <td>
-                <button class="btn btn-primary" ng-click="">S</button>
-                <button class="btn btn-primary" ng-click="toggleFilter()">C</button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="search" ng-click=""><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="close" ng-click="toggleFilter()"><span class="glyphicon glyphicon-ban-circle"></span></button>
             </td>
         </tr>
         <tr ng-if="enableEditing && creatingFormIsShowed">
-            <td></td>
+            <td><span class="glyphicon glyphicon-plus"></span></td>
             <td><input class="form-control" type="text" ng-model="phrasesPair.firstPhrase.text" placeholder="{{dictionary.sourceLanguage}}" /></td>
             <td><input class="form-control" type="text" ng-model="phrasesPair.secondPhrase.text" placeholder="{{dictionary.targetLanguage}}" /></td>
             <td>
-                <button class="btn btn-primary" ng-click="createPhrasesPair(phrasesPair)">S</button>
-                <button class="btn btn-primary" ng-click="toggleCreatingForm()">C</button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="save" ng-click="createPhrasesPair(phrasesPair)"><span class="glyphicon glyphicon-ok"></span></button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="cancel" ng-click="toggleCreatingForm()"><span class="glyphicon glyphicon-ban-circle"></span></button>
             </td>
         </tr>
-        <tr style="height: 55px" ng-repeat="phrasesPair in dictionary.phrasesPairs">
+        <tr ng-repeat="phrasesPair in dictionary.phrasesPairs">
             <td>{{$index + 1}}</td>
             <td ng-if="!phrasesPair.editMode">{{phrasesPair.firstPhrase.text}}</td>
             <td ng-if="!phrasesPair.editMode">{{phrasesPair.secondPhrase.text}}</td>
@@ -37,12 +37,12 @@
             <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.tmpTargetLangText" /></td>
             <td ng-if="enableEditing">
                 <span ng-if="!phrasesPair.editMode">
-                    <button class="btn btn-default" ng-click="toogleEditFormForItem(phrasesPair)">E</button>
-                    <button class="btn btn-default" ng-click="removePhrasesPair(phrasesPair.id)">R</button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="edit" ng-click="toogleEditFormForItem(phrasesPair)"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="remove" ng-click="removePhrasesPair(phrasesPair.id)"><span class="glyphicon glyphicon-remove"></span></button>
                 </span>
                 <span ng-if="phrasesPair.editMode">
-                    <button class="btn btn-default" ng-click="editPhrasesPair(phrasesPair)">S</button>
-                    <button class="btn btn-default" ng-click="toogleEditFormForItem(phrasesPair)">C</button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="save" ng-click="editPhrasesPair(phrasesPair)"><span class="glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="cancel" ng-click="toogleEditFormForItem(phrasesPair)"><span class="glyphicon glyphicon-ban-circle"></span></button>
                 </span>
             </td>
         </tr>
