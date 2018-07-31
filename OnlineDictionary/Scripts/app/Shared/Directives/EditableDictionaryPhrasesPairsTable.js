@@ -42,11 +42,9 @@
                                 .success(function (data) {
                                     for (var i = 0; i < scope.dictionary.phrasesPairs.length; i++) {
                                         if (scope.dictionary.phrasesPairs[i].id == phrasesPair.id) {
-                                            console.log(data);
-                                            //BUG
                                             scope.dictionary.phrasesPairs[i].firstPhrase.text = data.firstPhrase.text;
                                             scope.dictionary.phrasesPairs[i].secondPhrase.text = data.secondPhrase.text;
-                                            console.log(scope.dictionary.phrasesPairs[i]);
+                                            toogleEditFormForItem(scope.dictionary.phrasesPairs[i]);
                                             return;
                                         }
                                     }
