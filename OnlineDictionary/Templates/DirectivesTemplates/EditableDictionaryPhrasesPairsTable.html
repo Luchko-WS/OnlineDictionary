@@ -1,28 +1,49 @@
 ﻿<table class="table table-striped table-bordered table-hover" style="text-align:center">
     <thead>
         <tr>
-            <th style="text-align: center">#</th>
-            <th style="text-align: center">Sorce language</th>
-            <th style="text-align: center">Target language</th>
-            <th ng-if="enableEditing"></th>
+            <th class="col-md-1" style="text-align: center">#</th>
+            <th class="col-md-5" style="text-align: center">Sorce language</th>
+            <th class="col-md-5" style="text-align: center">Target language</th>
+            <th class="col-md-1" ng-if="enableEditing">
+                <button class="btn btn-primary" ng-click="toggleCreatingForm()">A</button>
+                <button class="btn btn-primary" ng-click="toggleFilter()">F</button>
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-if="enableEditing">
+        <tr ng-if="filterIsShowed">
+            <td></td>
+            <td><input class="form-control" type="text" /></td>
+            <td><input class="form-control" type="text" /></td>
+            <td>
+                <button class="btn btn-primary" ng-click="">S</button>
+                <button class="btn btn-primary" ng-click="toggleFilter()">C</button>
+            </td>
+        </tr>
+        <tr ng-if="enableEditing && creatingFormIsShowed">
             <td></td>
             <td><input class="form-control" type="text" ng-model="phrasesPair.firstPhrase.text" placeholder="{{dictionary.sourceLanguage}}" /></td>
             <td><input class="form-control" type="text" ng-model="phrasesPair.secondPhrase.text" placeholder="{{dictionary.targetLanguage}}" /></td>
-            <td class="col-md-2">
-                <button class="btn btn-primary" ng-click="createPhrasesPair(phrasesPair)">Save</button>
+            <td>
+                <button class="btn btn-primary" ng-click="createPhrasesPair(phrasesPair)">S</button>
+                <button class="btn btn-primary" ng-click="toggleCreatingForm()">C</button>
             </td>
         </tr>
-        <tr ng-repeat="phrasesPair in dictionary.phrasesPairs">
+        <tr style="height: 55px" ng-repeat="phrasesPair in dictionary.phrasesPairs">
             <td>{{$index + 1}}</td>
-            <td>{{phrasesPair.firstPhrase.text}}</td>
-            <td>{{phrasesPair.secondPhrase.text}}</td>
-            <td ng-if="enableEditing" class="col-md-2">
-                <button class="btn btn-primary" ng-click="editPhrasesPair()">Edit</button>
-                <button class="btn btn-primary" ng-click="removePhrasesPair(phrasesPair.id)">Remove</button>
+            <td ng-if="!phrasesPair.editMode">{{phrasesPair.firstPhrase.text}}</td>
+            <td ng-if="!phrasesPair.editMode">{{phrasesPair.secondPhrase.text}}</td>
+            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.tmpSourceLangText" /></td>
+            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.tmpTargetLangText" /></td>
+            <td ng-if="enableEditing">
+                <span ng-if="!phrasesPair.editMode">
+                    <button class="btn btn-default" ng-click="toogleEditFormForItem(phrasesPair)">E</button>
+                    <button class="btn btn-default" ng-click="removePhrasesPair(phrasesPair.id)">R</button>
+                </span>
+                <span ng-if="phrasesPair.editMode">
+                    <button class="btn btn-default" ng-click="editPhrasesPair(phrasesPair)">S</button>
+                    <button class="btn btn-default" ng-click="toogleEditFormForItem(phrasesPair)">C</button>
+                </span>
             </td>
         </tr>
     </tbody>

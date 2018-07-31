@@ -80,7 +80,7 @@ namespace OnlineDictionary.API
         }
 
         [Route("Edit/{dictionaryId}")]
-        [HttpPost]
+        [HttpPut]
         public async Task<HttpResponseMessage> EditDictionary([FromUri]Guid dictionaryId, DictionaryViewModel vm)
         {
             var dictionary = await _dbContext.Dictionaries

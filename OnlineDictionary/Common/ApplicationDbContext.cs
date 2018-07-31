@@ -77,6 +77,11 @@ namespace OnlineDictionary
             return this.PhrasesPairs.Add(phrasesPair);
         }
 
+        public Task<PhrasesPair> UpdatePhrasePair(PhrasesPair phrasesPair)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<PhrasesPair> RemovePhrasesPair(PhrasesPair phrasesPair)
         {
             var res = this.PhrasesPairs.Remove(phrasesPair);

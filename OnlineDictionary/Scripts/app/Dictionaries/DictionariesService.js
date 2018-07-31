@@ -50,7 +50,7 @@
 
         function editDictionary(dictionaryId, dictionaryData) {
             return $http({
-                method: 'POST',
+                method: 'PUT',
                 url: '/api/Dictionaries/Edit/' + dictionaryId,
                 data: dictionaryData
             });

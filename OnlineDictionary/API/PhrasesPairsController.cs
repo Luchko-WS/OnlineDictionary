@@ -3,6 +3,7 @@ using OnlineDictionary.Models;
 using OnlineDictionary.ViewModels;
 using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -15,20 +16,20 @@ namespace OnlineDictionary.API
     {
         [Route("Create")]
         [HttpPost]
-        public async Task<HttpResponseMessage> CreatePhrasesPair(PhrasesPairViewModel viewModel)
+        public async Task<HttpResponseMessage> CreatePhrasesPair(PhrasesPairViewModel vm)
         {
             var firstPhrase = new Phrase()
             {
-                Text = viewModel.FirstPhrase.Text,
-                Description = viewModel.FirstPhrase.Description,
-                Language = viewModel.FirstPhrase.Language,
+                Text = vm.FirstPhrase.Text,
+                Description = vm.FirstPhrase.Description,
+                Language = vm.FirstPhrase.Language,
                 OwnerId = User.Identity.Name
             };
             var secondPhrase = new Phrase()
             {
-                Text = viewModel.SecondPhrase.Text,
-                Description = viewModel.SecondPhrase.Description,
-                Language = viewModel.SecondPhrase.Language,
+                Text = vm.SecondPhrase.Text,
+                Description = vm.SecondPhrase.Description,
+                Language = vm.SecondPhrase.Language,
                 OwnerId = User.Identity.Name
             };
 
@@ -38,7 +39,7 @@ namespace OnlineDictionary.API
             var phrasesPair = new PhrasesPair()
             {
                 CreationDate = DateTime.Now,
-                DictionaryId = viewModel.DictionaryId,
+                DictionaryId = vm.DictionaryId,
                 FirstPhraseId = firstPhraseId,
                 SecondPhraseId = secondPhraseId,
                 OwnerId = User.Identity.Name,
@@ -50,6 +51,29 @@ namespace OnlineDictionary.API
             await _dbContext.SaveDbChangesAsync();
 
             return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
+        }
+
+        [Route("Edit/{phrasesPairId}")]
+        [HttpPut]
+        public async Task<HttpResponseMessage> EditPhraesPair([FromUri]Guid phrasesPairId, PhrasesPairViewModel vm)
+        {
+            var phrasesPair = await _dbContext.PhrasesPairs
+                                        .Where(p => p.Id == phrasesPairId)
+                                        .Include(p => p.FirstPhrase)
+                                        .Include(p => p.SecondPhrase)
+                                        .AsNoTracking()
+                                        .FirstOrDefaultAsync();
+            if (phrasesPair != null)
+            {
+                phrasesPair.FirstPhrase = Mapper.MapProperties<Phrase>(vm.FirstPhrase);
+                phrasesPair.SecondPhrase = Mapper.MapProperties<Phrase>(vm.SecondPhrase); ;
+
+                //add some code here
+
+                //await _dbContext.SaveDbChangesAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
+            }
+            return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
         [Route("Remove/{id}")]

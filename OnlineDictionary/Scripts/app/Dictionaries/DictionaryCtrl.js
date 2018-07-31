@@ -12,7 +12,7 @@
 
         vm.init = init;
         vm.createPhrasesPair = createPhrasesPair;
-        vm.editPhrasePair = editPhrasePair;
+        vm.editPhrasesPair = editPhrasesPair;
         vm.deletePhrasePair = deletePhrasePair;
 
         function init(dictionaryId) {
@@ -40,8 +40,8 @@
             return PhrasesPairsService.createPhrasesPair(phrasesPair);
         }
 
-        function editPhrasePair() {
-            console.log('work');
+        function editPhrasesPair(id, data) {
+            return PhrasesPairsService.editPhrasesPair(id, data);
         }
 
         function deletePhrasePair(phrasesPairId) {
