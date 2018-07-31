@@ -2,6 +2,7 @@
 using OnlineDictionary.Models;
 using OnlineDictionary.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -44,11 +45,28 @@ namespace OnlineDictionary.API
                 IsConfirmed = false
             };
 
-            _dbContext.CreatePhrasePair(phrasesPair);
+            _dbContext.CreatePhrasesPair(phrasesPair);
 
             await _dbContext.SaveDbChangesAsync();
 
             return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
+        }
+
+        [Route("Remove/{id}")]
+        [HttpDelete]
+        public async Task<HttpResponseMessage> RemovePhrasesPair(Guid id)
+        {
+            var pairToRemove = await _dbContext.PhrasesPairs.FirstOrDefaultAsync(p => p.Id == id);
+            if (pairToRemove != null)
+            {
+                var res = _dbContext.RemovePhrasesPair(pairToRemove);
+                await _dbContext.SaveDbChangesAsync();
+                return Request.CreateResponse(HttpStatusCode.OK, res);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
     }
 }

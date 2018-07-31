@@ -22,7 +22,7 @@
             <td>{{phrasesPair.secondPhrase.text}}</td>
             <td ng-if="enableEditing" class="col-md-2">
                 <button class="btn btn-primary" ng-click="editPhrasesPair()">Edit</button>
-                <button class="btn btn-primary">Remove</button>
+                <button class="btn btn-primary" ng-click="removePhrasesPair(phrasesPair.id)">Remove</button>
             </td>
         </tr>
     </tbody>

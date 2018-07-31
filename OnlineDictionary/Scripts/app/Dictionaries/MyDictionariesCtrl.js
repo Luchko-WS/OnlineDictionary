@@ -79,7 +79,7 @@
                         DictionariesService.removeDictionary(dictionaryId)
                             .success(function (data) {
                                 for (var i = 0; i < vm.myDictionaries.length; i++) {
-                                    if (vm.myDictionaries[i].id === dictionaryId) {
+                                    if (vm.myDictionaries[i].id === data.id) {
                                         vm.myDictionaries.splice(i, 1);
                                         break;
                                     }

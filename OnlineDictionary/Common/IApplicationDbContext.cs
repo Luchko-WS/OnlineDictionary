@@ -23,7 +23,9 @@ namespace OnlineDictionary
 
         #region PhrasesPairs
 
-        PhrasesPair CreatePhrasePair(PhrasesPair phrasesPair);
+        PhrasesPair CreatePhrasesPair(PhrasesPair phrasesPair);
+
+        PhrasesPair RemovePhrasesPair(PhrasesPair phrasesPair);
 
         #endregion
 

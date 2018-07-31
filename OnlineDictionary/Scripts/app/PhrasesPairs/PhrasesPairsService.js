@@ -9,7 +9,8 @@
 
     function PhrasesPairsService($http) {
         var service = {
-            createPhrasesPair: createPhrasesPair
+            createPhrasesPair: createPhrasesPair,
+            removePhrasesPair: removePhrasesPair
         };
 
         return service;
@@ -19,6 +20,13 @@
                 method: 'POST',
                 url: '/api/PhrasesPairs/Create',
                 data: phrasesPair
+            });
+        }
+
+        function removePhrasesPair(phrasesPairId) {
+            return $http({
+                method: 'DELETE',
+                url: '/api/PhrasesPairs/Remove/' + phrasesPairId
             });
         }
     }

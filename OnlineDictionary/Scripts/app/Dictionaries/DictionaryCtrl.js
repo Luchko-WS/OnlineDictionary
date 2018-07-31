@@ -44,8 +44,8 @@
             console.log('work');
         }
 
-        function deletePhrasePair() {
-
+        function deletePhrasePair(phrasesPairId) {
+            return PhrasesPairsService.removePhrasesPair(phrasesPairId);
         }
     }
 })();

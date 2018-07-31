@@ -66,9 +66,14 @@ namespace OnlineDictionary
 
         #region PhrasesPairs
 
-        public PhrasesPair CreatePhrasePair(PhrasesPair phrasesPair)
+        public PhrasesPair CreatePhrasesPair(PhrasesPair phrasesPair)
         {
             return this.PhrasesPairs.Add(phrasesPair);
+        }
+
+        public PhrasesPair RemovePhrasesPair(PhrasesPair phrasesPair)
+        {
+            return this.PhrasesPairs.Remove(phrasesPair);
         }
 
         #endregion
