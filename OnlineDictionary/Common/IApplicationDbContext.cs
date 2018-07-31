@@ -17,7 +17,7 @@ namespace OnlineDictionary
 
         Dictionary CreateDictionary(Dictionary dictionary);
 
-        Dictionary RemoveDictionary(Dictionary dictionary);
+        Task<Dictionary> RemoveDictionary(Dictionary dictionary);
 
         #endregion
 
@@ -25,13 +25,15 @@ namespace OnlineDictionary
 
         PhrasesPair CreatePhrasesPair(PhrasesPair phrasesPair);
 
-        PhrasesPair RemovePhrasesPair(PhrasesPair phrasesPair);
+        Task<PhrasesPair> RemovePhrasesPair(PhrasesPair phrasesPair);
 
         #endregion
 
         #region  Phrases
 
         Phrase CreatePhrase(Phrase phrase);
+
+        Phrase RemovePhrase(Phrase phrase);
 
         #endregion
 

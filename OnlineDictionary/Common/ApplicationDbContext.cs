@@ -57,9 +57,15 @@ namespace OnlineDictionary
             return this.Dictionaries.Add(dictionary);
         }
 
-        public Dictionary RemoveDictionary(Dictionary dictionary)
+        public async Task<Dictionary> RemoveDictionary(Dictionary dictionary)
         {
-            return this.Dictionaries.Remove(dictionary);
+            var res = this.Dictionaries.Remove(dictionary);
+            var dictionaryPairs = await this.PhrasesPairs.Where(p => p.DictionaryId == res.Id).ToListAsync();
+            foreach(var pair in dictionaryPairs)
+            {
+                await RemovePhrasesPair(pair);
+            }
+            return res;
         }
 
         #endregion
@@ -71,9 +77,26 @@ namespace OnlineDictionary
             return this.PhrasesPairs.Add(phrasesPair);
         }
 
-        public PhrasesPair RemovePhrasesPair(PhrasesPair phrasesPair)
+        public async Task<PhrasesPair> RemovePhrasesPair(PhrasesPair phrasesPair)
         {
-            return this.PhrasesPairs.Remove(phrasesPair);
+            var res = this.PhrasesPairs.Remove(phrasesPair);
+            if (! await this.PhrasesPairs.AnyAsync(p => 
+                            p.Id != res.Id &&
+                            (p.FirstPhraseId == res.FirstPhraseId || 
+                            p.SecondPhraseId == res.FirstPhraseId)))
+            {
+                var firstPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.FirstPhraseId);
+                this.Phrases.Remove(firstPhrase);
+            }
+            if (! await this.PhrasesPairs.AnyAsync(p =>
+                            p.Id != res.Id &&
+                            (p.FirstPhraseId == res.SecondPhraseId || 
+                            p.SecondPhraseId == res.SecondPhraseId)))
+            {
+                var secondPhrase = await this.Phrases.FirstOrDefaultAsync(p => p.Id == res.SecondPhraseId);
+                this.Phrases.Remove(secondPhrase);
+            }
+            return res;
         }
 
         #endregion
@@ -83,6 +106,11 @@ namespace OnlineDictionary
         public Phrase CreatePhrase(Phrase phrase)
         {
             return this.Phrases.Add(phrase);
+        }
+
+        public Phrase RemovePhrase(Phrase phrase)
+        {
+            return this.Phrases.Remove(phrase);
         }
 
         #endregion

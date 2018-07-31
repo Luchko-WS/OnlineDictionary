@@ -106,7 +106,7 @@ namespace OnlineDictionary.API
             var dictionaryToRemove = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == id);
             if (dictionaryToRemove != null)
             {
-                var res = _dbContext.RemoveDictionary(dictionaryToRemove);
+                var res = await _dbContext.RemoveDictionary(dictionaryToRemove);
                 await _dbContext.SaveDbChangesAsync();
                 return Request.CreateResponse(HttpStatusCode.OK, res);
             }

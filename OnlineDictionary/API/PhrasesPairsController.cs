@@ -59,7 +59,7 @@ namespace OnlineDictionary.API
             var pairToRemove = await _dbContext.PhrasesPairs.FirstOrDefaultAsync(p => p.Id == id);
             if (pairToRemove != null)
             {
-                var res = _dbContext.RemovePhrasesPair(pairToRemove);
+                var res = await _dbContext.RemovePhrasesPair(pairToRemove);
                 await _dbContext.SaveDbChangesAsync();
                 return Request.CreateResponse(HttpStatusCode.OK, res);
             }
