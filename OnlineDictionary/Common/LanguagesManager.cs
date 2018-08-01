@@ -21,9 +21,9 @@ namespace OnlineDictionary.Common
             {
                 return new List<Language>
                 {
-                    new Language { LangFullName = "English", LangCultureName = "en-US" },
-                    new Language { LangFullName = "Українська", LangCultureName = "uk-UA" },
-                    new Language { LangFullName = "Русский", LangCultureName = "ru-RU" }
+                    new Language { LangFullName = "English", LangCultureName = "en" },
+                    new Language { LangFullName = "Українська", LangCultureName = "uk" },
+                    new Language { LangFullName = "Русский", LangCultureName = "ru" }
                 };
             }
         }

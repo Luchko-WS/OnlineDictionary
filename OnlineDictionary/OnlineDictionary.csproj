@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\BaseApiController.cs" />
+    <Compile Include="API\LanguageController.cs" />
     <Compile Include="API\PhrasesPairsController.cs" />
     <Compile Include="API\DictionariesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -242,18 +243,18 @@
     <Compile Include="Models\PhrasesPair.cs" />
     <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Models\Phrase.cs" />
-    <Compile Include="Resources\Lexicon.en-US.Designer.cs">
-      <DependentUpon>Lexicon.en-US.resx</DependentUpon>
+    <Compile Include="Resources\Lexicon.en.Designer.cs">
+      <DependentUpon>Lexicon.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Lexicon.ru-RU.Designer.cs">
-      <DependentUpon>Lexicon.ru-RU.resx</DependentUpon>
+    <Compile Include="Resources\Lexicon.ru.Designer.cs">
+      <DependentUpon>Lexicon.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Lexicon.uk-UA.Designer.cs">
-      <DependentUpon>Lexicon.uk-UA.resx</DependentUpon>
+    <Compile Include="Resources\Lexicon.uk.Designer.cs">
+      <DependentUpon>Lexicon.uk.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -306,6 +307,8 @@
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="Scripts\angularjs\angular-translate.js" />
+    <Content Include="Scripts\angularjs\angular-translate.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
@@ -344,7 +347,8 @@
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
     <Content Include="Scripts\app\PhrasesPairs\PhrasesPairsService.js" />
     <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
-    <Content Include="Scripts\app\Shared\Directives\EditableDictionaryPhrasesPairsTable.js" />
+    <Content Include="Scripts\app\Shared\Directives\DictionaryItemDirective.js" />
+    <Content Include="Scripts\app\Shared\Directives\EditableDictionaryPhrasesPairsTableDirective.js" />
     <Content Include="Scripts\app\Shared\Services\MessageService.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.min.js" />
@@ -468,6 +472,7 @@
     <Content Include="Scripts\moment\moment-with-locales.min.js" />
     <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\moment\moment.min.js" />
+    <None Include="Templates\DirectivesTemplates\DictionaryItem.cshtml" />
     <Content Include="Templates\DirectivesTemplates\EditableDictionaryPhrasesPairsTable.html" />
     <Content Include="Templates\DirectivesTemplates\LoadingSpinnerTemplate.html" />
     <Content Include="Templates\MessageServiceDialogWindows\CustomDialogWindow.html" />
@@ -539,21 +544,21 @@
     <EmbeddedResource Include="Migrations\201807271133509_InitModels1.resx">
       <DependentUpon>201807271133509_InitModels1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lexicon.en-US.resx">
+    <EmbeddedResource Include="Resources\Lexicon.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lexicon.en-US.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lexicon.en.Designer.cs</LastGenOutput>
       <CustomToolNamespace>OnlineDictionaryResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lexicon.ru-RU.resx">
+    <EmbeddedResource Include="Resources\Lexicon.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lexicon.ru-RU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lexicon.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>OnlineDictionaryResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lexicon.uk-UA.resx">
+    <EmbeddedResource Include="Resources\Lexicon.uk.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lexicon.uk-UA.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lexicon.uk.Designer.cs</LastGenOutput>
       <CustomToolNamespace>OnlineDictionaryResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
