@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.table-with-centered-content td, th {
+    text-align: center;
+    vertical-align: central;
+}
+
+.table-with-centered-content input {
+    max-width: 100%;
+    text-align: center;
+}
+

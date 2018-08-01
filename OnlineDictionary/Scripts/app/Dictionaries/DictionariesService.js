@@ -33,11 +33,21 @@
             });
         }
 
-        function getDictionary(dictionaryId, skip, take) {
-            return $http({
-                method: 'GET',
-                url: '/api/Dictionaries/Dictionary/' + dictionaryId + '/' + skip + '/' + take,
-            });
+        function getDictionary(dictionaryId, phrasesPairsFilter) {
+            if (phrasesPairsFilter != null) {
+                return $http.get('/api/Dictionaries/Dictionary/' + dictionaryId, {
+                    params: {
+                        SourceLanguageValue: phrasesPairsFilter.sourceLanguageValue,
+                        TargetLanguageValue: phrasesPairsFilter.targetLanguageValue
+                    }
+                });
+            }
+            else {
+                return $http({
+                    method: 'GET',
+                    url: '/api/Dictionaries/Dictionary/' + dictionaryId
+                });
+            }
         }
 
         function createDictionary(dictionary) {

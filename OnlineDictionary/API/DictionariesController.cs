@@ -41,18 +41,38 @@ namespace OnlineDictionary.API
                 Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
-        [Route("Dictionary/{dictionaryId}/{skip}/{take}")]
+        [Route("Dictionary/{dictionaryId}")]
         [HttpGet]
         [AllowAnonymous]
-        public async Task<HttpResponseMessage> GetDictionary([FromUri]Guid dictionaryId, int skip, int take)
+        public async Task<HttpResponseMessage> GetDictionary([FromUri]PhrasesPairsFilterViewModel filter, Guid dictionaryId)
         {
             var dictionary = await _dbContext.Dictionaries
                 .Include(d => d.PhrasesPairs)
                 .Include(d => d.PhrasesPairs.Select(p => p.FirstPhrase))
                 .Include(d => d.PhrasesPairs.Select(p => p.SecondPhrase))
-                .FirstOrDefaultAsync(d => d.Id == dictionaryId);
+                .Where(d => d.Id == dictionaryId)
+                .FirstOrDefaultAsync();
+
             if (dictionary == null) return Request.CreateResponse(HttpStatusCode.NotFound);
             if (!dictionary.IsPublic && dictionary.OwnerId != User.Identity.Name) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            if (filter != null)
+            {
+                if(!string.IsNullOrEmpty(filter.SourceLanguageValue))
+                {
+                    dictionary.PhrasesPairs = dictionary.PhrasesPairs
+                                                            .Where(pp => pp.FirstPhrase.Text.ToLower().Contains(filter.SourceLanguageValue.ToLower()))
+                                                            .ToList();
+                }
+
+                if (!string.IsNullOrEmpty(filter.TargetLanguageValue))
+                {
+                    dictionary.PhrasesPairs = dictionary.PhrasesPairs
+                                                            .Where(pp => pp.SecondPhrase.Text.ToLower().Contains(filter.TargetLanguageValue.ToLower()))
+                                                            .ToList();
+                }
+            }
+
             var res = Mapper.MapProperties<DictionaryViewModel>(dictionary);
             res.IsMyDictionary = dictionary.OwnerId == User.Identity.Name;
             return Request.CreateResponse(HttpStatusCode.OK, res);

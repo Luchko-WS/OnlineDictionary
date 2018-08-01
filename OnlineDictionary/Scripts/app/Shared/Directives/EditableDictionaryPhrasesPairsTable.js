@@ -8,6 +8,24 @@
                 replace: true,
                 link: function (scope, element, attrs) {
 
+                    scope.filterValues = {};
+                    scope.toggleFilter = toggleFilter;
+                    scope.applyFilter = applyFilter;
+
+                    function toggleFilter() {
+                        scope.filterIsShowed = !scope.filterIsShowed;
+                    }
+
+                    function applyFilter() {
+                        scope.filterPairsPromise(scope.dictionary.id, scope.filterValues)
+                            .success(function (data) {
+                                scope.dictionary = data;
+                            })
+                            .error(function (error) {
+                                console.error(error);
+                            });
+                    }
+
                     if (scope.enableEditing) {
                         scope.phrasesPair = {};
                         scope.phrasesPair.firstPhrase = {};
@@ -19,7 +37,6 @@
                         scope.createPhrasesPair = createPhrasesPair;
                         scope.editPhrasesPair = editPhrasesPair;
                         scope.removePhrasesPair = removePhrasesPair;
-                        scope.toggleFilter = toggleFilter;
                         scope.toggleCreatingForm = toggleCreatingForm;
                         scope.toogleEditFormForItem = toogleEditFormForItem;
 
@@ -74,10 +91,6 @@
                                 });
                         }
 
-                        function toggleFilter() {
-                            scope.filterIsShowed = !scope.filterIsShowed;
-                        }
-
                         function toggleCreatingForm () {
                             scope.creatingFormIsShowed = !scope.creatingFormIsShowed;
                         }
@@ -93,6 +106,7 @@
                 },
                 scope: {
                     dictionary: '=ngModel',
+                    filterPairsPromise: '=',
                     createPhrasesPairPromise: '=',
                     editPhrasesPairPromise: '=',
                     removePhrasesPairPromise: '=',

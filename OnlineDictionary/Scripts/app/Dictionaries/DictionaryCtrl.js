@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.init = init;
+        vm.getDictionaryWithFilteredPhrasesPairs = getDictionaryWithFilteredPhrasesPairs;
         vm.createPhrasesPair = createPhrasesPair;
         vm.editPhrasesPair = editPhrasesPair;
         vm.deletePhrasePair = deletePhrasePair;
@@ -25,7 +26,7 @@
                 return;
             }
 
-            DictionariesService.getDictionary(dictionaryId, 0, 100)
+            DictionariesService.getDictionary(dictionaryId)
                 .success(function (data) {
                     vm.dictionary = data;
                     vm.loaded = true;
@@ -34,6 +35,10 @@
                     console.error(error);
                     vm.loaded = true;
                 });
+        }
+
+        function getDictionaryWithFilteredPhrasesPairs(dictionaryId, filter) {
+            return DictionariesService.getDictionary(dictionaryId, filter);
         }
 
         function createPhrasesPair(phrasesPair) {

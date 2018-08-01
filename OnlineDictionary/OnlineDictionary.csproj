@@ -272,6 +272,7 @@
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesPairsFilterViewModel.cs" />
     <Compile Include="ViewModels\PhraseViewModel.cs" />
     <Compile Include="ViewModels\PhrasesPairViewModel.cs" />
     <Compile Include="ViewModels\DictionaryViewModel.cs" />
