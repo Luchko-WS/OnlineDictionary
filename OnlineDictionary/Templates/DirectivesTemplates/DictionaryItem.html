@@ -1,11 +1,11 @@
 ﻿<div class="col-md-4">
     <h2>{{dictionary.name}}</h2>
-    <p>{{'Description' | translate}}: {{dictionary.description != null ? dictionary.description : 'NoDescription' | translate}}</p>
-    <p>@Lexicon.Languages: {{dictionary.sourceLanguage}} — {{dictionary.targetLanguage}}</p>
-    <p>@Lexicon.IsPublic: {{dictionary.isPublic ? '@Lexicon.Yes' : '@Lexicon.No'}}</p>
-    <p>@Lexicon.CreationDate: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
-    <p>@Lexicon.LastChangedDate: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
-    <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">@Lexicon.Review</a>
-    <button class="btn btn-default" ng-click="editDictionary(dictionary)">@Lexicon.Edit</button>
-    <button class="btn btn-danger" ng-click="removeDictionary(dictionary.id)">@Lexicon.Remove</button>
+    <p>{{'description' | translate}}: {{dictionary.description != null ? dictionary.description : 'noDescription' | translate}}</p>
+    <p>{{'languages' | translate}}: {{dictionary.sourceLanguage}} — {{dictionary.targetLanguage}}</p>
+    <p>{{'isPublic' | translate}}: {{dictionary.isPublic ? ('yes' | translate) : ('no' | translate)}}</p>
+    <p>{{'creationDate' | translate}}: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
+    <p>{{'lastChangedDate' | translate}}: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
+    <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">{{'review' | translate}}</a>
+    <button class="btn btn-default" ng-click="editDictionary(dictionary)">{{'edit' | translate}}</button>
+    <button class="btn btn-danger" ng-click="removeDictionary(dictionary.id)">{{'remove' | translate}}</button>
 </div>
