@@ -1,6 +1,6 @@
 ﻿<div class="col-md-4">
     <h2>{{dictionary.name}}</h2>
-    <p>@Lexicon.Description: {{dictionary.description != null ? dictionary.description : '@Lexicon.NoDescription'}}</p>
+    <p>{{'Description' | translate}}: {{dictionary.description != null ? dictionary.description : 'NoDescription' | translate}}</p>
     <p>@Lexicon.Languages: {{dictionary.sourceLanguage}} — {{dictionary.targetLanguage}}</p>
     <p>@Lexicon.IsPublic: {{dictionary.isPublic ? '@Lexicon.Yes' : '@Lexicon.No'}}</p>
     <p>@Lexicon.CreationDate: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>

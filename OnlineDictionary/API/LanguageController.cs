@@ -9,6 +9,8 @@ namespace OnlineDictionary.API
 {
     public class LanguageController : BaseApiController
     {
+        [Route("api/Languages")]
+        [HttpGet]
         [AllowAnonymous]
         public Dictionary<string, object> GetLexicon([FromUri]string lang)
         {

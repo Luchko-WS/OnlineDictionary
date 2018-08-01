@@ -15,6 +15,8 @@ namespace OnlineDictionary
 
             bundles.Add(new ScriptBundle("~/bundles/angularjs")
                 .Include("~/Scripts/angularjs/angular.js")
+                .Include("~/Scripts/angularjs/angular-translate.js")
+                .Include("~/Scripts/angularjs/angular-translate-loader-url.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
 
