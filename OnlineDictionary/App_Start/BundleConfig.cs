@@ -34,7 +34,7 @@ namespace OnlineDictionary
                 .IncludeDirectory("~/Scripts/app/Dictionaries", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/app/PhrasesPairs")
-               .Include("~/Scripts/app/PhrasesPairs/PhrasesPairsService.js"));
+               .IncludeDirectory("~/Scripts/app/PhrasesPairs", "*.js", true));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
