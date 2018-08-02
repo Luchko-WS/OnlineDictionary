@@ -26,6 +26,7 @@ namespace OnlineDictionary.Controllers
             return PartialView();
         }
 
+        [AllowAnonymous]
         public ActionResult SearchDictionary()
         {
             return PartialView();

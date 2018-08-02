@@ -22,9 +22,7 @@ namespace OnlineDictionary.API
             var query = _dbContext.Dictionaries.Where(d => d.IsPublic);
             query = PrepareQueryByFilter(query, filter);
             var dictionaries = await query.OrderByDescending(d => d.CreationDate).ToListAsync();
-            return dictionaries.Any() ?
-                Request.CreateResponse(HttpStatusCode.OK, dictionaries) :
-                Request.CreateResponse(HttpStatusCode.NotFound);
+            return Request.CreateResponse(HttpStatusCode.OK, dictionaries);
         }
 
         [Route("GetMyDictionaries")]
@@ -34,9 +32,7 @@ namespace OnlineDictionary.API
             var query = _dbContext.Dictionaries.Where(d => d.OwnerId == User.Identity.Name);
             query = PrepareQueryByFilter(query, filter);
             var dictionaries = await query.OrderByDescending(d => d.CreationDate).ToListAsync();
-            return dictionaries.Any() ?
-                Request.CreateResponse(HttpStatusCode.OK, dictionaries) :
-                Request.CreateResponse(HttpStatusCode.NotFound);
+            return Request.CreateResponse(HttpStatusCode.OK, dictionaries);
         }
 
         private IQueryable<Dictionary> PrepareQueryByFilter(IQueryable<Dictionary> query, DictionaryFilterViewModel filter)
