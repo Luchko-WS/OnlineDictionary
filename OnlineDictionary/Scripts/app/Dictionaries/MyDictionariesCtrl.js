@@ -11,6 +11,8 @@
         var vm = this;
         vm.myDictionaries = [];
 
+        vm.searchDictionaryByName = searchDictionaryByName;
+        vm.extendedDictionarySearch = extendedDictionarySearch;
         vm.createDictionary = createDictionary;
         vm.editDictionary = editDictionary; 
         vm.removeDictionary = removeDictionary;
@@ -18,8 +20,36 @@
         init();
 
         function init() {
+            getDictionaries();
+        }
+
+        function searchDictionaryByName(name) {
+            var filter = {
+                name: name
+            };
+            getDictionaries(filter);
+        }
+
+        function extendedDictionarySearch() {
+            var modalInstance = $uibModal.open({
+                templateUrl: '/Dictionaries/SearchDictionary',
+                controller: 'SearchDictionaryCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    searchPar: {
+                        hideOwnerId: true,
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (filter) {
+                getDictionaries(filter);
+            });
+        }
+
+        function getDictionaries(filter) {
             vm.loaded = false;
-            DictionariesService.getMyDictionaries()
+            DictionariesService.getMyDictionaries(filter)
                 .success(function (data) {
                     vm.myDictionaries = data;
                     vm.loaded = true;

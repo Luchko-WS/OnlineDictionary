@@ -17,12 +17,11 @@ namespace OnlineDictionary.API
         [Route("GetAllPublicDictionaries")]
         [HttpGet]
         [AllowAnonymous]
-        public async Task<dynamic> GetAllPublicDictionaries()
+        public async Task<dynamic> GetAllPublicDictionaries([FromUri]DictionaryFilterViewModel filter)
         {
-            var dictionaries = await _dbContext.Dictionaries
-                .Where(d => d.IsPublic)
-                .ToListAsync();
-
+            var query = _dbContext.Dictionaries.Where(d => d.IsPublic);
+            query = PrepareQueryByFilter(query, filter);
+            var dictionaries = await query.OrderByDescending(d => d.CreationDate).ToListAsync();
             return dictionaries.Any() ?
                 Request.CreateResponse(HttpStatusCode.OK, dictionaries) :
                 Request.CreateResponse(HttpStatusCode.NotFound);
@@ -30,15 +29,38 @@ namespace OnlineDictionary.API
 
         [Route("GetMyDictionaries")]
         [HttpGet]
-        public async Task<dynamic> GetMyDictionaries()
+        public async Task<dynamic> GetMyDictionaries([FromUri]DictionaryFilterViewModel filter)
         {
-            var dictionaries = await _dbContext.Dictionaries
-                .Where(d => d.OwnerId == User.Identity.Name)
-                .ToListAsync();
-
+            var query = _dbContext.Dictionaries.Where(d => d.OwnerId == User.Identity.Name);
+            query = PrepareQueryByFilter(query, filter);
+            var dictionaries = await query.OrderByDescending(d => d.CreationDate).ToListAsync();
             return dictionaries.Any() ?
                 Request.CreateResponse(HttpStatusCode.OK, dictionaries) :
                 Request.CreateResponse(HttpStatusCode.NotFound);
+        }
+
+        private IQueryable<Dictionary> PrepareQueryByFilter(IQueryable<Dictionary> query, DictionaryFilterViewModel filter)
+        {
+            if (filter != null)
+            {
+                if (!string.IsNullOrEmpty(filter.Name))
+                {
+                    query = query.Where(d => d.Name.ToLower().Contains(filter.Name.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(filter.SourceLanguage))
+                {
+                    query = query.Where(d => d.SourceLanguage.ToLower().Contains(filter.SourceLanguage.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(filter.TargetLanguage))
+                {
+                    query = query.Where(d => d.TargetLanguage.ToLower().Contains(filter.TargetLanguage.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(filter.OwnerId))
+                {
+                    query = query.Where(d => d.OwnerId.ToLower().Contains(filter.OwnerId.ToLower()));
+                }
+            }
+            return query;
         }
 
         [Route("Dictionary/{dictionaryId}")]

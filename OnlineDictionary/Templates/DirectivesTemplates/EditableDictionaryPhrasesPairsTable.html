@@ -17,7 +17,7 @@
             <td><input class="form-control" type="text" ng-model="filterValues.sourceLanguageValue"/></td>
             <td><input class="form-control" type="text" ng-model="filterValues.targetLanguageValue" /></td>
             <td>
-                <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="search" ng-click="applyFilter()"><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="search" ng-click="applyFilter(filterValues)"><span class="glyphicon glyphicon-search"></span></button>
                 <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="{{'cancel' | translate}}" ng-click="toggleFilter()"><span class="glyphicon glyphicon-ban-circle"></span></button>
             </td>
         </tr>

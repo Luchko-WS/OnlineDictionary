@@ -1,11 +1,21 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = Lexicon.MyDictionaries;
 }
 
+<h2>@Lexicon.MyDictionaries</h2>
+
 <div ng-controller="MyDictionariesCtrl as vm">
     <extra-bootstrap-navbar>
-        <li><a ng-click="vm.createDictionary()">@Lexicon.CreateNewDictionary</a></li>
+        <ul class="nav navbar-nav">
+            <li><a ng-click="vm.createDictionary()">@Lexicon.CreateNewDictionary</a></li>
+            <li><a ng-click="vm.extendedDictionarySearch()">Search dictionary</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" style="margin-right: 20px" ng-submit="vm.searchDictionaryByName(vm.searchDictionaryName)">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="vm.searchDictionaryName" placeholder="@Lexicon.DictionaryName">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </extra-bootstrap-navbar>
 
     <async-page-with-loader is-loaded="vm.loaded">

@@ -19,18 +19,42 @@
 
         return service;
 
-        function getAllPublicDictionaries() {
-            return $http({
-                method: 'GET',
-                url: '/api/Dictionaries/GetAllPublicDictionaries',
-            });
+        function getAllPublicDictionaries(filter) {
+            if (filter != null) {
+                return $http.get('/api/Dictionaries/GetAllPublicDictionaries', {
+                    params: {
+                        Name: filter.name,
+                        SourceLanguage: filter.sourceLanguage,
+                        TargetLanguage: filter.targetLanguage,
+                        OwnerId: filter.ownerId
+                    }
+                });
+            }
+            else {
+                return $http({
+                    method: 'GET',
+                    url: '/api/Dictionaries/GetAllPublicDictionaries',
+                });
+            }
         }
 
-        function getMyDictionaries() {
-            return $http({
-                method: 'GET',
-                url: '/api/Dictionaries/GetMyDictionaries',
-            });
+        function getMyDictionaries(filter) {
+            if (filter != null) {
+                return $http.get('/api/Dictionaries/GetMyDictionaries', {
+                    params: {
+                        Name: filter.name,
+                        SourceLanguage: filter.sourceLanguage,
+                        TargetLanguage: filter.targetLanguage,
+                        OwnerId: filter.ownerId
+                    }
+                });
+            }
+            else {
+                return $http({
+                    method: 'GET',
+                    url: '/api/Dictionaries/GetMyDictionaries',
+                });
+            }
         }
 
         function getDictionary(dictionaryId, phrasesPairsFilter) {

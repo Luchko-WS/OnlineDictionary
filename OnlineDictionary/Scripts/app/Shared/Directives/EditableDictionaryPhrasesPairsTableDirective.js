@@ -14,10 +14,16 @@
 
                     function toggleFilter() {
                         scope.filterIsShowed = !scope.filterIsShowed;
+
+                        if (!scope.filterIsShowed) {
+                            scope.filterValues.sourceLanguageValue = null; 
+                            scope.filterValues.targetLanguageValue = null;
+                            applyFilter();
+                        }
                     }
 
-                    function applyFilter() {
-                        scope.filterPairsPromise(scope.dictionary.id, scope.filterValues)
+                    function applyFilter(filter) {
+                        scope.filterPairsPromise(scope.dictionary.id, filter)
                             .success(function (data) {
                                 scope.dictionary = data;
                             })

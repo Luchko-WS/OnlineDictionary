@@ -273,6 +273,7 @@
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\DictionaryFilterViewModel.cs" />
     <Compile Include="ViewModels\PhrasesPairsFilterViewModel.cs" />
     <Compile Include="ViewModels\PhraseViewModel.cs" />
     <Compile Include="ViewModels\PhrasesPairViewModel.cs" />
@@ -342,6 +343,7 @@
     <Content Include="Scripts\angularjs\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Dictionaries\DictionaryCtrl.js" />
+    <Content Include="Scripts\app\Dictionaries\SerachDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\EditDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\CreateDictionaryCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\DictionariesService.js" />
@@ -477,7 +479,7 @@
     <Content Include="Scripts\moment\moment.min.js" />
     <Content Include="Templates\DirectivesTemplates\DictionaryItem.html" />
     <Content Include="Templates\DirectivesTemplates\EditableDictionaryPhrasesPairsTable.html" />
-    <Content Include="Templates\DirectivesTemplates\ExtraBootstrapNavbarDirective.html" />
+    <Content Include="Templates\DirectivesTemplates\ExtraBootstrapNavbar.html" />
     <Content Include="Templates\DirectivesTemplates\LoadingSpinnerTemplate.html" />
     <Content Include="Templates\MessageServiceDialogWindows\CustomDialogWindow.html" />
     <Content Include="Templates\MessageServiceDialogWindows\OkDialogWindow.html" />
@@ -521,6 +523,7 @@
     <Content Include="Views\Dictionaries\CreateDictionary.cshtml" />
     <Content Include="Views\Dictionaries\EditDictionary.cshtml" />
     <Content Include="Views\Dictionaries\Dictionary.cshtml" />
+    <Content Include="Views\Dictionaries\SearchDictionary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
