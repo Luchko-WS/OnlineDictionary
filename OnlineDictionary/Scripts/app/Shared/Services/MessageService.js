@@ -1,15 +1,17 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('OnlineDictionary').factory('MessageService', MessageService);
-
+    //service
+    angular
+        .module('OnlineDictionary')
+        .factory('MessageService', MessageService);
     MessageService.$inject = ['$uibModal'];
 
     function MessageService($uibModal) {
         function showMessage(message, header) {
             var modalInstance = $uibModal.open({
                 templateUrl: '/Templates/MessageServiceDialogWindows/OkDialogWindow.html',
-                controller: ["$uibModalInstance", "modalParams", messageCtrl],
+                controller: 'MessageCtrl',
                 controllerAs: "vm",
                 resolve: {
                     modalParams: {
@@ -24,7 +26,7 @@
         function showMessageYesNo(message, header) {
             var modalInstance = $uibModal.open({
                 templateUrl: '/Templates/MessageServiceDialogWindows/YesNoDialogWindow.html',
-                controller: ["$uibModalInstance", "modalParams", messageCtrl],
+                controller: 'MessageCtrl',
                 controllerAs: "vm",
                 resolve: {
                     modalParams: {
@@ -39,7 +41,7 @@
         function showMessageCustom(message, header, buttons) {
             var modalInstance = $uibModal.open({
                 templateUrl: '/Templates/MessageServiceDialogWindows/CustomDialogWindow.html',
-                controller: ["$uibModalInstance", "modalParams", messageCtrl],
+                controller: 'MessageCtrl',
                 controllerAs: "vm",
                 resolve: {
                     modalParams: {
@@ -52,30 +54,36 @@
             return modalInstance.result;
         }
 
-        function messageCtrl($uibModalInstance, modalParams) {
-            var vm = this;
-            vm.ok = ok;
-            vm.cancel = cancel;
-            vm.closeForResult = closeForResult;
-            vm.modalParams = modalParams;
-
-            function ok() {
-                $uibModalInstance.close("OK");
-            }
-
-            function cancel() {
-                $uibModalInstance.dismiss("Cancel");
-            }
-
-            function closeForResult(result) {
-                $uibModalInstance.close(result);
-            }
-        }
-
         return {
             showMessage: showMessage,
             showMessageYesNo: showMessageYesNo,
             showMessageCustom: showMessageCustom,
         };
+    }
+
+    //controller
+    angular
+        .module('OnlineDictionary')
+        .controller('MessageCtrl', MessageCtrl);
+    MessageCtrl.$inject = ['$translate', '$uibModalInstance', 'modalParams'];
+
+    function MessageCtrl($translate, $uibModalInstance, modalParams) {
+        var vm = this;
+        vm.ok = ok;
+        vm.cancel = cancel;
+        vm.closeForResult = closeForResult;
+        vm.modalParams = modalParams;
+
+        function ok() {
+            $uibModalInstance.close("OK");
+        }
+
+        function cancel() {
+            $uibModalInstance.dismiss("Cancel");
+        }
+
+        function closeForResult(result) {
+            $uibModalInstance.close(result);
+        }
     }
 })();
