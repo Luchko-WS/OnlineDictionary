@@ -348,6 +348,7 @@
     <Content Include="Scripts\app\Dictionaries\AllDictionariesCtrl.js" />
     <Content Include="Scripts\app\Dictionaries\MyDictionariesCtrl.js" />
     <Content Include="Scripts\app\PhrasesPairs\PhrasesPairsService.js" />
+    <Content Include="Scripts\app\Shared\Directives\ExtraBootstrapNavbarDirective.js" />
     <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
     <Content Include="Scripts\app\Shared\Directives\DictionaryItemDirective.js" />
     <Content Include="Scripts\app\Shared\Directives\EditableDictionaryPhrasesPairsTableDirective.js" />
@@ -476,6 +477,7 @@
     <Content Include="Scripts\moment\moment.min.js" />
     <Content Include="Templates\DirectivesTemplates\DictionaryItem.html" />
     <Content Include="Templates\DirectivesTemplates\EditableDictionaryPhrasesPairsTable.html" />
+    <Content Include="Templates\DirectivesTemplates\ExtraBootstrapNavbarDirective.html" />
     <Content Include="Templates\DirectivesTemplates\LoadingSpinnerTemplate.html" />
     <Content Include="Templates\MessageServiceDialogWindows\CustomDialogWindow.html" />
     <Content Include="Templates\MessageServiceDialogWindows\OkDialogWindow.html" />

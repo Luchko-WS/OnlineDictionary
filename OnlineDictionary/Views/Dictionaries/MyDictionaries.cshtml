@@ -3,10 +3,11 @@
     ViewBag.Title = Lexicon.MyDictionaries;
 }
 
-<h2>@Lexicon.MyDictionaries</h2>
-
 <div ng-controller="MyDictionariesCtrl as vm">
-    <button class="btn btn-primary" style="margin-bottom: 20px" ng-click="vm.createDictionary()">@Lexicon.CreateNewDictionary</button>
+    <extra-bootstrap-navbar>
+        <li><a ng-click="vm.createDictionary()">@Lexicon.CreateNewDictionary</a></li>
+    </extra-bootstrap-navbar>
+
     <async-page-with-loader is-loaded="vm.loaded">
         <div class="row">
             <div ng-repeat="dictionary in vm.myDictionaries">

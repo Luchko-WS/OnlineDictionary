@@ -1,12 +1,21 @@
 ﻿<div class="col-md-4">
-    <h2>{{dictionary.name}}</h2>
-    <p>{{'description' | translate}}: {{dictionary.description != null ? dictionary.description : 'noDescription' | translate}}</p>
-    <p>{{'languages' | translate}}: {{dictionary.sourceLanguage}} — {{dictionary.targetLanguage}}</p>
-    <p ng-if="enableEditing">{{'isPublic' | translate}}: {{dictionary.isPublic ? ('yes' | translate) : ('no' | translate)}}</p>
-    <p ng-if="!enableEditing">{{'owner' | translate}}: {{dictionary.ownerId}}</p>
-    <p>{{'creationDate' | translate}}: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
-    <p>{{'lastChangedDate' | translate}}: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
-    <a class="btn btn-default" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}">{{'review' | translate}}</a>
-    <button ng-if="enableEditing" class="btn btn-default" ng-click="editDictionaryFunction(dictionary)">{{'edit' | translate}}</button>
-    <button ng-if="enableEditing" class="btn btn-danger" ng-click="removeDictionaryFunction(dictionary)">{{'remove' | translate}}</button>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3>{{dictionary.name}}</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{'description' | translate}}: {{dictionary.description != null ? dictionary.description : 'noDescription' | translate}}</p>
+            <p>{{'languages' | translate}}: {{dictionary.sourceLanguage}} — {{dictionary.targetLanguage}}</p>
+            <p ng-if="enableEditing">{{'isPublic' | translate}}: {{dictionary.isPublic ? ('yes' | translate) : ('no' | translate)}}</p>
+            <p ng-if="!enableEditing">{{'owner' | translate}}: {{dictionary.ownerId}}</p>
+            <p>{{'creationDate' | translate}}: {{dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
+            <p>{{'lastChangedDate' | translate}}: {{dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
+        </div>
+        <div class="panel-footer" style="text-align: right">
+            <a class="btn btn-primary" ng-href="/Dictionaries/Dictionary/{{dictionary.id}}" title="{{'review' | translate}}"><span class="glyphicon glyphicon-folder-open"></span></a>
+            <button class="btn btn-default" ng-click="downloadFunction(dictionary)" title="{{'download' | translate}}"><span class="glyphicon glyphicon-download-alt"></span></button>
+            <button ng-if="enableEditing" class="btn btn-warning" ng-click="editDictionaryFunction(dictionary)" title="{{'edit' | translate}}"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button ng-if="enableEditing" class="btn btn-danger" ng-click="removeDictionaryFunction(dictionary)" title="{{'remove' | translate}}"><span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+    </div>
 </div>
