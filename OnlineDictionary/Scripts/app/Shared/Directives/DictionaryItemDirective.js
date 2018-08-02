@@ -11,10 +11,8 @@
                 },
                 scope: {
                     dictionary: '=ngModel',
-                    filterDictionaryPromise: '=',
-                    createDictionaryPromise: '=',
-                    editDictionaryPromise: '=',
-                    removeDictionaryPromise: '=',
+                    editDictionaryFunction: '=',
+                    removeDictionaryFunction: '=',
                     enableEditing: '='
                 },
                 restrict: 'AE',
