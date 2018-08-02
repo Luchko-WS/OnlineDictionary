@@ -232,11 +232,29 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit dictionary.
+        /// </summary>
+        public static string EditDictionary {
+            get {
+                return ResourceManager.GetString("EditDictionary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended search.
+        /// </summary>
+        public static string ExtendedSearch {
+            get {
+                return ResourceManager.GetString("ExtendedSearch", resourceCulture);
             }
         }
         
@@ -457,6 +475,42 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove dictionary.
+        /// </summary>
+        public static string RemoveDictionary {
+            get {
+                return ResourceManager.GetString("RemoveDictionary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to remove this dictionary?.
+        /// </summary>
+        public static string RemoveDictionaryQuestion {
+            get {
+                return ResourceManager.GetString("RemoveDictionaryQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove translation.
+        /// </summary>
+        public static string RemovePair {
+            get {
+                return ResourceManager.GetString("RemovePair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to remove this translation?.
+        /// </summary>
+        public static string RemovePairQuestion {
+            get {
+                return ResourceManager.GetString("RemovePairQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required field {0}.
         /// </summary>
         public static string RequiredErrorMessage {
@@ -480,6 +534,15 @@ namespace OnlineDictionaryResources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         

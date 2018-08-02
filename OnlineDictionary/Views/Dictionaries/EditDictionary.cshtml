@@ -1,27 +1,33 @@
-﻿<div class="modal-header">
-    <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="modalTitle">Create dictionaty</h4>
-</div>
+﻿<div class="modal-window">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalTitle">@Lexicon.EditDictionary</h4>
+    </div>
 
-<div class="modal-body" style="padding-left: 50px; padding-right: 50px">
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label>@Lexicon.DictionaryName</label>
-            <input class="form-control" ng-model="vm.dictionary.name" required />
+    <div class="modal-body" style="padding-left: 50px; padding-right: 50px">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label>@Lexicon.DictionaryName</label>
+                <input class="form-control" ng-model="vm.dictionary.name" required />
 
-            <label>@Lexicon.Description</label>
-            <input class="form-control" ng-model="vm.dictionary.description" />
+                <label>@Lexicon.SourceLanguage</label>
+                <input class="form-control" ng-model="vm.dictionary.sourceLanguage" disabled />
 
-            <label>@Lexicon.SourceLanguage</label>
-            <input class="form-control" ng-model="vm.dictionary.sourceLanguage" disabled />
+                <label>@Lexicon.TargetLanguage</label>
+                <input class="form-control" ng-model="vm.dictionary.targetLanguage" disabled />
 
-            <label>@Lexicon.TargetLanguage</label>
-            <input class="form-control" ng-model="vm.dictionary.targetLanguage" disabled />
+                <div class="form-horizontal">
+                    <label>@Lexicon.IsPublic</label>
+                    <input type="checkbox" ng-model="vm.dictionary.isPublic" />
+                </div>
 
-            <label>@Lexicon.IsPublic</label>
-            <input type="checkbox" ng-model="vm.dictionary.isPublic"/>
+                <label>@Lexicon.Description</label>
+                <input class="form-control" ng-model="vm.dictionary.description" />
+            </div>
+        </div>
+        <div class="modal-window-custom-footer">
+            <button class="btn btn-primary" ng-click="vm.editDictionary()">@Lexicon.Save</button>
+            <button class="btn btn-default" ng-click="vm.cancel()">@Lexicon.Cancel</button>
         </div>
     </div>
-    <button class="btn" ng-click="vm.editDictionary()">@Lexicon.Save</button>
-    <button class="btn" ng-click="vm.cancel()">@Lexicon.Cancel</button>
 </div>

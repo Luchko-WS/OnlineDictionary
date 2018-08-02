@@ -78,9 +78,9 @@
                         }
 
                         function removePhrasesPair(phrasesPairId) {
-                            MessageService.showMessageYesNo("Do you want to remove this pair?", "Remove pair")
+                            MessageService.showMessageYesNo('removePairQuestion', 'removePair')
                                 .then(function (result) {
-                                    if (result === "OK") {
+                                    if (result === 'OK') {
                                         scope.removePhrasesPairPromise(phrasesPairId)
                                             .success(function (data) {
                                                 for (var i = 0; i < scope.dictionary.phrasesPairs.length; i++) {

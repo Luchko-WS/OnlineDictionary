@@ -288,4 +288,25 @@
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Неверный пароль.</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="ExtendedSearch" xml:space="preserve">
+    <value>Расширенный поиск</value>
+  </data>
+  <data name="RemoveDictionary" xml:space="preserve">
+    <value>Удалить словарь</value>
+  </data>
+  <data name="RemoveDictionaryQuestion" xml:space="preserve">
+    <value>Вы хотите удалить этот словарь?</value>
+  </data>
+  <data name="RemovePair" xml:space="preserve">
+    <value>Удалить перевод</value>
+  </data>
+  <data name="RemovePairQuestion" xml:space="preserve">
+    <value>Вы хотите удалить этот перевод?</value>
+  </data>
+  <data name="EditDictionary" xml:space="preserve">
+    <value>Редактировать словарь</value>
+  </data>
 </root>

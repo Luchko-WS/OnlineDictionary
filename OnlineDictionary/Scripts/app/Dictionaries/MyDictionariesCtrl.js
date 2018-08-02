@@ -103,9 +103,9 @@
         }
 
         function removeDictionary(dictionary) {
-            MessageService.showMessageYesNo("Do you want to remove this dictionary?", "Remove dictionary")
+            MessageService.showMessageYesNo('removeDictionaryQuestion', 'removeDictionary')
                 .then(function (result) {
-                    if (result === "OK") {
+                    if (result === 'OK') {
                         DictionariesService.removeDictionary(dictionary.id)
                             .success(function (data) {
                                 for (var i = 0; i < vm.myDictionaries.length; i++) {

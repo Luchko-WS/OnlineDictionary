@@ -288,4 +288,25 @@
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password.</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ExtendedSearch" xml:space="preserve">
+    <value>Extended search</value>
+  </data>
+  <data name="RemoveDictionary" xml:space="preserve">
+    <value>Remove dictionary</value>
+  </data>
+  <data name="RemoveDictionaryQuestion" xml:space="preserve">
+    <value>Do you want to remove this dictionary?</value>
+  </data>
+  <data name="RemovePair" xml:space="preserve">
+    <value>Remove translation</value>
+  </data>
+  <data name="RemovePairQuestion" xml:space="preserve">
+    <value>Do you want to remove this translation?</value>
+  </data>
+  <data name="EditDictionary" xml:space="preserve">
+    <value>Edit dictionary</value>
+  </data>
 </root>
