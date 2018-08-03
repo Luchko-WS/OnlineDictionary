@@ -42,10 +42,27 @@
         <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
     </div>
 
-    <async-page-with-loader is-loaded="vm.loaded">
-        <div ng-repeat="res in vm.translateResults">
-            {{res}}
-        </div>
+    <async-page-with-loader is-loaded="vm.loaded" style="margin-top: 20px">
+        <table class="table table-striped table-bordered table-hover table-with-centered-content">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>source phrase</th>
+                    <th>source lang</th>
+                    <th>translate</th>
+                    <th>translate lang</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="res in vm.translateResults">
+                    <td>{{$index + 1}}</td>
+                    <td>{{res.sourceText}}</td>
+                    <td>{{res.sourceLang}}</td>
+                    <td>{{res.targetText}}</td>
+                    <td>{{res.targetLang}}</td>
+                </tr>
+            </tbody>
+        </table>
     </async-page-with-loader>
 </div>
 

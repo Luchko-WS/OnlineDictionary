@@ -8,19 +8,23 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4" style="margin: 5px; background:url(../../Content/images/brit-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px; position: relative">
+    <div class="col-md-1"></div>
+    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/brit-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px; position: relative">
         <h2 style="color: white">Find translate to phrase</h2>
         <p style="position: absolute; bottom: 5px; right: 15px">
             @Html.ActionLink(Lexicon.Review, "Index", "Phrases", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "Translate" })
         </p>
     </div>
-    <div class="col-md-4" style="margin: 5px; background:url(../../Content/images/ger-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
+    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/ger-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
         <h2 style="color: white">Download users' dictionaries</h2>
         <p style="position: absolute; bottom: 5px; right: 15px">
             @Html.ActionLink(Lexicon.Review, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "Dictionaries" })
         </p>
     </div>
-    <div class="col-md-4" style="margin: 5px; background:url(../../Content/images/span-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
+</div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/span-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
         <h2 style="color: white">Create your dictionary</h2>
         <p style="position: absolute; bottom: 5px; right: 15px">
             @Html.ActionLink(Lexicon.Review, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "My Dictionaries" })

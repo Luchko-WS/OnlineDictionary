@@ -4,7 +4,7 @@ namespace OnlineDictionary.Controllers
 {
     public class PhrasesController : BaseController
     {
-        // GET: Phrases
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
