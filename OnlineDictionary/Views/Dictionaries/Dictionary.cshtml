@@ -14,16 +14,14 @@
         <p>@Lexicon.CreationDate: {{vm.dictionary.creationDate | date : "dd.MM.yyyy HH:mm"}}</p>
         <p>@Lexicon.LastChangedDate: {{vm.dictionary.lastChangeDate | date : "dd.MM.yyyy HH:mm"}}</p>
 
-        <div ng-if="vm.dictionary.phrasesPairs.length != 0">
-            <h3>Phrases</h3>
-            <editable-dictionary-phrases-pairs-table ng-model="vm.dictionary"
-                                                        create-phrases-pair-promise="vm.createPhrasesPair"
-                                                        edit-phrases-pair-promise="vm.editPhrasesPair"
-                                                        remove-phrases-pair-promise="vm.deletePhrasePair"
-                                                        filter-pairs-promise="vm.getDictionaryWithFilteredPhrasesPairs"
-                                                        enable-editing="vm.dictionary.isMyDictionary">
-            </editable-dictionary-phrases-pairs-table>
-        </div>
+        <h3>@Lexicon.PhrasesList</h3>
+        <editable-dictionary-phrases-pairs-table ng-model="vm.dictionary"
+                                                    create-phrases-pair-promise="vm.createPhrasesPair"
+                                                    edit-phrases-pair-promise="vm.editPhrasesPair"
+                                                    remove-phrases-pair-promise="vm.deletePhrasePair"
+                                                    filter-pairs-promise="vm.getDictionaryWithFilteredPhrasesPairs"
+                                                    enable-editing="vm.dictionary.isMyDictionary">
+        </editable-dictionary-phrases-pairs-table>
 
     </async-page-with-loader>
 </div>

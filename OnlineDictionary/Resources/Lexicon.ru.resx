@@ -324,4 +324,7 @@
   <data name="CommonErrorMessage" xml:space="preserve">
     <value>Произошла ошибка! Попробуйте позже.</value>
   </data>
+  <data name="PhrasesList" xml:space="preserve">
+    <value>Список фраз</value>
+  </data>
 </root>

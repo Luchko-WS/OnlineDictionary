@@ -7,40 +7,23 @@
     <p class="lead">@Lexicon.SiteDescription</p>
 </div>
 
-<!--
-<div ng-controller="TranslateCtrl as vm">
-    <div class="row">
-        <input type="text" class="form-control col-md-4">
-        <select class="form-control col-md-3">
-            @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
-            {
-                <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <select class="form-control col-md-3">
-            @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
-            {
-                <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-primary col-md-1">Translate</button>
-            <button type="button" class="btn btn-primary col-md-1">Clear</button>
-        </div>
-    </div>
-</div>
--->
 <div class="row">
-    <div class="col-md-4">
-        <h2>Find translate to phrase</h2>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6" style="background:url(../../Content/images/brit-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px; position: relative">
+        <h2 style="color: white">Find translate to phrase</h2>
+        <p style="position: absolute; bottom: 5px; right: 15px">
+            @Html.ActionLink(Lexicon.Review, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "My Dictionaries" })
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Download users' dictionaries</h2>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6" style="background:url(../../Content/images/ger-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
+        <h2 style="color: white">Download users' dictionaries</h2>
+        <p style="position: absolute; bottom: 5px; right: 15px">
+            @Html.ActionLink(Lexicon.Review, "FindTranslate", "Phrases", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "My Dictionaries" })
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Create your dictionary</h2>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-6" style="background:url(../../Content/images/span-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
+        <h2 style="color: white">Create your dictionary</h2>
+        <p style="position: absolute; bottom: 5px; right: 15px">
+            @Html.ActionLink(Lexicon.Review, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "Dictionaries" })
+        </p>
     </div>
 </div>

@@ -484,6 +484,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phrases list.
+        /// </summary>
+        public static string PhrasesList {
+            get {
+                return ResourceManager.GetString("PhrasesList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {

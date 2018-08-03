@@ -324,4 +324,7 @@
   <data name="CommonErrorMessage" xml:space="preserve">
     <value>An error occurred! Try again later.</value>
   </data>
+  <data name="PhrasesList" xml:space="preserve">
+    <value>Phrases list</value>
+  </data>
 </root>
