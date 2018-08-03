@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('MyDictionariesCtrl', MyDictionariesCtrl);
 
-    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService', 'MessageService'];
+    MyDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService', 'DownloadFileService', 'MessageService'];
 
-    function MyDictionariesCtrl($uibModal, DictionariesService, MessageService) {
+    function MyDictionariesCtrl($uibModal, DictionariesService, DownloadFileService, MessageService) {
         var vm = this;
         vm.myDictionaries = [];
 
@@ -16,6 +16,7 @@
         vm.createDictionary = createDictionary;
         vm.editDictionary = editDictionary; 
         vm.removeDictionary = removeDictionary;
+        vm.downloadDictionary = downloadDictionary; 
 
         init();
 
@@ -119,6 +120,14 @@
                                 console.error(error);
                             });
                     }
+                });
+        }
+
+        function downloadDictionary(dictionary) {
+            DictionariesService.downloadDictionary(dictionary.id)
+                .success(DownloadFileService.makeLinkElement)
+                .error(function (error) {
+                    console.error(error);
                 });
         }
     }

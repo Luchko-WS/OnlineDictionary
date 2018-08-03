@@ -14,7 +14,8 @@
             getDictionary: getDictionary,
             createDictionary: createDictionary,
             editDictionary: editDictionary,
-            removeDictionary: removeDictionary
+            removeDictionary: removeDictionary,
+            downloadDictionary: downloadDictionary
         };
 
         return service;
@@ -72,6 +73,14 @@
                     url: '/api/Dictionaries/Dictionary/' + dictionaryId
                 });
             }
+        }
+
+        function downloadDictionary(dictionaryId) {
+            return $http({
+                method: 'GET',
+                url: '/api/Dictionaries/Download/' + dictionaryId,
+                responseType: 'arraybuffer'
+            });
         }
 
         function createDictionary(dictionary) {

@@ -13,6 +13,7 @@
                     dictionary: '=ngModel',
                     editDictionaryFunction: '=',
                     removeDictionaryFunction: '=',
+                    downloadDictionaryFunction: '=',
                     enableEditing: '='
                 },
                 restrict: 'AE',

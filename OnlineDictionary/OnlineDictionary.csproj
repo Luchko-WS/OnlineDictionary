@@ -359,6 +359,7 @@
     <Content Include="Scripts\app\Shared\Directives\AsyncPageWithLoaderDirective.js" />
     <Content Include="Scripts\app\Shared\Directives\DictionaryItemDirective.js" />
     <Content Include="Scripts\app\Shared\Directives\EditableDictionaryPhrasesPairsTableDirective.js" />
+    <Content Include="Scripts\app\Shared\Services\DownloadFileService.js" />
     <Content Include="Scripts\app\Shared\Services\MessageService.js" />
     <Content Include="Scripts\app\PhrasesPairs\TranslateCtrl.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker\bootstrap-datepicker.js" />

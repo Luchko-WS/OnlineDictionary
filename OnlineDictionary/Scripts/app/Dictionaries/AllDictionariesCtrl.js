@@ -11,6 +11,7 @@
         var vm = this;
         vm.searchDictionaryByName = searchDictionaryByName;
         vm.extendedDictionarySearch = extendedDictionarySearch;
+        vm.downloadDictionary = downloadDictionary;
         init();
 
         function init() {
@@ -52,6 +53,14 @@
             modalInstance.result.then(function (filter) {
                 getDictionaries(filter);
             });
+        }
+
+        function downloadDictionary(dictionary) {
+            DictionariesService.downloadDictionary(dictionary.id)
+                .success(DownloadFileService.makeLinkElement)
+                .error(function (error) {
+                    console.error(error);
+                });
         }
     }
 

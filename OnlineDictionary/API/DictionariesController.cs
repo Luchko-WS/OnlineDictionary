@@ -8,6 +8,9 @@ using System.Web.Http;
 using System.Linq;
 using System.Data.Entity;
 using OnlineDictionary.Common;
+using OfficeOpenXml;
+using System.Net.Http.Headers;
+using System.IO;
 
 namespace OnlineDictionary.API
 {
@@ -68,8 +71,7 @@ namespace OnlineDictionary.API
                 .Include(d => d.PhrasesPairs)
                 .Include(d => d.PhrasesPairs.Select(p => p.FirstPhrase))
                 .Include(d => d.PhrasesPairs.Select(p => p.SecondPhrase))
-                .Where(d => d.Id == dictionaryId)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(d => d.Id == dictionaryId);
 
             if (dictionary == null) return Request.CreateResponse(HttpStatusCode.NotFound);
             if (!dictionary.IsPublic && dictionary.OwnerId != User.Identity.Name) return Request.CreateResponse(HttpStatusCode.Forbidden);
@@ -121,9 +123,7 @@ namespace OnlineDictionary.API
         [HttpPut]
         public async Task<HttpResponseMessage> EditDictionary([FromUri]Guid dictionaryId, DictionaryViewModel vm)
         {
-            var dictionary = await _dbContext.Dictionaries
-                                        .Where(d => d.Id == dictionaryId)
-                                        .FirstOrDefaultAsync();
+            var dictionary = await _dbContext.Dictionaries.FirstOrDefaultAsync(d => d.Id == dictionaryId);
             if (dictionary != null)
             {
                 dictionary.Name = vm.Name;
@@ -152,6 +152,59 @@ namespace OnlineDictionary.API
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("Download/{dictionaryId}")]
+        //need in refactoring
+        public async Task<HttpResponseMessage> DownloadDictionary([FromUri]Guid dictionaryId)
+        {
+            var dictionary = await _dbContext.Dictionaries
+                                                .Include(d => d.PhrasesPairs)
+                                                .Include(d => d.PhrasesPairs.Select(p => p.FirstPhrase))
+                                                .Include(d => d.PhrasesPairs.Select(p => p.SecondPhrase))
+                                                .FirstOrDefaultAsync(d => d.Id == dictionaryId);
+
+            if (!dictionary.IsPublic && dictionary.OwnerId != User.Identity.Name) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            if (dictionary != null)
+            {
+                ExcelPackage excelDocument = new ExcelPackage();
+
+                string firstWorkSheetName = string.Format("{0} -- {1}", dictionary.SourceLanguage, dictionary.TargetLanguage);
+                excelDocument.Workbook.Worksheets.Add(firstWorkSheetName);
+                ExcelWorksheet workSheet1 = excelDocument.Workbook.Worksheets[firstWorkSheetName];
+                int col = 2, row = 2;
+                foreach (var phrasesPair in dictionary.PhrasesPairs.OrderBy(p => p.FirstPhrase.Text))
+                {
+                    workSheet1.Cells[row, col].Value = phrasesPair.FirstPhrase.Text;
+                    workSheet1.Cells[row++, col+1].Value = phrasesPair.SecondPhrase.Text;
+                }
+
+                string secondWorkSheetName = string.Format("{0} -- {1}", dictionary.TargetLanguage, dictionary.SourceLanguage);
+                excelDocument.Workbook.Worksheets.Add(secondWorkSheetName);
+                ExcelWorksheet workSheet2 = excelDocument.Workbook.Worksheets[secondWorkSheetName];
+                row = 2;
+                foreach (var phrasesPair in dictionary.PhrasesPairs.OrderBy(p => p.SecondPhrase.Text))
+                {
+                    workSheet2.Cells[row, col].Value = phrasesPair.SecondPhrase.Text;
+                    workSheet2.Cells[row++, col + 1].Value = phrasesPair.FirstPhrase.Text;
+                }
+
+                var memoryStream = new MemoryStream();
+                excelDocument.Workbook.Properties.Author = dictionary.OwnerId;
+                excelDocument.SaveAs(memoryStream);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new ByteArrayContent(memoryStream.ToArray());
+                response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                string filename = string.Format("{0}.xlsx", dictionary.Name);
+                response.Content.Headers.ContentDisposition.FileName = Uri.EscapeUriString(filename);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.ms-excel");
+                return response;
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Apiary not found");
         }
     }
 }
