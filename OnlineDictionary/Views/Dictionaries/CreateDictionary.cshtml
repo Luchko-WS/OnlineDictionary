@@ -3,41 +3,50 @@
         <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="modalTitle">@Lexicon.CreateNewDictionary</h4>
     </div>
-
     <div class="modal-body">
         <div class="form-horizontal">
             <div class="form-group">
-                <label>@Lexicon.DictionaryName</label>
-                <input class="form-control" ng-model="vm.dictionary.name" required />
-
-                <label>@Lexicon.SourceLanguage</label>
-                <select class="form-control" ng-model="vm.dictionary.sourceLanguage" required>
-                    @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
-
-                <label>@Lexicon.TargetLanguage</label>
-                <select class="form-control" ng-model="vm.dictionary.targetLanguage" required>
-                    @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
-
-                <div class="form-horizontal">
-                    <label>@Lexicon.IsPublic</label>
-                    <input type="checkbox" ng-model="vm.dictionary.isPublic" />
+                <label class="control-label col-md-4">@Lexicon.DictionaryName</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="vm.dictionary.name" required />
                 </div>
-
-                <label>@Lexicon.Description</label>
-                <input class="form-control" ng-model="vm.dictionary.description" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">@Lexicon.SourceLanguage</label>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="vm.dictionary.sourceLanguage" required>
+                        @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">@Lexicon.TargetLanguage</label>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="vm.dictionary.targetLanguage" required>
+                        @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">@Lexicon.IsPublic</label>
+                <input class="checkbox" type="checkbox" ng-model="vm.dictionary.isPublic" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">@Lexicon.Description</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" rows="3" ng-model="vm.dictionary.description"></textarea>
+                </div>
             </div>
         </div>
-        <div class="modal-window-custom-footer">
-            <button class="btn btn-primary" ng-click="vm.createDictionary()">@Lexicon.Save</button>
-            <button class="btn btn-default" ng-click="vm.cancel()">@Lexicon.Cancel</button>
-        </div>
+    </div>
+    <div class="modal-window-custom-footer">
+        <button class="btn btn-primary" ng-click="vm.createDictionary()">@Lexicon.Save</button>
+        <button class="btn btn-default" ng-click="vm.cancel()">@Lexicon.Cancel</button>
     </div>
 </div>
