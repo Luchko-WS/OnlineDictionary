@@ -33,25 +33,29 @@
                     }
 
                     if (scope.enableEditing) {
-                        scope.phrasesPair = {};
-                        scope.phrasesPair.firstPhrase = {};
-                        scope.phrasesPair.secondPhrase = {};
-                        scope.phrasesPair.firstPhrase.language = scope.dictionary.sourceLanguage;
-                        scope.phrasesPair.secondPhrase.language = scope.dictionary.targetLanguage;
-                        scope.phrasesPair.dictionaryId = scope.dictionary.id;
+                        scope.newPhrasesPair = {};
+                        scope.newPhrasesPair.firstPhrase = {};
+                        scope.newPhrasesPair.secondPhrase = {};
+                        scope.newPhrasesPair.firstPhrase.language = scope.dictionary.sourceLanguage;
+                        scope.newPhrasesPair.secondPhrase.language = scope.dictionary.targetLanguage;
+                        scope.newPhrasesPair.dictionaryId = scope.dictionary.id;
 
                         scope.createPhrasesPair = createPhrasesPair;
                         scope.editPhrasesPair = editPhrasesPair;
                         scope.removePhrasesPair = removePhrasesPair;
                         scope.toggleCreatingForm = toggleCreatingForm;
                         scope.toogleEditFormForItem = toogleEditFormForItem;
+                        scope.checkValid = checkValid;
+                       
+                        function checkValid(phrasesPair) {
+                            phrasesPair.invalid = !(phrasesPair.firstPhrase.text && phrasesPair.secondPhrase.text);
+                        }
 
                         function createPhrasesPair(phrasesPair) {
                             scope.createPhrasesPairPromise(phrasesPair)
                                 .success(function (data) {
                                     scope.dictionary.phrasesPairs.unshift(data);
-                                    scope.phrasesPair.firstPhrase.text = null;
-                                    scope.phrasesPair.secondPhrase.text = null;
+                                    toggleCreatingForm();
                                 })
                                 .error(function (error) {
                                     console.error(error);
@@ -59,15 +63,13 @@
                         }
 
                         function editPhrasesPair(phrasesPair) {
-                            phrasesPair.firstPhrase.text = phrasesPair.tmpSourceLangText;
-                            phrasesPair.secondPhrase.text = phrasesPair.tmpTargetLangText;
                             scope.editPhrasesPairPromise(phrasesPair.id, phrasesPair)
                                 .success(function (data) {
                                     for (var i = 0; i < scope.dictionary.phrasesPairs.length; i++) {
                                         if (scope.dictionary.phrasesPairs[i].id == phrasesPair.id) {
                                             scope.dictionary.phrasesPairs[i].firstPhrase.text = data.firstPhrase.text;
                                             scope.dictionary.phrasesPairs[i].secondPhrase.text = data.secondPhrase.text;
-                                            toogleEditFormForItem(scope.dictionary.phrasesPairs[i]);
+                                            scope.dictionary.phrasesPairs[i].editMode = false;
                                             return;
                                         }
                                     }
@@ -97,15 +99,27 @@
                                 });
                         }
 
-                        function toggleCreatingForm () {
+                        function toggleCreatingForm() {
                             scope.creatingFormIsShowed = !scope.creatingFormIsShowed;
+                            if (scope.creatingFormIsShowed) {
+                                checkValid(scope.newPhrasesPair);
+                            }
+                            else {
+                                scope.newPhrasesPair.firstPhrase.text = null;
+                                scope.newPhrasesPair.secondPhrase.text = null;
+                            }
                         }
 
                         function toogleEditFormForItem(phrasesPair) {
                             phrasesPair.editMode = !phrasesPair.editMode;
                             if (phrasesPair.editMode) {
+                                checkValid(phrasesPair);
                                 phrasesPair.tmpSourceLangText = phrasesPair.firstPhrase.text;
                                 phrasesPair.tmpTargetLangText = phrasesPair.secondPhrase.text;
+                            }
+                            else {
+                                phrasesPair.firstPhrase.text = phrasesPair.tmpSourceLangText;
+                                phrasesPair.secondPhrase.text = phrasesPair.tmpTargetLangText; 
                             }
                         }
                     }

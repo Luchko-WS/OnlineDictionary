@@ -309,4 +309,13 @@
   <data name="EditDictionary" xml:space="preserve">
     <value>Редактировать словарь</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
 </root>

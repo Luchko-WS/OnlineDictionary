@@ -2,31 +2,33 @@
     <thead>
         <tr>
             <th class="col-md-1">
-                <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="filter" ng-click="toggleFilter()"><span class="glyphicon glyphicon-filter"></span></button>
+                <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="{{'filter' | translate}}" ng-click="toggleFilter()"><span class="glyphicon glyphicon-filter"></span></button>
             </th>
             <th class="col-md-5">{{'sourceLanguage' | translate}}</th>
             <th class="col-md-5">{{'targetLanguage' | translate}}</th>
             <th class="col-md-1" ng-if="enableEditing">
-                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="add" ng-click="toggleCreatingForm()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="{{'add' | translate}}" ng-click="toggleCreatingForm()"><span class="glyphicon glyphicon-plus"></span></button>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr ng-if="filterIsShowed">
             <td><span class="glyphicon glyphicon-filter"></span></td>
-            <td><input class="form-control" type="text" ng-model="filterValues.sourceLanguageValue"/></td>
+            <td><input class="form-control" type="text" ng-model="filterValues.sourceLanguageValue" /></td>
             <td><input class="form-control" type="text" ng-model="filterValues.targetLanguageValue" /></td>
             <td>
-                <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="search" ng-click="applyFilter(filterValues)"><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{{'search' | translate}}" ng-click="applyFilter(filterValues)"><span class="glyphicon glyphicon-search"></span></button>
                 <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="{{'cancel' | translate}}" ng-click="toggleFilter()"><span class="glyphicon glyphicon-ban-circle"></span></button>
             </td>
         </tr>
         <tr ng-if="enableEditing && creatingFormIsShowed">
             <td><span class="glyphicon glyphicon-plus"></span></td>
-            <td><input class="form-control" type="text" ng-model="phrasesPair.firstPhrase.text" placeholder="{{dictionary.sourceLanguage}}" /></td>
-            <td><input class="form-control" type="text" ng-model="phrasesPair.secondPhrase.text" placeholder="{{dictionary.targetLanguage}}" /></td>
+            <td><input class="form-control" type="text" ng-model="newPhrasesPair.firstPhrase.text" ng-change="checkValid(newPhrasesPair)" placeholder="{{dictionary.sourceLanguage}}" ng-required="true" /></td>
+            <td><input class="form-control" type="text" ng-model="newPhrasesPair.secondPhrase.text" ng-change="checkValid(newPhrasesPair)" placeholder="{{dictionary.targetLanguage}}" ng-required="true" /></td>
             <td>
-                <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="{{'save' | translate}}" ng-click="createPhrasesPair(phrasesPair)"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="{{'save' | translate}}" ng-disabled="newPhrasesPair.invalid" ng-click="createPhrasesPair(newPhrasesPair)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
                 <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="{{'cancel' | translate}}" ng-click="toggleCreatingForm()"><span class="glyphicon glyphicon-ban-circle"></span></button>
             </td>
         </tr>
@@ -34,15 +36,15 @@
             <td>{{$index + 1}}</td>
             <td ng-if="!phrasesPair.editMode">{{phrasesPair.firstPhrase.text}}</td>
             <td ng-if="!phrasesPair.editMode">{{phrasesPair.secondPhrase.text}}</td>
-            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.tmpSourceLangText" /></td>
-            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.tmpTargetLangText" /></td>
+            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.firstPhrase.text" ng-change="checkValid(phrasesPair)" ng-required="true" /></td>
+            <td ng-if="phrasesPair.editMode"><input class="form-control" type="text" ng-model="phrasesPair.secondPhrase.text" ng-change="checkValid(phrasesPair)" ng-required="true" /></td>
             <td ng-if="enableEditing">
                 <span ng-if="!phrasesPair.editMode">
                     <button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{{'edit' | translate}}" ng-click="toogleEditFormForItem(phrasesPair)"><span class="glyphicon glyphicon-pencil"></span></button>
                     <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="{{'remove' | translate}}" ng-click="removePhrasesPair(phrasesPair.id)"><span class="glyphicon glyphicon-remove"></span></button>
                 </span>
                 <span ng-if="phrasesPair.editMode">
-                    <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="{{'save' | translate}}" ng-click="editPhrasesPair(phrasesPair)"><span class="glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="{{'save' | translate}}" ng-disabled="phrasesPair.invalid" ng-click="editPhrasesPair(phrasesPair)"><span class="glyphicon glyphicon-ok"></span></button>
                     <button class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="{{'cancel' | translate}}" ng-click="toogleEditFormForItem(phrasesPair)"><span class="glyphicon glyphicon-ban-circle"></span></button>
                 </span>
             </td>

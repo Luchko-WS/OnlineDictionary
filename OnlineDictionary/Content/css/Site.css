@@ -46,3 +46,9 @@ textarea {
     width: 20px;
     vertical-align: bottom;
 }
+
+input.ng-invalid,
+select.ng-invalid,
+textarea.ng-invalid {
+    border: 1px red solid;
+}

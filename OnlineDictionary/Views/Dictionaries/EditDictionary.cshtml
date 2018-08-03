@@ -5,39 +5,41 @@
     </div>
 
     <div class="modal-body">
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-4">@Lexicon.DictionaryName</label>
-                <div class="col-md-8">
-                    <input class="form-control" ng-model="vm.dictionary.name" required />
+        <form name="editDictionaryForm">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-4">@Lexicon.DictionaryName</label>
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="vm.dictionary.name" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4">@Lexicon.SourceLanguage</label>
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="vm.dictionary.sourceLanguage" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4">@Lexicon.TargetLanguage</label>
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="vm.dictionary.targetLanguage" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4">@Lexicon.IsPublic</label>
+                    <input class="checkbox" type="checkbox" ng-model="vm.dictionary.isPublic" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4">@Lexicon.Description</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" rows="3" ng-model="vm.dictionary.description"></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Lexicon.SourceLanguage</label>
-                <div class="col-md-8">
-                    <input class="form-control" ng-model="vm.dictionary.sourceLanguage" disabled />
-                </div>
+            <div class="modal-window-custom-footer">
+                <button class="btn btn-primary" ng-disabled="editDictionaryForm.$invalid" ng-click="vm.editDictionary()">@Lexicon.Save</button>
+                <button class="btn btn-default" ng-click="vm.cancel()">@Lexicon.Cancel</button>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Lexicon.TargetLanguage</label>
-                <div class="col-md-8">
-                    <input class="form-control" ng-model="vm.dictionary.targetLanguage" disabled />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Lexicon.IsPublic</label>
-                <input class="checkbox" type="checkbox" ng-model="vm.dictionary.isPublic" />
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Lexicon.Description</label>
-                <div class="col-md-8">
-                    <textarea class="form-control" rows="3" ng-model="vm.dictionary.description"></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="modal-window-custom-footer">
-            <button class="btn btn-primary" ng-click="vm.editDictionary()">@Lexicon.Save</button>
-            <button class="btn btn-default" ng-click="vm.cancel()">@Lexicon.Cancel</button>
-        </div>
+        </form>
     </div>
 </div>
