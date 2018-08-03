@@ -7,6 +7,9 @@
 
 <ul class="nav navbar-nav navbar-right">
     <li>
+        @Html.ActionLink("Translate", "Index", "Phrases", routeValues: null, htmlAttributes: new { title = "Translate" })
+    </li>
+    <li>
         @Html.ActionLink(Lexicon.MyDictionaries, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "My Dictionaries" })
     </li>
     <li>
@@ -22,6 +25,9 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Translate", "Index", "Phrases", routeValues: null, htmlAttributes: new { title = "Translate" })
+        </li>
         <li>
             @Html.ActionLink(Lexicon.AllDictionaries, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
         </li>

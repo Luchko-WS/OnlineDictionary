@@ -25,10 +25,10 @@
                 .success(function (data) {
                     $uibModalInstance.close(data);
                 })
-                .error(errorHandling(error));
+                .error(errorHandler);
         }
 
-        function errorHandling(error) {
+        function errorHandler(error) {
             console.error(error);
             MessageService.showMessage('commonErrorMessage', 'error');
         }

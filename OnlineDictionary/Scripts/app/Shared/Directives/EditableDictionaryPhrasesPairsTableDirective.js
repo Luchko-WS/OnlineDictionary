@@ -27,10 +27,10 @@
                             .success(function (data) {
                                 scope.dictionary = data;
                             })
-                            .error(errorHandling(error));
+                            .error(errorHandler);
                     }
 
-                    function errorHandling(error) {
+                    function errorHandler(error) {
                         console.error(error);
                         MessageService.showMessage('commonErrorMessage', 'error');
                     }
@@ -60,7 +60,7 @@
                                     scope.dictionary.phrasesPairs.unshift(data);
                                     toggleCreatingForm();
                                 })
-                                .error(errorHandling(error));
+                                .error(errorHandler);
                         }
 
                         function editPhrasesPair(phrasesPair) {
@@ -75,7 +75,7 @@
                                         }
                                     }
                                 })
-                                .error(errorHandling(error));
+                                .error(errorHandler);
                         }
 
                         function removePhrasesPair(phrasesPairId) {
@@ -91,7 +91,7 @@
                                                     }
                                                 }
                                             })
-                                            .error(errorHandling(error));
+                                            .error(errorHandler);
                                     }
                                 });
                         }

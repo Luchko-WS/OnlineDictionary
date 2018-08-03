@@ -77,7 +77,7 @@ namespace OnlineDictionary.API
                 dictionary.LastChangeDate = DateTime.Now;
 
                 await _dbContext.SaveDbChangesAsync();
-               
+
                 return Request.CreateResponse(HttpStatusCode.OK, phrasesPair);
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -102,6 +102,50 @@ namespace OnlineDictionary.API
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
+        }
+
+        [Route("Transalte")]
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<dynamic> FindTranslate([FromUri]FindTranslateViewModel vm)
+        {
+            if (vm == null || string.IsNullOrEmpty(vm.Text)) Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var phrases = _dbContext.PhrasesPairs
+                .Include(p => p.FirstPhrase)
+                .Include(p => p.SecondPhrase);
+
+            var leftPhrases = phrases.Where(p => p.FirstPhrase.Text.ToLower().Contains(vm.Text.ToLower()));
+            var rigthPhrases = phrases.Where(p => p.SecondPhrase.Text.ToLower().Contains(vm.Text.ToLower()));
+
+            if(!string.IsNullOrEmpty(vm.SourceLanguage))
+            {
+                leftPhrases = leftPhrases.Where(p => p.FirstPhrase.Language == vm.SourceLanguage);
+                rigthPhrases = rigthPhrases.Where(p => p.SecondPhrase.Language == vm.SourceLanguage);
+            }
+            if(!string.IsNullOrEmpty(vm.TargetLanguage))
+            {
+                leftPhrases = leftPhrases.Where(p => p.SecondPhrase.Language == vm.TargetLanguage);
+                rigthPhrases = rigthPhrases.Where(p => p.FirstPhrase.Language == vm.SourceLanguage);
+            }
+
+            var leftRes = leftPhrases.Select(p => new
+            {
+                SourceText = p.FirstPhrase.Text,
+                TargetText = p.SecondPhrase.Text,
+                SourceLang = p.FirstPhrase.Language,
+                TargetLang = p.SecondPhrase.Language
+            });
+            var rightRes = rigthPhrases.Select(p => new
+            {
+                SourceText = p.SecondPhrase.Text,
+                TargetText = p.FirstPhrase.Text,
+                SourceLang = p.SecondPhrase.Language,
+                TargetLang = p.FirstPhrase.Language
+            });
+
+            var res = await leftRes.Union(rightRes).ToListAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, res);
         }
     }
 }

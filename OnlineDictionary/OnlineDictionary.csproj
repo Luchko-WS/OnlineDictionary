@@ -226,6 +226,7 @@
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PhrasesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -278,11 +279,12 @@
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\DictionaryFilterViewModel.cs" />
-    <Compile Include="ViewModels\PhrasesPairsFilterViewModel.cs" />
-    <Compile Include="ViewModels\PhraseViewModel.cs" />
-    <Compile Include="ViewModels\PhrasesPairViewModel.cs" />
-    <Compile Include="ViewModels\DictionaryViewModel.cs" />
+    <Compile Include="ViewModels\DictionariesViewModels\DictionaryFilterViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesViewModels\FindTranslateViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesViewModels\PhrasesPairsFilterViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesViewModels\PhraseViewModel.cs" />
+    <Compile Include="ViewModels\PhrasesViewModels\PhrasesPairViewModel.cs" />
+    <Compile Include="ViewModels\DictionariesViewModels\DictionaryViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels\FactorViewModel.cs" />
@@ -309,6 +311,9 @@
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\css\bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="Content\images\brit-flag.jpg" />
+    <Content Include="Content\images\ger-flag.jpg" />
+    <Content Include="Content\images\span-flag.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -531,6 +536,7 @@
     <Content Include="Views\Dictionaries\EditDictionary.cshtml" />
     <Content Include="Views\Dictionaries\Dictionary.cshtml" />
     <Content Include="Views\Dictionaries\SearchDictionary.cshtml" />
+    <Content Include="Views\Phrases\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

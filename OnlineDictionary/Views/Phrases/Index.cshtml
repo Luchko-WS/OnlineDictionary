@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Phrases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Phrases</h2>
+
+<div class="modal-body" ng-controller="TranslateCtrl as vm">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2">Phrase</label>
+            <div class="col-md-8">
+                <input class="form-control" ng-model="vm.phrase.text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">@Lexicon.SourceLanguage</label>
+            <div class="col-md-8">
+                <select class="form-control" ng-model="vm.phrase.sourceLanguage">
+                    @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">@Lexicon.TargetLanguage</label>
+            <div class="col-md-8">
+                <select class="form-control" ng-model="vm.phrase.targetLanguage">
+                    @foreach (var item in OnlineDictionary.Helpers.OnlineDictionarySelectLists.Languages)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-2">
+        <button class="btn btn-primary" ng-click="vm.translate()">@Lexicon.Search</button>
+        <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
+    </div>
+
+    <async-page-with-loader is-loaded="vm.loaded">
+        <div ng-repeat="res in vm.translateResults">
+            {{res}}
+        </div>
+    </async-page-with-loader>
+</div>
+

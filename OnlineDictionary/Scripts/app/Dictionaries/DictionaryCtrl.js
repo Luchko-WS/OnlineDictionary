@@ -32,7 +32,7 @@
                     vm.loaded = true;
                 })
                 .error(function (error) {
-                    errorHandling(error);
+                    errorHandler(error);
                     vm.loaded = true;
                 });
         }
@@ -53,7 +53,7 @@
             return PhrasesPairsService.removePhrasesPair(phrasesPairId);
         }
 
-        function errorHandling(error) {
+        function errorHandler(error) {
             console.error(error);
             MessageService.showMessage('commonErrorMessage', 'error');
         }

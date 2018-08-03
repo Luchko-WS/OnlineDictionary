@@ -11,7 +11,8 @@
         var service = {
             createPhrasesPair: createPhrasesPair,
             editPhrasesPair: editPhrasesPair,
-            removePhrasesPair: removePhrasesPair
+            removePhrasesPair: removePhrasesPair,
+            translate: translate
         };
 
         return service;
@@ -36,6 +37,16 @@
             return $http({
                 method: 'DELETE',
                 url: '/api/PhrasesPairs/Remove/' + phrasesPairId
+            });
+        }
+
+        function translate(phrase) {
+            return $http.get('/api/PhrasesPairs/Transalte', {
+                params: {
+                    Text: phrase.text,
+                    SourceLanguage: phrase.sourceLanguage,
+                    TargetLanguage: phrase.targetLanguage
+                }
             });
         }
     }
