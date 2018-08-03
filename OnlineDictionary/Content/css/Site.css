@@ -33,15 +33,15 @@ textarea {
     text-align: center;
 }
 
-.modal-window{
+.modal-window {
     padding: 15px;
 }
 
-.modal-window-custom-footer{
+.modal-window-custom-footer {
     text-align: right;
 }
 
-.checkbox{
+.checkbox {
     height: 20px;
     width: 20px;
     vertical-align: bottom;
@@ -51,4 +51,8 @@ input.ng-invalid,
 select.ng-invalid,
 textarea.ng-invalid {
     border: 1px red solid;
+}
+
+.page-with-extra-navbar {
+    margin-top: 60px;
 }
