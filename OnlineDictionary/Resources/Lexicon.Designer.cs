@@ -142,6 +142,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred! Try again later..
+        /// </summary>
+        public static string CommonErrorMessage {
+            get {
+                return ResourceManager.GetString("CommonErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm new password.
         /// </summary>
         public static string ConfirmNewPassword {
@@ -264,6 +273,15 @@ namespace OnlineDictionaryResources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         

@@ -321,4 +321,10 @@
   <data name="Download" xml:space="preserve">
     <value>Завантажити</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="CommonErrorMessage" xml:space="preserve">
+    <value>Виникла помилка! Спробуйте ще раз пізніше.</value>
+  </data>
 </root>

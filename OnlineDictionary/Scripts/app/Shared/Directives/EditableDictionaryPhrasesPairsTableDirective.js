@@ -27,9 +27,12 @@
                             .success(function (data) {
                                 scope.dictionary = data;
                             })
-                            .error(function (error) {
-                                console.error(error);
-                            });
+                            .error(errorHandling(error));
+                    }
+
+                    function errorHandling(error) {
+                        console.error(error);
+                        MessageService.showMessage('commonErrorMessage', 'error');
                     }
 
                     if (scope.enableEditing) {
@@ -57,9 +60,7 @@
                                     scope.dictionary.phrasesPairs.unshift(data);
                                     toggleCreatingForm();
                                 })
-                                .error(function (error) {
-                                    console.error(error);
-                                });
+                                .error(errorHandling(error));
                         }
 
                         function editPhrasesPair(phrasesPair) {
@@ -74,9 +75,7 @@
                                         }
                                     }
                                 })
-                                .error(function (error) {
-                                    console.error(error);
-                                })
+                                .error(errorHandling(error));
                         }
 
                         function removePhrasesPair(phrasesPairId) {
@@ -92,9 +91,7 @@
                                                     }
                                                 }
                                             })
-                                            .error(function (error) {
-                                                console.error(error);
-                                            });
+                                            .error(errorHandling(error));
                                     }
                                 });
                         }

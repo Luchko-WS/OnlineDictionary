@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('AllDictionariesCtrl', AllDictionariesCtrl);
 
-    AllDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService'];
+    AllDictionariesCtrl.$inject = ['$uibModal', 'DictionariesService', 'MessageService'];
 
-    function AllDictionariesCtrl($uibModal, DictionariesService) {
+    function AllDictionariesCtrl($uibModal, DictionariesService, MessageService) {
         var vm = this;
         vm.searchDictionaryByName = searchDictionaryByName;
         vm.extendedDictionarySearch = extendedDictionarySearch;
@@ -33,7 +33,7 @@
                     vm.loaded = true;
                 })
                 .error(function (error) {
-                    console.error(error);
+                    errorHandling(error);
                     vm.loaded = true;
                 });
         }
@@ -58,9 +58,12 @@
         function downloadDictionary(dictionary) {
             DictionariesService.downloadDictionary(dictionary.id)
                 .success(DownloadFileService.makeLinkElement)
-                .error(function (error) {
-                    console.error(error);
-                });
+                .error(errorHandling(error));
+        }
+
+        function errorHandling(error) {
+            console.error(error);
+            MessageService.showMessage('commonErrorMessage', 'error');
         }
     }
 

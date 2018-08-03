@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('CreateDictionaryCtrl', CreateDictionaryCtrl);
 
-    CreateDictionaryCtrl.$inject = ['$uibModalInstance', 'DictionariesService'];
+    CreateDictionaryCtrl.$inject = ['$uibModalInstance', 'DictionariesService', 'MessageService'];
 
-    function CreateDictionaryCtrl($uibModalInstance, DictionariesService) {
+    function CreateDictionaryCtrl($uibModalInstance, DictionariesService, MessageService) {
         var vm = this;
 
         vm.dictionary = {};
@@ -25,9 +25,12 @@
                 .success(function (data) {
                     $uibModalInstance.close(data);
                 })
-                .error(function (error) {
-                    console.error(error);
-                });
+                .error(errorHandling(error));
+        }
+
+        function errorHandling(error) {
+            console.error(error);
+            MessageService.showMessage('commonErrorMessage', 'error');
         }
     }
 

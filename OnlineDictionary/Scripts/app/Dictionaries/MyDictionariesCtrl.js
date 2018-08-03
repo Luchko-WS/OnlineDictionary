@@ -56,7 +56,7 @@
                     vm.loaded = true;
                 })
                 .error(function (error) {
-                    console.error(error);
+                    errorHandling(error);
                     vm.loaded = true;
                 });
         }
@@ -116,9 +116,7 @@
                                     }
                                 }
                             })
-                            .error(function (error) {
-                                console.error(error);
-                            });
+                            .error(errorHandling(error));
                     }
                 });
         }
@@ -126,9 +124,12 @@
         function downloadDictionary(dictionary) {
             DictionariesService.downloadDictionary(dictionary.id)
                 .success(DownloadFileService.makeLinkElement)
-                .error(function (error) {
-                    console.error(error);
-                });
+                .error(errorHandling(error));
+        }
+
+        function errorHandling(error) {
+            console.error(error);
+            MessageService.showMessage('commonErrorMessage', 'error');
         }
     }
 

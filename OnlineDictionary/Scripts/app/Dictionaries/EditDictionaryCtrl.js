@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('EditDictionaryCtrl', EditDictionaryCtrl);
 
-    EditDictionaryCtrl.$inject = ['$uibModalInstance', 'DictionariesService', 'dicitonaryPar'];
+    EditDictionaryCtrl.$inject = ['$uibModalInstance', 'DictionariesService', 'dicitonaryPar', 'MessageService'];
 
-    function EditDictionaryCtrl($uibModalInstance, DictionariesService, dicitonaryPar) {
+    function EditDictionaryCtrl($uibModalInstance, DictionariesService, dicitonaryPar, MessageService) {
         var vm = this;
 
         vm.cancel = function () { $uibModalInstance.dismiss('cancel'); }
@@ -26,9 +26,12 @@
                 .success(function (data) {
                     $uibModalInstance.close(data);
                 })
-                .error(function (error) {
-                    console.error(error);
-                });
+                .error(errorHandling(error));
+        }
+
+        function errorHandling(error) {
+            console.error(error);
+            MessageService.showMessage('commonErrorMessage', 'error');
         }
     }
 

@@ -5,9 +5,9 @@
         .module('OnlineDictionary')
         .controller('DictionaryCtrl', DictionaryCtrl);
 
-    DictionaryCtrl.$inject = ['DictionariesService', 'PhrasesPairsService'];
+    DictionaryCtrl.$inject = ['DictionariesService', 'PhrasesPairsService', 'MessageService'];
 
-    function DictionaryCtrl(DictionariesService, PhrasesPairsService) {
+    function DictionaryCtrl(DictionariesService, PhrasesPairsService, MessageService) {
         var vm = this;
 
         vm.init = init;
@@ -32,7 +32,7 @@
                     vm.loaded = true;
                 })
                 .error(function (error) {
-                    console.error(error);
+                    errorHandling(error);
                     vm.loaded = true;
                 });
         }
@@ -51,6 +51,11 @@
 
         function deletePhrasePair(phrasesPairId) {
             return PhrasesPairsService.removePhrasesPair(phrasesPairId);
+        }
+
+        function errorHandling(error) {
+            console.error(error);
+            MessageService.showMessage('commonErrorMessage', 'error');
         }
     }
 })();
