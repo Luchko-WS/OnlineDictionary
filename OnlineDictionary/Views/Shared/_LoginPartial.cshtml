@@ -3,23 +3,33 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink(Lexicon.Translate, "Translate", "Phrases", routeValues: null, htmlAttributes: new { title = "Translate" })
+            </li>
+            <li>
+                @Html.ActionLink(Lexicon.MyDictionaries, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "My Dictionaries" })
+            </li>
+            <li>
+                @Html.ActionLink(Lexicon.AllDictionaries, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
+            </li>
 
-<ul class="nav navbar-nav navbar-right">
-    <li>
-        @Html.ActionLink(Lexicon.Translate, "Translate", "Phrases", routeValues: null, htmlAttributes: new { title = "Translate" })
-    </li>
-    <li>
-        @Html.ActionLink(Lexicon.MyDictionaries, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "My Dictionaries" })
-    </li>
-    <li>
-        @Html.ActionLink(Lexicon.AllDictionaries, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { title = "Dictionaries" })
-    </li>
-    <li>
-        @Html.ActionLink(String.Format(Lexicon.Hello, User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-    </li>
-    <li><a href="javascript:document.getElementById('logoutForm').submit()">@Lexicon.LogOff</a></li>
-</ul>
+            <li class="dropdown app-menu-li">
+                <a style="position: relative" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.GetUserName() <span class="caret"></span>
+                    <span class="fas fa-user-circle"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink(Lexicon.MyProfile, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li class="app-menu-li logout-li">
+                        <a href="javascript:document.getElementById('logoutForm').submit()">@Lexicon.LogOff</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     }
 }
 else

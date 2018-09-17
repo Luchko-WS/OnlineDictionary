@@ -342,4 +342,7 @@
   <data name="LookThroughTheOwnPhrases" xml:space="preserve">
     <value>Переглядати власні фрази</value>
   </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Мой Профиль</value>
+  </data>
 </root>

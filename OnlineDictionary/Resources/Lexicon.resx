@@ -339,4 +339,7 @@
   <data name="LookThroughTheOwnPhrases" xml:space="preserve">
     <value>Look through the own phrases</value>
   </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
 </root>
