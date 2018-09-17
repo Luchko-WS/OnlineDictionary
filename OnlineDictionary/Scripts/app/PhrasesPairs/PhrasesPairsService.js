@@ -45,7 +45,8 @@
                 params: {
                     Text: phrase.text,
                     SourceLanguage: phrase.sourceLanguage,
-                    TargetLanguage: phrase.targetLanguage
+                    TargetLanguage: phrase.targetLanguage,
+                    LookThroughTheOwnPhrases: phrase.lookThroughTheOwnPhrases
                 }
             });
         }

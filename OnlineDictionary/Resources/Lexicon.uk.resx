@@ -339,4 +339,7 @@
   <data name="ClearUp" xml:space="preserve">
     <value>Очистити</value>
   </data>
+  <data name="LookThroughTheOwnPhrases" xml:space="preserve">
+    <value>Переглядати власні фрази</value>
+  </data>
 </root>

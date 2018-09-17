@@ -7,5 +7,7 @@
         public string SourceLanguage { get; set; }
 
         public string TargetLanguage { get; set; }
+
+        public bool LookThroughTheOwnPhrases { get; set; }
     }
 }

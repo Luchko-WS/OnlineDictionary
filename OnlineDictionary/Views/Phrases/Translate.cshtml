@@ -36,6 +36,15 @@
                 </select>
             </div>
         </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">@Lexicon.LookThroughTheOwnPhrases</label>
+                <div class="col-md-1">
+                    <input class="checkbox" type="checkbox" ng-model="vm.phrase.lookThroughTheOwnPhrases" />
+                </div>
+            </div>
+        }
     </div>
     <div class="col-md-offset-2">
         <button class="btn btn-primary" ng-click="vm.translate()" ng-disabled="!vm.phrase.text">@Lexicon.Translate</button>

@@ -412,6 +412,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Look through the own phrases.
+        /// </summary>
+        public static string LookThroughTheOwnPhrases {
+            get {
+                return ResourceManager.GetString("LookThroughTheOwnPhrases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
         public static string Month {

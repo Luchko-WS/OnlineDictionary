@@ -114,15 +114,20 @@ namespace OnlineDictionary.API
                 .Include(p => p.FirstPhrase)
                 .Include(p => p.SecondPhrase);
 
+            if (vm.LookThroughTheOwnPhrases)
+            {
+                phrases = phrases.Where(p => p.OwnerId == User.Identity.Name);
+            }
+
             var leftPhrases = phrases.Where(p => p.FirstPhrase.Text.ToLower().Contains(vm.Text.ToLower()));
             var rigthPhrases = phrases.Where(p => p.SecondPhrase.Text.ToLower().Contains(vm.Text.ToLower()));
 
-            if(!string.IsNullOrEmpty(vm.SourceLanguage))
+            if (!string.IsNullOrEmpty(vm.SourceLanguage))
             {
                 leftPhrases = leftPhrases.Where(p => p.FirstPhrase.Language == vm.SourceLanguage);
                 rigthPhrases = rigthPhrases.Where(p => p.SecondPhrase.Language == vm.SourceLanguage);
             }
-            if(!string.IsNullOrEmpty(vm.TargetLanguage))
+            if (!string.IsNullOrEmpty(vm.TargetLanguage))
             {
                 leftPhrases = leftPhrases.Where(p => p.SecondPhrase.Language == vm.TargetLanguage);
                 rigthPhrases = rigthPhrases.Where(p => p.FirstPhrase.Language == vm.SourceLanguage);

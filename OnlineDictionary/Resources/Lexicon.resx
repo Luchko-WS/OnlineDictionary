@@ -336,4 +336,7 @@
   <data name="ClearUp" xml:space="preserve">
     <value>Clear up</value>
   </data>
+  <data name="LookThroughTheOwnPhrases" xml:space="preserve">
+    <value>Look through the own phrases</value>
+  </data>
 </root>
