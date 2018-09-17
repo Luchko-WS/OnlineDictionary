@@ -345,4 +345,7 @@
   <data name="MyProfile" xml:space="preserve">
     <value>Мой Профиль</value>
   </data>
+  <data name="NothingToShow" xml:space="preserve">
+    <value>Нічого показувати</value>
+  </data>
 </root>

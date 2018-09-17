@@ -27,6 +27,10 @@
                                      enable-editing="false">
                     </dictionary-item>
                 </div>
+                <div ng-if="vm.publicDictionaries == null || vm.publicDictionaries.length == 0" class="text-center">
+                    <div><img src="~/Content/images/empty.png" /></div>
+                    <div>@Lexicon.NothingToShow</div>
+                </div>
             </div>
         </async-page-with-loader>
     </div>

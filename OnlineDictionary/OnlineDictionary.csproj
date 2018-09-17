@@ -314,6 +314,7 @@
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\css\bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\brit-flag.jpg" />
     <Content Include="Content\images\ger-flag.jpg" />
     <Content Include="Content\images\span-flag.jpg" />

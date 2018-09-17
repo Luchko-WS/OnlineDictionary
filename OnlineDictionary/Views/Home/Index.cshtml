@@ -2,32 +2,23 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron" style="margin: 10px">
-    <h1>Online Dictionary</h1>
-    <p class="lead">@Lexicon.SiteDescription</p>
-</div>
-
+<h1 class="text-center" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Online Dictionary</h1>
 <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/brit-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px; position: relative">
-        <h2 style="color: white">Find translate to phrase</h2>
-        <p style="position: absolute; bottom: 5px; right: 15px">
-            @Html.ActionLink(Lexicon.Review, "Index", "Phrases", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "Translate" })
-        </p>
+    <div class="col-md-6">
+        <img src="https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif" style="margin: 30px" />
     </div>
-    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/ger-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
-        <h2 style="color: white">Download users' dictionaries</h2>
-        <p style="position: absolute; bottom: 5px; right: 15px">
-            @Html.ActionLink(Lexicon.Review, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "Dictionaries" })
-        </p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-5" style="margin: 5px; background:url(../../Content/images/span-flag.jpg) no-repeat; height: 200px; border: solid; border-width: 1px; border-radius: 20px">
-        <h2 style="color: white">Create your dictionary</h2>
-        <p style="position: absolute; bottom: 5px; right: 15px">
-            @Html.ActionLink(Lexicon.Review, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = "My Dictionaries" })
-        </p>
+    <div class="col-md-6">
+        <div class="row">
+            <h3>Find translate to phrase</h3>
+            @Html.ActionLink(Lexicon.Review, "Translate", "Phrases", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = Lexicon.Translate })
+        </div>
+        <div class="row">
+            <h3>Download users' dictionaries</h3>
+            @Html.ActionLink(Lexicon.Review, "AllDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = Lexicon.AllDictionaries })
+        </div>
+        <div class="row">
+            <h3>Create your dictionary</h3>
+            @Html.ActionLink(Lexicon.Review, "MyDictionaries", "Dictionaries", routeValues: null, htmlAttributes: new { @class = "btn btn-default", title = Lexicon.MyDictionaries })
+        </div>
     </div>
 </div>

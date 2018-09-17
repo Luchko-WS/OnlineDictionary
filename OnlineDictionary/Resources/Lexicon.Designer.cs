@@ -475,6 +475,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nothing to show.
+        /// </summary>
+        public static string NothingToShow {
+            get {
+                return ResourceManager.GetString("NothingToShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Owner.
         /// </summary>
         public static string Owner {
