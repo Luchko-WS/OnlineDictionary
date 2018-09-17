@@ -142,6 +142,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear up.
+        /// </summary>
+        public static string ClearUp {
+            get {
+                return ResourceManager.GetString("ClearUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred! Try again later..
         /// </summary>
         public static string CommonErrorMessage {
@@ -484,6 +493,15 @@ namespace OnlineDictionaryResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phrase.
+        /// </summary>
+        public static string Phrase {
+            get {
+                return ResourceManager.GetString("Phrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phrases list.
         /// </summary>
         public static string PhrasesList {
@@ -624,6 +642,15 @@ namespace OnlineDictionaryResources {
         public static string TargetLanguage {
             get {
                 return ResourceManager.GetString("TargetLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translate.
+        /// </summary>
+        public static string Translate {
+            get {
+                return ResourceManager.GetString("Translate", resourceCulture);
             }
         }
         

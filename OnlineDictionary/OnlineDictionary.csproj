@@ -536,7 +536,7 @@
     <Content Include="Views\Dictionaries\EditDictionary.cshtml" />
     <Content Include="Views\Dictionaries\Dictionary.cshtml" />
     <Content Include="Views\Dictionaries\SearchDictionary.cshtml" />
-    <Content Include="Views\Phrases\Index.cshtml" />
+    <Content Include="Views\Phrases\Translate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -607,7 +607,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64933</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64933/</IISUrl>
+          <IISUrl>http://localhost:65000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Phrases</h2>
+<h2>@Lexicon.Translate</h2>
 
 <div class="modal-body" ng-controller="TranslateCtrl as vm">
     <div class="form-horizontal">
         <div class="form-group">
-            <label class="control-label col-md-2">Phrase</label>
+            <label class="control-label col-md-2">@Lexicon.Phrase</label>
             <div class="col-md-8">
                 <input class="form-control" ng-model="vm.phrase.text" />
             </div>
@@ -38,12 +38,12 @@
         </div>
     </div>
     <div class="col-md-offset-2">
-        <button class="btn btn-primary" ng-click="vm.translate()">@Lexicon.Search</button>
-        <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
+        <button class="btn btn-primary" ng-click="vm.translate()" ng-disabled="!vm.phrase.text">@Lexicon.Translate</button>
+        <button class="btn btn-default" ng-click="vm.clear()">@Lexicon.ClearUp</button>
     </div>
 
     <async-page-with-loader is-loaded="vm.loaded" style="margin-top: 20px">
-        <table class="table table-striped table-bordered table-hover table-with-centered-content">
+        <table class="table table-striped table-bordered table-hover table-with-centered-content" ng-show="vm.translateResults">
             <thead>
                 <tr>
                     <th>#</th>

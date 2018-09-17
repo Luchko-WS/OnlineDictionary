@@ -10,7 +10,7 @@
     function TranslateCtrl(PhrasesPairsService, MessageService) {
         var vm = this;
         vm.phrase = {};
-        vm.translateResults = [];
+        vm.translateResults = null;
 
         vm.translate = translate;
         vm.clear = clear;

@@ -5,7 +5,7 @@ namespace OnlineDictionary.Controllers
     public class PhrasesController : BaseController
     {
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Translate()
         {
             return View();
         }

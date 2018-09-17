@@ -327,4 +327,13 @@
   <data name="PhrasesList" xml:space="preserve">
     <value>Phrases list</value>
   </data> 
+  <data name="Phrase" xml:space="preserve">
+    <value>Phrase</value>
+  </data> 
+  <data name="Translate" xml:space="preserve">
+    <value>Translate</value>
+  </data> 
+  <data name="ClearUp" xml:space="preserve">
+    <value>Clear up</value>
+  </data>
 </root>

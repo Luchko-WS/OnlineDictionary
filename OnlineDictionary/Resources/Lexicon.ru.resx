@@ -327,4 +327,13 @@
   <data name="PhrasesList" xml:space="preserve">
     <value>Список фраз</value>
   </data>
+  <data name="Phrase" xml:space="preserve">
+    <value>Фраза</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Перевести</value>
+  </data>
+  <data name="ClearUp" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
 </root>

@@ -1,5 +1,4 @@
-﻿using OnlineDictionary.Common;
-using OnlineDictionary.Models;
+﻿using OnlineDictionary.Models;
 using OnlineDictionary.ViewModels;
 using System;
 using System.Data.Entity;
@@ -145,6 +144,12 @@ namespace OnlineDictionary.API
             });
 
             var res = await leftRes.Union(rightRes).ToListAsync();
+            res.Sort((pair1, pair2) =>
+            {
+                var index1 = pair1.SourceLang.ToLower().IndexOf(vm.Text.ToLower());
+                var index2 = pair2.SourceLang.ToLower().IndexOf(vm.Text.ToLower());
+                return index1 < index2 ? -1 : index1 > index2 ? 1 : 0;
+            });
             return Request.CreateResponse(HttpStatusCode.OK, res);
         }
     }
