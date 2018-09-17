@@ -75,10 +75,10 @@
             }
         }
 
-        function downloadDictionary(dictionaryId) {
+        function downloadDictionary(dictionaryId, format) {
             return $http({
                 method: 'GET',
-                url: '/api/Dictionaries/Download/' + dictionaryId,
+                url: '/api/Dictionaries/Download/' + dictionaryId + '/' + format,
                 responseType: 'arraybuffer'
             });
         }

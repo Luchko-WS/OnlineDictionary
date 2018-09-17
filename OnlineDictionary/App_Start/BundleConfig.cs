@@ -42,7 +42,7 @@ namespace OnlineDictionary
                 .Include("~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
-                .Include("~/Scripts/bootstrap.js")
+                .Include("~/Scripts/bootstrap/bootstrap.js")
                 .Include("~/Scripts/bootstrap/bootstrap-datepicker/bootstrap-datepicker.js")
                 .Include("~/Scripts/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.uk.min.js")
                 .Include("~/Scripts/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));

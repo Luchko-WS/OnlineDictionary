@@ -49,6 +49,9 @@
     <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -390,14 +393,13 @@
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker3.css.map" />
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker.css.map" />
-    <None Include="Scripts\jquery\jquery-3.3.1.intellisense.js" />
+    <None Include="Scripts\jquery\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery\jquery-1.12.4.min.map" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_en-us.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_ru.js" />
     <Content Include="Scripts\angularjs\i18n\angular-locale_uk.js" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery\jquery.validate.js" />
     <Content Include="Scripts\jquery\jquery.validate.min.js" />
@@ -551,8 +553,6 @@
     <Content Include="Content\css\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807040831508_InitialMigration.resx">

@@ -121,8 +121,8 @@
                 });
         }
 
-        function downloadDictionary(dictionary) {
-            DictionariesService.downloadDictionary(dictionary.id)
+        function downloadDictionary(dictionary, format) {
+            DictionariesService.downloadDictionary(dictionary.id, format)
                 .success(DownloadFileService.makeLinkElement)
                 .error(errorHandler);
         }
