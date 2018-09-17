@@ -157,7 +157,6 @@ namespace OnlineDictionary.API
         [HttpGet]
         [AllowAnonymous]
         [Route("Download/{dictionaryId}/{format}")]
-        //need in refactoring
         public async Task<HttpResponseMessage> DownloadDictionary([FromUri]Guid dictionaryId, string format)
         {
             if (string.IsNullOrEmpty(format))
@@ -229,32 +228,42 @@ namespace OnlineDictionary.API
             return response;
         }
 
-        //EDIT THIS
         private HttpResponseMessage GetPdfResponseForDictionary(Dictionary dictionary)
         {
-            //prepare pdf document
             iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4);
             var memoryStream = new MemoryStream();
             iTextSharp.text.pdf.PdfWriter.GetInstance(document, memoryStream);
-            //write pdf document (open pdf document stream)
+
             document.Open();
+            string ARIALUNI_TFF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
+            iTextSharp.text.pdf.BaseFont baseFont = iTextSharp.text.pdf.BaseFont.CreateFont(
+                ARIALUNI_TFF, iTextSharp.text.pdf.BaseFont.IDENTITY_H, iTextSharp.text.pdf.BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.NORMAL);
+
+            uint rowNumber = 1;
             foreach (var phrasesPair in dictionary.PhrasesPairs.OrderBy(p => p.FirstPhrase.Text))
             {
                 document.Add(new iTextSharp.text.Paragraph(
-                    string.Format("{0} - {1}", phrasesPair.FirstPhrase.Text, phrasesPair.SecondPhrase.Text)
-                    )); 
+                    string.Format("{0}) {1} - {2}", rowNumber++, phrasesPair.FirstPhrase.Text, phrasesPair.SecondPhrase.Text),
+                    font)); 
+            }
+            document.NewPage();
+            rowNumber = 1;
+            foreach (var phrasesPair in dictionary.PhrasesPairs.OrderBy(p => p.SecondPhrase.Text))
+            {
+                document.Add(new iTextSharp.text.Paragraph(
+                    string.Format("{0}) {1} - {2}", rowNumber++, phrasesPair.SecondPhrase.Text, phrasesPair.FirstPhrase.Text),
+                    font));
             }
             document.AddAuthor(dictionary.OwnerId);
             document.Close();
 
-            //send response
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
             response.Content = new ByteArrayContent(memoryStream.ToArray());
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             string filename = string.Format("{0}.pdf", dictionary.Name);
             response.Content.Headers.ContentDisposition.FileName = Uri.EscapeUriString(filename);
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-
             return response;
         }
     }
