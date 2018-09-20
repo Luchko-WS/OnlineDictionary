@@ -13,6 +13,7 @@
 
         vm.searchDictionaryByName = searchDictionaryByName;
         vm.extendedDictionarySearch = extendedDictionarySearch;
+        vm.resetSearch = resetSearch;
         vm.createDictionary = createDictionary;
         vm.editDictionary = editDictionary; 
         vm.removeDictionary = removeDictionary;
@@ -46,6 +47,11 @@
             modalInstance.result.then(function (filter) {
                 getDictionaries(filter);
             });
+        }
+
+        function resetSearch() {
+            vm.searchDictionaryName = null;
+            getDictionaries();
         }
 
         function getDictionaries(filter) {

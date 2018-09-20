@@ -348,4 +348,7 @@
   <data name="NothingToShow" xml:space="preserve">
     <value>Нічого показувати</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
 </root>

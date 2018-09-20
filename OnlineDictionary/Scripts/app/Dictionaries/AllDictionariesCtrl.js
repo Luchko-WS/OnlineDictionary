@@ -11,18 +11,12 @@
         var vm = this;
         vm.searchDictionaryByName = searchDictionaryByName;
         vm.extendedDictionarySearch = extendedDictionarySearch;
+        vm.resetSearch = resetSearch;
         vm.downloadDictionary = downloadDictionary;
         init();
 
         function init() {
             getDictionaries();
-        }
-
-        function searchDictionaryByName(name) {
-            var filter = {
-                name: name
-            };
-            getDictionaries(filter);
         }
 
         function getDictionaries(filter) {
@@ -36,6 +30,13 @@
                     errorHandler(error);
                     vm.loaded = true;
                 });
+        }
+
+        function searchDictionaryByName(name) {
+            var filter = {
+                name: name
+            };
+            getDictionaries(filter);
         }
 
         function extendedDictionarySearch() {
@@ -53,6 +54,11 @@
             modalInstance.result.then(function (filter) {
                 getDictionaries(filter);
             });
+        }
+
+        function resetSearch() {
+            vm.searchDictionaryName = null;
+            getDictionaries();
         }
 
         function downloadDictionary(dictionary, format) {
