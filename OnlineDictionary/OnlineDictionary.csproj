@@ -316,7 +316,9 @@
     <Content Include="Content\css\bootstrap\ui-bootstrap-csp.css" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\brit-flag.jpg" />
+    <Content Include="Content\images\empty.png" />
     <Content Include="Content\images\ger-flag.jpg" />
+    <Content Include="Content\images\navbar.jpg" />
     <Content Include="Content\images\span-flag.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.svg" />
@@ -394,6 +396,7 @@
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker3.css.map" />
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\css\bootstrap\bootstrap-datepicker\bootstrap-datepicker.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery\jquery-1.12.4.min.js" />

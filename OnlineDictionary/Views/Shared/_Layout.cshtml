@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Online Dictionary</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -41,6 +41,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/momentjs")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angularjs")
     @Scripts.Render("~/bundles/app")
@@ -63,6 +64,11 @@
                 $('body, html').animate({ scrollTop: 0 });
             });
         });
+
+        $.validator.methods.date = function (value, element) {
+            console.log(value);
+            return this.optional(element) || moment(value, "DD/MM/YYYY", true).isValid();
+        }
     </script>
 </body>
 </html>
